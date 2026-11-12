@@ -354,6 +354,29 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
 .pie__titulo { font: 800 2.4rem var(--f-titulo); text-transform: uppercase; color: var(--claro); margin-bottom: .6rem !important; }
 .pie p { margin: .2rem 0; }
 
+
+/* ---------- PLANTAS: grilla de láminas ---------- */
+.plantas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5) var(--sp-4); margin-top: 0; }
+.lamina figcaption { display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; align-items: baseline; border-top: 2px solid var(--vino); padding-top: .7rem; }
+.lamina figcaption b { font: 800 1.9rem/1 var(--f-titulo); color: var(--vino); grid-row: span 2; }
+.lamina figcaption { font: 700 1.2rem/1.2 var(--f-titulo); text-transform: uppercase; color: var(--tinta); }
+.lamina figcaption span { font: 400 .95rem/1.4 var(--f-texto); text-transform: none; color: var(--tinta-suave); }
+@media (max-width: 760px) { .plantas { grid-template-columns: 1fr; } }
+
+/* ---------- BORDE: navegación por capítulos en el margen ---------- */
+.borde {
+  position: fixed; right: 14px; top: 50%; transform: translateY(-50%); z-index: 40;
+  display: flex; flex-direction: column; align-items: center; gap: .7rem;
+  opacity: 0; transition: opacity 400ms;
+}
+.borde.activa { opacity: 1; }
+.borde__n { margin: 0; writing-mode: vertical-rl; font: 700 .9rem var(--f-etiqueta); letter-spacing: .14em; color: var(--tinta-suave); }
+.borde__n span { color: var(--vino); }
+.borde ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.borde a { display: block; width: 10px; height: 10px; background: var(--c); opacity: .35; transition: opacity 250ms, transform 250ms; }
+.borde a:hover, .borde a[aria-current="true"] { opacity: 1; transform: scaleX(2.2); transform-origin: right; }
+@media (max-width: 960px) { .borde { display: none; } }
+
 /* ---------- MOVIMIENTO ---------- */
 /* títulos: cada palabra sube desde una máscara */
 .js .palabra { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .04em; }

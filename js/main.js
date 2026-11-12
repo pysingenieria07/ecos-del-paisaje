@@ -26,7 +26,9 @@ toggle.addEventListener('click', () => {
 menu.addEventListener('click', (e) => {
   if (e.target.closest('a')) { menu.classList.remove('abierto'); toggle.setAttribute('aria-expanded', 'false'); }
 });
-const enlaces = [...menu.querySelectorAll('a')];
+const borde = document.querySelector('.borde');
+const bordeNum = document.getElementById('borde-actual');
+const enlaces = [...menu.querySelectorAll('a'), ...(borde ? borde.querySelectorAll('a') : [])];
 const obsMenu = new IntersectionObserver((entradas) => {
   entradas.forEach((en) => {
     if (!en.isIntersecting) return;
@@ -34,6 +36,10 @@ const obsMenu = new IntersectionObserver((entradas) => {
       if (a.getAttribute('href') === '#' + en.target.id) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
+    if (borde) {
+      const i = [...borde.querySelectorAll('a')].findIndex((a) => a.getAttribute('href') === '#' + en.target.id);
+      if (i >= 0) bordeNum.textContent = String(i + 1).padStart(2, '0');
+    }
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 enlaces.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) obsMenu.observe(s); });
@@ -144,6 +150,14 @@ function alScroll() {
   if (y > 400 && y > ultimoY + 4) nav.classList.add('oculta');
   else if (y < ultimoY - 4 || y < 400) nav.classList.remove('oculta');
   ultimoY = y;
+  if (borde) {
+    borde.classList.toggle('activa', y > innerHeight * 0.8);
+    const marcas = [...borde.querySelectorAll('a')];
+    let actual = -1;
+    marcas.forEach((a, i) => { const sec = document.querySelector(a.getAttribute('href')); if (sec && sec.getBoundingClientRect().top < innerHeight * 0.5) actual = i; });
+    marcas.forEach((a, i) => { if (i === actual) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    bordeNum.textContent = String(actual + 1).padStart(2, '0');
+  }
 
   // respaldo por si el navegador no avisa que algo entró en pantalla
   document.querySelectorAll('.aparece:not(.visto), .revela:not(.visto), .hero h1:not(.visto), .capitulo h2:not(.visto), .barras:not(.visto)').forEach((el) => {

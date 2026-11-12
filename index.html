@@ -33,6 +33,21 @@
   </nav>
 </header>
 
+<nav class="borde" aria-label="Avance por capítulos">
+  <p class="borde__n"><span id="borde-actual">00</span>/09</p>
+  <ol>
+    <li><a href="#lugar" style="--c:var(--arcilla)"><span class="visually-hidden">01 Lugar</span></a></li>
+    <li><a href="#comunidad" style="--c:var(--cafe)"><span class="visually-hidden">02 Comunidad</span></a></li>
+    <li><a href="#clima" style="--c:var(--ocre)"><span class="visually-hidden">03 Clima</span></a></li>
+    <li><a href="#idea" style="--c:var(--vino)"><span class="visually-hidden">04 Idea</span></a></li>
+    <li><a href="#programa" style="--c:var(--verde-claro)"><span class="visually-hidden">05 Programa</span></a></li>
+    <li><a href="#recorrido" style="--c:var(--terracota)"><span class="visually-hidden">06 Recorrido</span></a></li>
+    <li><a href="#proyecto" style="--c:var(--oliva)"><span class="visually-hidden">07 Proyecto</span></a></li>
+    <li><a href="#estructura" style="--c:var(--cafe)"><span class="visually-hidden">08 Estructura</span></a></li>
+    <li><a href="#planos" style="--c:var(--vino-hondo)"><span class="visually-hidden">09 Planos</span></a></li>
+  </ol>
+</nav>
+
 <main id="contenido">
 
 <!-- PORTADA -->
@@ -264,12 +279,33 @@
     </article>
   </div>
 
-  <figure class="figura figura--ancha figura--plano">
-    <button type="button" class="ampliar" aria-label="Ampliar planta arquitectónica">
-      <img src="img/planta-1.jpg" width="1556" height="2200" loading="lazy" alt="Planta arquitectónica general del proyecto sobre la topografía" data-falta="planta-1.jpg">
-    </button>
-    <figcaption>Planta arquitectónica. Toca la imagen para verla en grande.</figcaption>
-  </figure>
+  <h3 class="sub">Plantas arquitectónicas · escala 1:200</h3>
+  <div class="plantas">
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A1: Biblioteca y Jardín Buen Crecer"><img src="img/planta-1a.jpg" width="2121" height="1535" loading="lazy" alt="Lámina A1, planta arquitectónica: Biblioteca y Jardín Buen Crecer" data-falta="planta-1a.jpg"></button>
+      <figcaption><b>A1</b> Biblioteca y Jardín Buen Crecer<span>Módulo de consulta, salas de archivos y digital, ocio, administración y baños.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A2: Biblioteca · cuadro de áreas"><img src="img/planta-1b.jpg" width="2121" height="1465" loading="lazy" alt="Lámina A2, planta arquitectónica: Biblioteca · cuadro de áreas" data-falta="planta-1b.jpg"></button>
+      <figcaption><b>A2</b> Biblioteca · cuadro de áreas<span>Las mismas áreas con su dimensionamiento: 20 a 72 m² por espacio.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A3: Talleres y sala de exposiciones"><img src="img/planta-3b.jpg" width="2121" height="1382" loading="lazy" alt="Lámina A3, planta arquitectónica: Talleres y sala de exposiciones" data-falta="planta-3b.jpg"></button>
+      <figcaption><b>A3</b> Talleres y sala de exposiciones<span>Talleres de arte, carpintería y agricultura junto a la sala de exposición.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A4: Cocina y módulos de comercio"><img src="img/planta-3a.jpg" width="2121" height="1618" loading="lazy" alt="Lámina A4, planta arquitectónica: Cocina y módulos de comercio" data-falta="planta-3a.jpg"></button>
+      <figcaption><b>A4</b> Cocina y módulos de comercio<span>Taller de cocina, baños, buitrones y módulos de comercio.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A5: Gradas, mirador, termas y vivero"><img src="img/planta-2a.jpg" width="2121" height="1602" loading="lazy" alt="Lámina A5, planta arquitectónica: Gradas, mirador, termas y vivero" data-falta="planta-2a.jpg"></button>
+      <figcaption><b>A5</b> Gradas, mirador, termas y vivero<span>Gradas con vista a la cancha, puente-mirador, termas y vivero.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A6: Cubiertas"><img src="img/planta-2b.jpg" width="2121" height="1398" loading="lazy" alt="Lámina A6, planta arquitectónica: Cubiertas" data-falta="planta-2b.jpg"></button>
+      <figcaption><b>A6</b> Cubiertas<span>Planta de cubiertas sobre la topografía.</span></figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- 06 RECORRIDO -->
@@ -407,9 +443,12 @@
       <li><button type="button" class="ampliar" aria-label="Ampliar: El lugar"><img src="img/lamina-urbanismo-1.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: el lugar, un borde bajo presión" data-falta="lamina-urbanismo-1.jpg"></button><p><span>Urbanismo V</span>El lugar</p></li>
       <li><button type="button" class="ampliar" aria-label="Ampliar: Postura"><img src="img/lamina-urbanismo-2.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: postura, replantear la norma" data-falta="lamina-urbanismo-2.jpg"></button><p><span>Urbanismo V</span>Postura</p></li>
       <li><button type="button" class="ampliar" aria-label="Ampliar: Estrategias"><img src="img/lamina-urbanismo-3.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo: problemáticas, estrategias y potencialidades" data-falta="lamina-urbanismo-3.jpg"></button><p><span>Urbanismo</span>Estrategias</p></li>
-      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 1"><img src="img/planta-1.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 1" data-falta="planta-1.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 1</p></li>
-      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 2"><img src="img/planta-2.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 2" data-falta="planta-2.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 2</p></li>
-      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 3"><img src="img/planta-3.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 3" data-falta="planta-3.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 3</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A1"><img src="img/planta-1a.jpg" width="2121" height="1535" loading="lazy" alt="Lámina A1: Biblioteca y Jardín Buen Crecer" data-falta="planta-1a.jpg"></button><p><span>Proyecto · A1</span>Biblioteca y Jardín Buen Crecer</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A2"><img src="img/planta-1b.jpg" width="2121" height="1465" loading="lazy" alt="Lámina A2: Biblioteca · cuadro de áreas" data-falta="planta-1b.jpg"></button><p><span>Proyecto · A2</span>Biblioteca · cuadro de áreas</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A3"><img src="img/planta-3b.jpg" width="2121" height="1382" loading="lazy" alt="Lámina A3: Talleres y sala de exposiciones" data-falta="planta-3b.jpg"></button><p><span>Proyecto · A3</span>Talleres y sala de exposiciones</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A4"><img src="img/planta-3a.jpg" width="2121" height="1618" loading="lazy" alt="Lámina A4: Cocina y módulos de comercio" data-falta="planta-3a.jpg"></button><p><span>Proyecto · A4</span>Cocina y módulos de comercio</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A5"><img src="img/planta-2a.jpg" width="2121" height="1602" loading="lazy" alt="Lámina A5: Gradas, mirador, termas y vivero" data-falta="planta-2a.jpg"></button><p><span>Proyecto · A5</span>Gradas, mirador, termas y vivero</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A6"><img src="img/planta-2b.jpg" width="2121" height="1398" loading="lazy" alt="Lámina A6: Cubiertas" data-falta="planta-2b.jpg"></button><p><span>Proyecto · A6</span>Cubiertas</p></li>
       <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Secciones estructurales"><img src="img/seccion-estructural.jpg" width="2200" height="1572" loading="lazy" alt="Secciones estructurales del proyecto" data-falta="seccion-estructural.jpg"></button><p><span>Estructuras IV</span>Secciones estructurales</p></li>
       <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Planta estructural"><img src="img/estructura-1.jpg" width="2200" height="1572" loading="lazy" alt="Plano estructural con planta de cubierta y detalles de pilotes y vigas" data-falta="estructura-1.jpg"></button><p><span>Estructuras IV</span>Planta estructural</p></li>
     </ul>
