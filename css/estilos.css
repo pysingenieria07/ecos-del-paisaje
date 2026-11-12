@@ -253,7 +253,8 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
 @media (max-width: 760px) { .clima { grid-template-columns: 1fr; } }
 
 /* ---------- IDEA ---------- */
-.lema { font: 800 clamp(1.9rem, 3.6vw, 3rem)/1 var(--f-titulo); text-transform: uppercase; color: var(--ocre); border-left: 4px solid var(--ocre); padding-left: var(--sp-3); }
+.lema { font: 800 clamp(1.9rem, 3.6vw, 3rem)/1 var(--f-titulo); text-transform: uppercase; color: var(--vino); border-left: 4px solid var(--arcilla); padding-left: var(--sp-3); }
+.capitulo--oscuro .lema { color: var(--ocre); border-color: var(--ocre); }
 
 /* ---------- PROGRAMA ---------- */
 .leyenda { list-style: none; margin: var(--sp-4) auto 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2) var(--sp-3); }
@@ -376,6 +377,78 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
 .borde a { display: block; width: 10px; height: 10px; background: var(--c); opacity: .35; transition: opacity 250ms, transform 250ms; }
 .borde a:hover, .borde a[aria-current="true"] { opacity: 1; transform: scaleX(2.2); transform-origin: right; }
 @media (max-width: 960px) { .borde { display: none; } }
+
+
+/* ---------- ESQUEMAS A TODO EL ANCHO ---------- */
+.capitulo > .figura--sangre { max-width: none; margin: var(--sp-5) calc(-1 * var(--gutter)) 0; }
+.figura--sangre img { width: 100%; }
+.figura--sangre figcaption { max-width: var(--ancho); margin: .8rem auto 0; padding: 0 var(--gutter); }
+@media (min-width: 1400px) { .figura--sangre figcaption { padding: 0; } }
+
+.sub--pegado { margin-top: 0; }
+.lista-marcas { list-style: none; margin: var(--sp-3) 0 0; padding: 0; }
+.lista-marcas li { position: relative; padding: .45rem 0 .45rem 1.4rem; border-bottom: 1px solid var(--linea); font-size: .98rem; }
+.lista-marcas li::before { content: ""; position: absolute; left: 0; top: 1rem; width: .6rem; height: .6rem; background: var(--arcilla); }
+
+/* problemáticas → estrategias → potencialidades */
+.matriz { list-style: none; margin: 0 auto; padding: 0; border-top: 2px solid var(--vino); }
+.matriz > li { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--linea); }
+.matriz > li > div { padding: var(--sp-3) var(--sp-3) var(--sp-3) 0; font-size: .98rem; line-height: 1.45; position: relative; }
+.matriz > li > div + div { padding-left: var(--sp-3); border-left: 1px solid var(--linea); }
+.matriz > li > div + div::before { content: "→"; position: absolute; left: -.55rem; top: var(--sp-3); background: var(--arena); color: var(--arcilla); font-weight: 700; line-height: 1; }
+.matriz span { display: block; font: 600 .78rem var(--f-etiqueta); letter-spacing: .16em; text-transform: uppercase; color: var(--arcilla); margin-bottom: .4rem; }
+@media (max-width: 760px) { .matriz > li { grid-template-columns: 1fr; } .matriz > li > div + div { border-left: 0; padding-left: 0; } .matriz > li > div + div::before { display: none; } }
+
+.tiempos { margin: 0; display: grid; gap: var(--sp-3); align-content: center; }
+.tiempos dt { font: 800 clamp(2.4rem, 4vw, 3.4rem)/1 var(--f-titulo); color: var(--vino); }
+.tiempos dd { margin: .3rem 0 0; font-size: .98rem; border-bottom: 1px solid var(--linea); padding-bottom: var(--sp-2); }
+
+/* ejes con su programa */
+.ejes-detalle { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-3); }
+.ejes-detalle > li { border-top: 3px solid var(--vino); padding-top: var(--sp-2); font-size: .95rem; line-height: 1.45; }
+.ejes-detalle__n { font: 800 2.6rem/1 var(--f-titulo); color: var(--arcilla); margin: 0 0 .3rem; }
+.ejes-detalle h4 { font-size: 1.5rem; margin-bottom: .6rem; min-height: 2.9rem; }
+.ejes-detalle ul { list-style: none; margin: var(--sp-2) 0; padding: 0; }
+.ejes-detalle ul li { padding: .3rem 0; border-bottom: 1px solid var(--linea); }
+.ejes-detalle__u { font: 600 .82rem var(--f-etiqueta); letter-spacing: .12em; text-transform: uppercase; color: var(--cafe); }
+.ejes-detalle__u::before { content: "Usuario · "; color: var(--arcilla); }
+@media (max-width: 960px) { .ejes-detalle { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .ejes-detalle { grid-template-columns: 1fr; } }
+
+/* jerarquía del programa: gráfica circular hecha con CSS */
+.jerarquia { display: grid; gap: var(--sp-3); align-content: center; justify-items: center; }
+.dona { width: min(100%, 300px); aspect-ratio: 1; border-radius: 50%;
+  background: conic-gradient(var(--vino) 0 30%, var(--arcilla) 0 60%, var(--oliva) 0 85%, var(--barro) 0 100%);
+  -webkit-mask: radial-gradient(circle, transparent 46%, #000 47%); mask: radial-gradient(circle, transparent 46%, #000 47%);
+  transition: transform 1200ms var(--curva); }
+.js .jerarquia:not(.visto) .dona { transform: rotate(-90deg) scale(.85); }
+.dona__leyenda { list-style: none; margin: 0; padding: 0; width: 100%; max-width: 320px; }
+.dona__leyenda li { display: flex; gap: .8rem; align-items: baseline; padding: .45rem 0; border-bottom: 1px solid var(--linea); font: 500 1.05rem var(--f-etiqueta); }
+.dona__leyenda li::before { content: ""; width: .8rem; height: .8rem; background: var(--c); flex: none; align-self: center; }
+.dona__leyenda b { font: 800 1.3rem var(--f-titulo); color: var(--vino); min-width: 3rem; }
+
+/* clima */
+.estrategias { list-style: none; margin: var(--sp-4) auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 var(--sp-4); }
+.estrategias li { padding: var(--sp-2) 0; border-top: 1px solid var(--linea); font-size: .95rem; line-height: 1.45; }
+.estrategias b { display: block; font: 700 1.25rem var(--f-titulo); text-transform: uppercase; color: var(--vino); margin-bottom: .2rem; }
+@media (max-width: 960px) { .estrategias { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .estrategias { grid-template-columns: 1fr; } }
+.trio { display: grid; grid-template-columns: 1.3fr .8fr 1fr; gap: var(--sp-4); margin-top: var(--sp-4); align-items: end; }
+@media (max-width: 960px) { .trio { grid-template-columns: 1fr; } }
+.memoria { margin: var(--sp-4) auto 0; display: grid; grid-template-columns: auto 1fr; gap: var(--sp-3); align-items: center; border-top: 2px solid var(--vino); border-bottom: 1px solid var(--linea); padding: var(--sp-3) 0; font-size: 1.05rem; }
+.memoria b { font: 800 clamp(3rem, 6vw, 4.6rem)/1 var(--f-titulo); color: var(--arcilla); }
+.lineamientos, .accesos, .capas { list-style: none; margin: 0; padding: 0; counter-reset: n; align-self: center; }
+.lineamientos li, .accesos li, .capas li { counter-increment: n; position: relative; padding: var(--sp-2) 0 var(--sp-2) 3.2rem; border-bottom: 1px solid var(--linea); font-size: 1rem; }
+.lineamientos li::before, .accesos li::before, .capas li::before {
+  content: counter(n); position: absolute; left: 0; top: var(--sp-2);
+  width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--vino); color: var(--claro); font: 700 1rem var(--f-etiqueta);
+}
+.lineamientos li { font: 700 1.3rem/1.15 var(--f-titulo); text-transform: uppercase; }
+.accesos b, .capas b { display: block; font: 700 1.2rem var(--f-titulo); text-transform: uppercase; color: var(--vino); }
+.mosaico--invertido { grid-template-columns: 5fr 7fr; align-items: center; }
+.mosaico--detalle { grid-template-columns: 7fr 4fr; align-items: center; margin-top: var(--sp-5); }
+@media (max-width: 960px) { .mosaico--invertido, .mosaico--detalle { grid-template-columns: 1fr; } }
 
 /* ---------- MOVIMIENTO ---------- */
 /* títulos: cada palabra sube desde una máscara */
