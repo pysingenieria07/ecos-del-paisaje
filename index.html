@@ -7,12 +7,13 @@
 <meta name="description" content="Bitácora del semestre 2026-2: equipamiento ambiental e intergeneracional en el borde de Villatina, Medellín. Sebastián Díaz Aguilera y Ana Sofía Sanmartín Betancur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,800;1,700;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="progreso" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <a class="nav__marca" href="#inicio">Ecos del Paisaje</a>
@@ -36,6 +37,7 @@
 
 <!-- PORTADA -->
 <section class="hero" id="inicio">
+  <canvas class="topo" aria-hidden="true"></canvas>
   <div class="hero__texto">
     <p class="kicker">Semestre 2026-2 · Universidad Santo Tomás, Medellín</p>
     <h1>Ecos del<br>Paisaje</h1>
@@ -47,7 +49,7 @@
     </dl>
   </div>
   <figure class="hero__img">
-    <img src="img/portada.jpg" width="1685" height="721" alt="Render del proyecto: personas en un patio con huertas y gradas bajo una cubierta curva de listones de madera" data-falta="portada.jpg">
+    <img src="img/portada.webp" width="1685" height="721" alt="Render del proyecto: personas en un patio con huertas y gradas bajo una cubierta curva de listones de madera" data-falta="portada.webp">
   </figure>
   <a class="hero__bajar" href="#bitacora">Ver cómo avanzó el semestre</a>
 </section>
@@ -83,7 +85,7 @@
       <p>El lote está en el polígono <strong>SE-API-05</strong>, un Área para la Preservación de Infraestructuras y del Sistema Público y Colectivo. Ahí decidimos poner un <em>borde con peso</em>: ocupar la franja estable, frenar la ocupación informal y dejar que la ladera siga siendo verde.</p>
     </div>
   <figure class="figura figura--ancha figura--recorte">
-    <img src="img/lote-seccion.jpg" width="2000" height="489" loading="lazy" alt="Corte de la ladera: la vía, el equipamiento en la franja estable y la vegetación ladera arriba" data-falta="lote-seccion.jpg">
+    <img src="img/lote-seccion.webp" width="2000" height="489" loading="lazy" alt="Corte de la ladera: la vía, el equipamiento en la franja estable y la vegetación ladera arriba" data-falta="lote-seccion.webp">
     <figcaption>El borde con peso: el equipamiento ocupa la franja estable y la ladera queda verde.</figcaption>
   </figure>
 
@@ -210,11 +212,11 @@
     <p class="lema">Transmitir memoria<br>+ enseñar<br>+ disfrutar<br>+ envejecer activamente</p>
   </div>
   <figure class="figura figura--ancha figura--recorte">
-    <img src="img/imaginario.jpg" width="1506" height="506" loading="lazy" alt="Imaginario: personas suben por escalones entre vegetación densa hacia el equipamiento" data-falta="imaginario.jpg">
+    <img src="img/imaginario.webp" width="1506" height="506" loading="lazy" alt="Imaginario: personas suben por escalones entre vegetación densa hacia el equipamiento" data-falta="imaginario.webp">
     <figcaption>Imaginario: el sendero-límite entre la vegetación.</figcaption>
   </figure>
   <figure class="figura figura--ancha figura--recorte">
-    <img src="img/estratos.jpg" width="1584" height="734" loading="lazy" alt="Diagrama de estratos vegetales: arbóreo, arbustivo, tapizante y biorretención, con las especies sugeridas" data-falta="estratos.jpg">
+    <img src="img/estratos.webp" width="1584" height="734" loading="lazy" alt="Diagrama de estratos vegetales: arbóreo, arbustivo, tapizante y biorretención, con las especies sugeridas" data-falta="estratos.webp">
     <figcaption>Estratos vegetales para proteger la ladera: arbóreo, arbustivo, tapizante y biorretención.</figcaption>
   </figure>
 </section>
@@ -378,21 +380,21 @@
     <p class="presupuesto__cifra">$9.516 millones</p>
     <p class="presupuesto__nota">Valor total estimado del predimensionamiento académico, con precios de octubre de 2026. Incluye cimentación, estructura metálica, tensoestructuras, muros, fachada, cubierta, cielos y módulos de madera. No incluye pisos, escaleras, instalaciones, carpintería, paisajismo ni diseños.</p>
     <ul class="presupuesto__lista">
-      <li><span>Cimentación y contención</span><b>36,5 %</b></li>
-      <li><span>Estructura metálica</span><b>24,6 %</b></li>
-      <li><span>Muro cortina y doble fachada</span><b>9,1 %</b></li>
-      <li><span>Equipo mayor y preliminares</span><b>9,0 %</b></li>
-      <li><span>Tensoestructuras</span><b>8,5 %</b></li>
-      <li><span>Cubierta con casetones de madera</span><b>4,6 %</b></li>
-      <li><span>Módulos de estantería en madera</span><b>3,5 %</b></li>
-      <li><span>Muros livianos</span><b>3,1 %</b></li>
-      <li><span>Cielos rasos</span><b>1,0 %</b></li>
+      <li style="--p:36.5"><span>Cimentación y contención</span><b>36,5 %</b></li>
+      <li style="--p:24.6"><span>Estructura metálica</span><b>24,6 %</b></li>
+      <li style="--p:9.1"><span>Muro cortina y doble fachada</span><b>9,1 %</b></li>
+      <li style="--p:9.0"><span>Equipo mayor y preliminares</span><b>9,0 %</b></li>
+      <li style="--p:8.5"><span>Tensoestructuras</span><b>8,5 %</b></li>
+      <li style="--p:4.6"><span>Cubierta con casetones de madera</span><b>4,6 %</b></li>
+      <li style="--p:3.5"><span>Módulos de estantería en madera</span><b>3,5 %</b></li>
+      <li style="--p:3.1"><span>Muros livianos</span><b>3,1 %</b></li>
+      <li style="--p:1.0"><span>Cielos rasos</span><b>1,0 %</b></li>
     </ul>
   </div>
 </section>
 
 <!-- PLANOS -->
-<section class="capitulo capitulo--oscuro" id="planos" aria-labelledby="planos-t">
+<section class="capitulo capitulo--planos" id="planos" aria-labelledby="planos-t">
   <header class="capitulo__cab">
     <span class="capitulo__num">09</span>
     <div>
@@ -400,16 +402,19 @@
       <h2 id="planos-t">Planos y láminas</h2>
     </div>
   </header>
-  <ul class="planchas">
-    <li><button type="button" class="ampliar"><img src="img/lamina-urbanismo-1.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: el lugar, un borde bajo presión" data-falta="lamina-urbanismo-1.jpg"></button><p>Urbanismo V · El lugar</p></li>
-    <li><button type="button" class="ampliar"><img src="img/lamina-urbanismo-2.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: postura, replantear la norma" data-falta="lamina-urbanismo-2.jpg"></button><p>Urbanismo V · Postura</p></li>
-    <li><button type="button" class="ampliar"><img src="img/lamina-urbanismo-3.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo: problemáticas, estrategias y potencialidades" data-falta="lamina-urbanismo-3.jpg"></button><p>Urbanismo · Estrategias</p></li>
-    <li><button type="button" class="ampliar"><img src="img/planta-1.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 1" data-falta="planta-1.jpg"></button><p>Plantas · pliego 1</p></li>
-    <li><button type="button" class="ampliar"><img src="img/planta-2.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 2" data-falta="planta-2.jpg"></button><p>Plantas · pliego 2</p></li>
-    <li><button type="button" class="ampliar"><img src="img/planta-3.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 3" data-falta="planta-3.jpg"></button><p>Plantas · pliego 3</p></li>
-    <li><button type="button" class="ampliar"><img src="img/seccion-estructural.jpg" width="2200" height="1572" loading="lazy" alt="Secciones estructurales del proyecto" data-falta="seccion-estructural.jpg"></button><p>Secciones estructurales</p></li>
-    <li><button type="button" class="ampliar"><img src="img/estructura-1.jpg" width="2200" height="1572" loading="lazy" alt="Plano estructural con planta de cubierta y detalles de pilotes y vigas" data-falta="estructura-1.jpg"></button><p>Planos estructurales</p></li>
-  </ul>
+  <div class="riel">
+    <ul class="planchas">
+      <li><button type="button" class="ampliar" aria-label="Ampliar: El lugar"><img src="img/lamina-urbanismo-1.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: el lugar, un borde bajo presión" data-falta="lamina-urbanismo-1.jpg"></button><p><span>Urbanismo V</span>El lugar</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Postura"><img src="img/lamina-urbanismo-2.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: postura, replantear la norma" data-falta="lamina-urbanismo-2.jpg"></button><p><span>Urbanismo V</span>Postura</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Estrategias"><img src="img/lamina-urbanismo-3.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo: problemáticas, estrategias y potencialidades" data-falta="lamina-urbanismo-3.jpg"></button><p><span>Urbanismo</span>Estrategias</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 1"><img src="img/planta-1.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 1" data-falta="planta-1.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 1</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 2"><img src="img/planta-2.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 2" data-falta="planta-2.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 2</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Plantas · pliego 3"><img src="img/planta-3.jpg" width="1556" height="2200" loading="lazy" alt="Plantas arquitectónicas, pliego 3" data-falta="planta-3.jpg"></button><p><span>Proyecto VII</span>Plantas · pliego 3</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Secciones estructurales"><img src="img/seccion-estructural.jpg" width="2200" height="1572" loading="lazy" alt="Secciones estructurales del proyecto" data-falta="seccion-estructural.jpg"></button><p><span>Estructuras IV</span>Secciones estructurales</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Planta estructural"><img src="img/estructura-1.jpg" width="2200" height="1572" loading="lazy" alt="Plano estructural con planta de cubierta y detalles de pilotes y vigas" data-falta="estructura-1.jpg"></button><p><span>Estructuras IV</span>Planta estructural</p></li>
+    </ul>
+  </div>
+  <p class="planos__pie">Toca cualquier lámina para verla completa.</p>
 </section>
 
 </main>
