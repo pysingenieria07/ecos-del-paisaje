@@ -364,10 +364,18 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
 .js .aparece { opacity: 0; transform: translateY(26px); transition: opacity 800ms var(--curva), transform 800ms var(--curva); }
 .js .aparece.visto { opacity: 1; transform: none; }
 
-/* imágenes: se descubren de abajo hacia arriba, como un plano que se imprime */
-.js .revela { clip-path: inset(100% 0 0 0); transition: clip-path 1200ms var(--curva); }
-.js .revela.visto { clip-path: inset(0 0 0 0); }
-.js .revela.listo { clip-path: none; }
+/* imágenes: una tapa del color del fondo se retira de abajo hacia arriba,
+   como un plano que se imprime. La imagen en sí siempre está visible. */
+.capitulo { --fondo: var(--arena); }
+.capitulo--tono, .capitulo--planos { --fondo: var(--arena-2); }
+.capitulo--oscuro { --fondo: var(--vino-hondo); }
+.js .revela { position: relative; }
+.js .revela::after {
+  content: ""; position: absolute; inset: -2px; pointer-events: none;
+  background: var(--fondo, var(--arena));
+  transform-origin: top; transition: transform 1200ms var(--curva);
+}
+.js .revela.visto::after { transform: scaleY(0); }
 
 /* numeral del capítulo con leve paralaje */
 .capitulo__num { will-change: transform; }

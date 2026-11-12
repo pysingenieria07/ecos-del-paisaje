@@ -61,12 +61,11 @@ titulos.forEach(partirEnPalabras);
 
 /* ---------- aparición al entrar en pantalla ---------- */
 const textos = document.querySelectorAll('.kicker, .prosa, .hero__lead, .hero__datos, .tarjetas, .ejes, .clima, .leyenda, .volumenes, .cita, .lema, .datos, .presupuesto, .secuencia__pie, .cifras, .figura figcaption, .sub');
-const imagenes = document.querySelectorAll('.figura img, .mosaico img, .planchas img');
+// La imagen nunca se oculta: una tapa del color del fondo se retira encima de ella.
+const imagenes = [...new Set([...document.querySelectorAll('.figura img, .mosaico img, .planchas img')]
+  .map((img) => img.closest('.ampliar') || img.parentElement))];
 textos.forEach((el) => el.classList.add('aparece'));
 imagenes.forEach((el) => el.classList.add('revela'));
-imagenes.forEach((img) => img.addEventListener('transitionend', (e) => {
-  if (e.propertyName === 'clip-path') img.classList.add('listo');
-}));
 
 const obsVer = new IntersectionObserver((entradas, o) => {
   entradas.forEach((en) => {
@@ -145,6 +144,12 @@ function alScroll() {
   if (y > 400 && y > ultimoY + 4) nav.classList.add('oculta');
   else if (y < ultimoY - 4 || y < 400) nav.classList.remove('oculta');
   ultimoY = y;
+
+  // respaldo por si el navegador no avisa que algo entró en pantalla
+  document.querySelectorAll('.aparece:not(.visto), .revela:not(.visto), .hero h1:not(.visto), .capitulo h2:not(.visto), .barras:not(.visto)').forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight * 0.95 && r.bottom > 0 && r.left < innerWidth && r.right > 0) el.classList.add('visto');
+  });
 
   if (!calma && heroImg && y < innerHeight * 1.2) heroImg.style.transform = 'translateY(' + (y * 0.18) + 'px)';
 
