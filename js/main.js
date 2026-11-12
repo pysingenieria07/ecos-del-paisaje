@@ -43,7 +43,7 @@ enlaces.forEach((a) => {
 });
 
 // Aparición suave al hacer scroll
-const objetivos = document.querySelectorAll('.capitulo__cab, .prosa, .figura, .tarjetas, .ejes, .clima, .leyenda, .volumenes, .secuencia, .planchas, .cita, .lema, .barras');
+const objetivos = document.querySelectorAll('.capitulo__cab, .prosa, .figura, .tarjetas, .ejes, .clima, .leyenda, .volumenes, .secuencia, .planchas, .cita, .lema, .barras, .datos, .presupuesto');
 objetivos.forEach((el) => { if (!el.classList.contains('barras')) el.classList.add('aparece'); });
 const obsVer = new IntersectionObserver((entradas, o) => {
   entradas.forEach((en) => {
@@ -52,10 +52,10 @@ const obsVer = new IntersectionObserver((entradas, o) => {
 }, { threshold: 0.12 });
 objetivos.forEach((el) => obsVer.observe(el));
 
-// Visor de planchas
+// Visor para ver planos y láminas en grande
 const visor = document.getElementById('visor');
 const visorImg = visor.querySelector('img');
-document.querySelectorAll('.planchas__btn').forEach((btn) => {
+document.querySelectorAll('.ampliar').forEach((btn) => {
   btn.addEventListener('click', () => {
     const img = btn.querySelector('img');
     if (!img) return; // la imagen aún no existe
