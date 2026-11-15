@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recorrido guiado · Ecos del Paisaje</title>
+<meta name="description" content="Ecos del Paisaje en un recorrido guiado: una idea por pantalla, con preguntas, pausas voluntarias y un repaso final.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css?v=20261115g">
+<link rel="stylesheet" href="css/recorrido.css?v=1">
+</head>
+<body class="rc">
+
+<a class="skip" href="#vista">Saltar al contenido</a>
+
+<header class="rc-barra">
+  <a class="rc-barra__marca" href="#inicio">Ecos del Paisaje</a>
+  <div class="rc-avance" aria-live="polite">
+    <span class="rc-avance__txt" id="avance-txt">0 de 24 ideas</span>
+    <span class="rc-avance__riel" aria-hidden="true"><span id="avance-barra"></span></span>
+  </div>
+  <div class="rc-barra__acciones">
+    <button type="button" class="rc-btn rc-btn--suave" id="btn-mesa">Carpetas</button>
+    <button type="button" class="rc-btn rc-btn--suave" id="btn-pausa">Pausa</button>
+    <button type="button" class="rc-btn rc-btn--suave" id="btn-foco" aria-pressed="false">Modo concentrado</button>
+  </div>
+</header>
+
+<main id="vista" tabindex="-1">
+
+  <!-- ETAPA 1 · Introducción -->
+  <section class="rc-vista rc-intro" id="v-inicio">
+    <div class="rc-intro__texto">
+      <p class="kicker">Recorrido guiado · Villatina, Medellín</p>
+      <h1>Ecos del Paisaje</h1>
+      <p class="rc-intro__pregunta">¿Puede un edificio proteger una ladera mejor que dejarla vacía?</p>
+      <p class="rc-intro__lead">Este es el proyecto de un semestre contado paso a paso: una idea por pantalla, a tu ritmo. Son ocho carpetas y cada una tiene tres ideas.</p>
+      <div class="rc-intro__botones">
+        <button type="button" class="rc-btn rc-btn--fuerte" id="btn-empezar">Empezar</button>
+        <a class="rc-btn rc-btn--linea" href="index.html">Ver la versión completa</a>
+      </div>
+      <p class="rc-nota">Puedes parar cuando quieras: tu avance queda guardado en este dispositivo.</p>
+    </div>
+    <figure class="rc-intro__img">
+      <img src="img/render-plaza.jpg" width="2400" height="1350" alt="Render del proyecto: plaza escalonada bajo una pérgola curva de madera, con los edificios alrededor del espejo de agua">
+    </figure>
+  </section>
+
+  <!-- Mesa de carpetas -->
+  <section class="rc-vista rc-mesa" id="v-mesa" hidden>
+    <header class="rc-cab">
+      <p class="kicker">Ocho carpetas</p>
+      <h2>Elige por dónde seguir</h2>
+      <p class="rc-cab__sub">Van en orden, pero puedes abrir cualquiera.</p>
+    </header>
+    <div class="rc-carpetas" id="carpetas"></div>
+    <aside class="rc-repaso" id="repaso" hidden>
+      <h3>Para repasar</h3>
+      <p>Estas ideas tuvieron una respuesta equivocada. Vuelve a ellas cuando quieras.</p>
+      <ul id="repaso-lista"></ul>
+    </aside>
+    <div class="rc-mesa__final">
+      <button type="button" class="rc-btn rc-btn--fuerte" id="btn-final">Ir al repaso final</button>
+      <button type="button" class="rc-btn rc-btn--linea" id="btn-reiniciar">Borrar mi avance</button>
+    </div>
+  </section>
+
+  <!-- ETAPAS 2 a 5 · Una idea por pantalla -->
+  <section class="rc-vista rc-cap" id="v-cap" hidden>
+    <header class="rc-cap__cab">
+      <button type="button" class="rc-volver" id="btn-volver">← Carpetas</button>
+      <p class="rc-cap__titulo"><span id="cap-n"></span> <span id="cap-titulo"></span></p>
+      <ol class="rc-pasos" id="pasos" aria-label="Pasos de este capítulo"></ol>
+    </header>
+    <div class="rc-tarjeta" id="tarjeta"></div>
+    <nav class="rc-nav" aria-label="Avanzar">
+      <button type="button" class="rc-btn rc-btn--linea" id="btn-ant">Anterior</button>
+      <button type="button" class="rc-btn rc-btn--fuerte" id="btn-sig">Siguiente</button>
+    </nav>
+  </section>
+
+  <!-- ETAPA 6 · Evaluación final -->
+  <section class="rc-vista rc-final" id="v-final" hidden>
+    <header class="rc-cab">
+      <p class="kicker">Repaso final</p>
+      <h2>¿Qué te quedó?</h2>
+      <p class="rc-cab__sub">Ocho preguntas, una por carpeta. No es un examen: sirve para saber qué repasar.</p>
+    </header>
+    <form class="rc-examen" id="examen"></form>
+    <div class="rc-resultado" id="resultado" hidden></div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <p class="pie__titulo">Ecos del Paisaje</p>
+  <p>Sebastián Díaz Aguilera · Ana Sofía Sanmartín Betancur</p>
+  <p>Semestre 2026-2 · Facultad de Arquitectura, Universidad Santo Tomás, Medellín</p>
+  <p><a href="index.html">Versión completa con todos los planos y láminas</a></p>
+</footer>
+
+<!-- ETAPA 4 · Pausa voluntaria -->
+<dialog class="rc-pausa" id="pausa" aria-labelledby="pausa-t">
+  <button type="button" class="rc-pausa__cerrar" id="pausa-cerrar">Volver al recorrido</button>
+  <h2 id="pausa-t">Una pausa</h2>
+  <div class="rc-pausa__tabs" role="tablist" aria-label="Tipo de pausa">
+    <button type="button" role="tab" aria-selected="true" data-pausa="respirar">Respirar</button>
+    <button type="button" role="tab" aria-selected="false" data-pausa="observar">Observar</button>
+    <button type="button" role="tab" aria-selected="false" data-pausa="resumen">Lo que llevas</button>
+    <button type="button" role="tab" aria-selected="false" data-pausa="pensar">Pensar</button>
+  </div>
+  <div class="rc-pausa__cuerpo" id="pausa-cuerpo"></div>
+</dialog>
+
+<dialog class="visor" id="visor" aria-label="Imagen ampliada">
+  <button type="button" class="visor__cerrar">Cerrar</button>
+  <img src="" alt="">
+</dialog>
+
+<script src="js/recorrido-datos.js?v=1"></script>
+<script src="js/recorrido.js?v=1"></script>
+</body>
+</html>
