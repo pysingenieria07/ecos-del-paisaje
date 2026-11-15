@@ -140,12 +140,18 @@ function paintCard(cv, card, img, idx, total) {
   ctx.fillStyle = "#3A1118";
   ctx.fillRect(0, 0, w, h);
   if (img && img.complete && img.naturalWidth) {
-    const sc = Math.max(w / img.naturalWidth, h / img.naturalHeight);
-    const dw = img.naturalWidth * sc;
-    const dh = img.naturalHeight * sc;
+    // crop: [x0, y0, x1, y1] en fracciones de la imagen; dentro de esa zona se recorta a la proporción de la tarjeta
+    const cr = card.crop || [0, 0, 1, 1];
+    const zx = cr[0] * img.naturalWidth;
+    const zy = cr[1] * img.naturalHeight;
+    const zw = (cr[2] - cr[0]) * img.naturalWidth;
+    const zh = (cr[3] - cr[1]) * img.naturalHeight;
+    const sc = Math.max(w / zw, h / zh);
+    const sw = w / sc;
+    const sh = h / sc;
     const fx = card.focus === undefined ? 0.5 : card.focus;
     ctx.imageSmoothingQuality = "high";
-    ctx.drawImage(img, -(dw - w) * fx, -(dh - h) / 2, dw, dh);
+    ctx.drawImage(img, zx + (zw - sw) * fx, zy + (zh - sh) / 2, sw, sh, 0, 0, w, h);
   }
   let g = ctx.createLinearGradient(0, 0, 0, h * 0.42);
   g.addColorStop(0, "rgba(42, 23, 18, 0.82)");
@@ -961,8 +967,9 @@ const RENDERS = [
   { image: "img/render-plaza.jpg", title: "Plaza\nde acceso", footer: "Bajo la pérgola curva", caption: "La llegada: la plaza de acceso bajo la pérgola curva de madera.", alt: "Render exterior: plaza escalonada con jardineras de ladrillo y una pérgola curva de madera", focus: 0.42, glow: "#A4583B" },
   { image: "img/render-espejo.jpg", title: "Espejo\nde agua", footer: "Memoria al centro", caption: "El espejo de agua-memoria, centro del proyecto, frente a la biblioteca y las gradas.", alt: "Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera", focus: 0.5, glow: "#6F9C9F" },
   { image: "img/render-aereo.jpg", title: "El conjunto\ndesde arriba", footer: "La ladera queda verde", caption: "El conjunto construido: los volúmenes abrazan la plaza y la ladera queda verde.", alt: "Render aéreo del conjunto: volúmenes de madera alrededor de la plaza y el espejo de agua", focus: 0.5, glow: "#6E6A3A" },
-  { image: "img/render-biblioteca-habitada.jpg", title: "Biblioteca\nhabitada", footer: "Estanterías en terrazas", caption: "La biblioteca habitada: estanterías en terrazas bajo la cubierta de casetones.", alt: "Render interior de la biblioteca con personas entre las estanterías", focus: 0.62, glow: "#C98A3E" },
-  { image: "img/render-biblioteca.jpg", title: "Biblioteca\ninterior", footer: "Cubierta de casetones", caption: "La biblioteca: piso y estanterías de madera, celosías inclinadas y lucernarios.", alt: "Render interior de la biblioteca: estanterías de madera en terrazas y cubierta de casetones", focus: 0.45, glow: "#6B1E2B" },
+  { image: "img/render-biblioteca.jpg", title: "Biblioteca", footer: "Leer en las gradas", caption: "La biblioteca: estanterías, gradas para leer y vista hacia el patio.", alt: "Render interior de la biblioteca: estanterías de madera, gradas con personas leyendo y un ventanal hacia el patio", crop: [0.2, 0.27, 1, 1], focus: 0.32, glow: "#CDB99D" },
+  { image: "img/render-aulas-habitadas.jpg", title: "Aulas\nhabitadas", footer: "Aprender en terrazas", caption: "Las aulas habitadas: terrazas de madera bajo la cubierta de casetones.", alt: "Render interior de las aulas con personas entre las estanterías", focus: 0.62, glow: "#C98A3E" },
+  { image: "img/render-aulas.jpg", title: "Aulas", footer: "Cubierta de casetones", caption: "Las aulas: piso y estanterías de madera, celosías inclinadas y lucernarios.", alt: "Render interior de las aulas: estanterías de madera en terrazas y cubierta de casetones", focus: 0.45, glow: "#6B1E2B" },
 ];
 
 const raiz = document.getElementById("carrusel-renders");
