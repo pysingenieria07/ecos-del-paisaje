@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=20261115b">
+<link rel="stylesheet" href="css/estilos.css?v=20261115c">
 </head>
 <body>
 
@@ -51,38 +51,29 @@
 <main id="contenido">
 
 <!-- APERTURA: video del recorrido con el nombre del proyecto -->
-<section class="apertura" id="inicio" aria-label="Ecos del Paisaje">
+<section class="apertura" id="inicio">
   <video class="apertura__video" autoplay muted loop playsinline preload="metadata" poster="img/portada-video.jpg" aria-hidden="true" tabindex="-1">
     <source src="video/portada.mp4" type="video/mp4">
   </video>
   <div class="apertura__velo" aria-hidden="true"></div>
   <div class="apertura__texto">
     <p class="apertura__kicker">Borde activo · Villatina, Medellín · 2026-2</p>
-    <p class="apertura__titulo" aria-hidden="true"><span class="apertura__palabra"><span style="--i:0">E</span><span style="--i:1">c</span><span style="--i:2">o</span><span style="--i:3">s</span></span> <span class="apertura__palabra"><span style="--i:4">d</span><span style="--i:5">e</span><span style="--i:6">l</span></span> <span class="apertura__palabra"><span style="--i:7">P</span><span style="--i:8">a</span><span style="--i:9">i</span><span style="--i:10">s</span><span style="--i:11">a</span><span style="--i:12">j</span><span style="--i:13">e</span></span></p>
+    <h1 class="apertura__titulo" aria-label="Ecos del Paisaje"><span class="apertura__palabra"><span style="--i:0">E</span><span style="--i:1">c</span><span style="--i:2">o</span><span style="--i:3">s</span></span> <span class="apertura__palabra"><span style="--i:4">d</span><span style="--i:5">e</span><span style="--i:6">l</span></span> <span class="apertura__palabra"><span style="--i:7">P</span><span style="--i:8">a</span><span style="--i:9">i</span><span style="--i:10">s</span><span style="--i:11">a</span><span style="--i:12">j</span><span style="--i:13">e</span></span></h1>
     <span class="apertura__linea" aria-hidden="true"></span>
     <p class="apertura__lead">Un equipamiento ambiental e intergeneracional donde el paisaje entra al edificio.</p>
   </div>
   <button type="button" class="apertura__pausa" aria-pressed="false">Pausar video</button>
-  <a class="apertura__bajar" href="#portada">Entrar al proyecto</a>
+  <a class="apertura__bajar" href="#bitacora">Entrar al proyecto</a>
 </section>
 
-<!-- PORTADA -->
-<section class="hero" id="portada">
-  <canvas class="topo" aria-hidden="true"></canvas>
-  <div class="hero__texto">
-    <p class="kicker">Semestre 2026-2 · Universidad Santo Tomás, Medellín</p>
-    <h1>Ecos del<br>Paisaje</h1>
-    <p class="hero__lead">Un borde activo para Villatina: un equipamiento ambiental e intergeneracional donde las huertas, los patios y los senderos entran al edificio y lo vuelven parte de la ladera.</p>
-    <dl class="hero__datos">
-      <div><dt>Estudiantes</dt><dd>Sebastián Díaz Aguilera<br>Ana Sofía Sanmartín Betancur</dd></div>
-      <div><dt>Cursos</dt><dd>Proyecto VII · Urbanismo V · Estructuras IV</dd></div>
-      <div><dt>Lote</dt><dd>12.889 m² · Villatina – Campo Santo</dd></div>
-    </dl>
-  </div>
-  <figure class="hero__img">
-    <img src="img/portada.webp" width="1685" height="721" alt="Render del proyecto: personas en un patio con huertas y gradas bajo una cubierta curva de listones de madera" data-falta="portada.webp">
-  </figure>
-  <a class="hero__bajar" href="#bitacora">Ver cómo avanzó el semestre</a>
+<!-- FICHA -->
+<section class="ficha" id="portada" aria-label="Ficha del proyecto">
+  <dl class="ficha__datos">
+    <div><dt>Estudiantes</dt><dd>Sebastián Díaz Aguilera<br>Ana Sofía Sanmartín Betancur</dd></div>
+    <div><dt>Cursos</dt><dd>Proyecto VII · Urbanismo V · Estructuras IV</dd></div>
+    <div><dt>Lote</dt><dd>12.889 m² · Villatina – Campo Santo</dd></div>
+    <div><dt>Semestre</dt><dd>2026-2 · Universidad Santo Tomás, Medellín</dd></div>
+  </dl>
 </section>
 
 <!-- BITÁCORA -->
@@ -383,6 +374,10 @@
     <button type="button" class="ampliar" aria-label="Ampliar: Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria."><img src="img/esq-ideas.jpg" width="2816" height="1719" loading="lazy" alt="Axonometría de ideas proyectuales: volúmenes coloreados por uso alrededor del espejo de agua" data-falta="esq-ideas.jpg"></button>
     <figcaption>Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria.</figcaption>
   </figure>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: El espejo de agua-memoria, centro del proyecto, frente a la biblioteca y las gradas."><img src="img/render-espejo.jpg" width="2400" height="1350" loading="lazy" alt="Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera" data-falta="render-espejo.jpg"></button>
+    <figcaption>El espejo de agua-memoria, centro del proyecto, frente a la biblioteca y las gradas.</figcaption>
+  </figure>
 
   <h3 class="sub">El equipamiento como extensión del espacio público</h3>
   <div class="mosaico mosaico--invertido">
@@ -492,6 +487,10 @@
     <figcaption>La circulación abraza el proyecto.</figcaption>
   </figure>
   </div>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: La llegada: la plaza de acceso bajo la pérgola curva de madera."><img src="img/render-plaza.jpg" width="2400" height="1350" loading="lazy" alt="Render exterior: plaza escalonada con jardineras de ladrillo, una pérgola curva de madera y los volúmenes con celosías alrededor del espejo de agua" data-falta="render-plaza.jpg"></button>
+    <figcaption>La llegada: la plaza de acceso bajo la pérgola curva de madera.</figcaption>
+  </figure>
   <div class="mosaico">
     <figure class="figura">
     <button type="button" class="ampliar" aria-label="Ampliar: Esquema de circulación y relación de usos."><img src="img/esq-recorrido-axo.jpg" width="1280" height="1243" loading="lazy" alt="Axonometría con el recorrido punteado desde los tres accesos hasta el vivero" data-falta="esq-recorrido-axo.jpg"></button>
@@ -535,6 +534,10 @@
   <div class="prosa prosa--ancha">
     <p class="entrada">En la etapa final llevamos todo a secciones e isométricos. Las secciones muestran cómo los niveles siguen la topografía: espacio público abajo, huertas en la mitad, talleres más arriba y el mirador con comercio en la parte alta.</p>
   </div>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: El conjunto construido: los volúmenes abrazan la plaza y la ladera queda verde."><img src="img/render-aereo.jpg" width="2400" height="1350" loading="lazy" alt="Render aéreo del conjunto: volúmenes de madera alrededor de la plaza, el espejo de agua y las gradas, con el bosque al fondo" data-falta="render-aereo.jpg"></button>
+    <figcaption>El conjunto construido: los volúmenes abrazan la plaza y la ladera queda verde.</figcaption>
+  </figure>
   <div class="mosaico">
     <figure class="figura">
     <button type="button" class="ampliar" aria-label="Ampliar: Secciones longitudinal y transversal."><img src="img/seccion.jpg" width="2200" height="1556" loading="lazy" alt="Sección longitudinal y sección transversal del proyecto sobre la ladera" data-falta="seccion.jpg"></button>
@@ -559,30 +562,16 @@
     </ol>
   </div>
 
-  <h3 class="sub">El proyecto en imágenes</h3>
-  <figure class="figura figura--sangre">
-    <button type="button" class="ampliar" aria-label="Ampliar: La plaza de acceso bajo la pérgola curva de madera."><img src="img/render-plaza.jpg" width="2400" height="1350" loading="lazy" alt="Render exterior: plaza escalonada con jardineras de ladrillo, una pérgola curva de madera y los volúmenes con celosías alrededor del espejo de agua" data-falta="render-plaza.jpg"></button>
-    <figcaption>La plaza de acceso bajo la pérgola curva de madera.</figcaption>
+  <h3 class="sub">La biblioteca por dentro</h3>
+  <div class="mosaico mosaico--igual">
+  <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: La biblioteca: estanterías en terrazas bajo la cubierta de casetones."><img src="img/render-biblioteca.jpg" width="2400" height="1350" loading="lazy" alt="Render interior de la biblioteca: piso y estanterías de madera en terrazas, celosías inclinadas y cubierta de casetones con lucernarios" data-falta="render-biblioteca.jpg"></button>
+    <figcaption>La biblioteca: estanterías en terrazas bajo la cubierta de casetones.</figcaption>
   </figure>
-  <div class="mosaico mosaico--igual">
-    <figure class="figura">
-      <button type="button" class="ampliar" aria-label="Ampliar: El espejo de agua-memoria frente a la biblioteca y las gradas."><img src="img/render-espejo.jpg" width="2400" height="1350" loading="lazy" alt="Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera" data-falta="render-espejo.jpg"></button>
-      <figcaption>El espejo de agua-memoria frente a la biblioteca y las gradas.</figcaption>
-    </figure>
-    <figure class="figura">
-      <button type="button" class="ampliar" aria-label="Ampliar: El conjunto desde arriba: los volúmenes abrazan la plaza y la ladera queda verde."><img src="img/render-aereo.jpg" width="2400" height="1350" loading="lazy" alt="Render aéreo del conjunto: volúmenes de madera alrededor de la plaza, el espejo de agua y las gradas, con el bosque al fondo" data-falta="render-aereo.jpg"></button>
-      <figcaption>El conjunto desde arriba: los volúmenes abrazan la plaza y la ladera queda verde.</figcaption>
-    </figure>
-  </div>
-  <div class="mosaico mosaico--igual">
-    <figure class="figura">
-      <button type="button" class="ampliar" aria-label="Ampliar: La biblioteca: estanterías en terrazas bajo la cubierta de casetones."><img src="img/render-biblioteca.jpg" width="2400" height="1350" loading="lazy" alt="Render interior de la biblioteca: piso y estanterías de madera en terrazas, celosías inclinadas y cubierta de casetones con lucernarios" data-falta="render-biblioteca.jpg"></button>
-      <figcaption>La biblioteca: estanterías en terrazas bajo la cubierta de casetones.</figcaption>
-    </figure>
-    <figure class="figura">
-      <button type="button" class="ampliar" aria-label="Ampliar: La biblioteca habitada."><img src="img/render-biblioteca-habitada.jpg" width="2400" height="1350" loading="lazy" alt="Render interior de la biblioteca con personas leyendo y caminando entre las estanterías" data-falta="render-biblioteca-habitada.jpg"></button>
-      <figcaption>La biblioteca habitada.</figcaption>
-    </figure>
+  <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: La biblioteca habitada."><img src="img/render-biblioteca-habitada.jpg" width="2400" height="1350" loading="lazy" alt="Render interior de la biblioteca con personas leyendo y caminando entre las estanterías" data-falta="render-biblioteca-habitada.jpg"></button>
+    <figcaption>La biblioteca habitada.</figcaption>
+  </figure>
   </div>
 </section>
 
@@ -687,6 +676,6 @@
   <img src="" alt="">
 </dialog>
 
-<script src="js/main.js?v=20261115b"></script>
+<script src="js/main.js?v=20261115c"></script>
 </body>
 </html>
