@@ -135,6 +135,7 @@ function armarRiel() {
 const apertura = document.querySelector('.apertura');
 const aperturaVideo = apertura && apertura.querySelector('video');
 const aperturaTexto = apertura && apertura.querySelector('.apertura__texto');
+const aperturaBajar = apertura && apertura.querySelector('.apertura__bajar');
 if (apertura) {
   const medirNav = () => raiz.style.setProperty('--nav-h', nav.offsetHeight + 'px');
   medirNav();
@@ -196,7 +197,8 @@ function alScroll() {
     if (!calma && y < alto) {
       const k = y / alto;
       aperturaTexto.style.transform = 'translateY(' + (y * 0.35) + 'px)';
-      aperturaTexto.style.opacity = String(Math.max(0, 1 - k * 1.6));
+      aperturaTexto.style.opacity = String(Math.max(0, 1 - k * 2.4));
+      aperturaBajar.style.opacity = String(Math.max(0, 1 - k * 5));
       aperturaVideo.style.scale = String(1 + k * 0.12);
     }
   }

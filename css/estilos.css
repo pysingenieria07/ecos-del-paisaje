@@ -127,7 +127,7 @@ p { margin: 0 0 1em; }
     linear-gradient(to bottom, rgba(42, 23, 18, .55) 0%, rgba(42, 23, 18, 0) 28%, rgba(42, 23, 18, 0) 62%, rgba(58, 17, 24, .7) 100%);
   animation: apertura-velo 1.8s ease-out both;
 }
-.apertura__texto { padding: 6rem var(--gutter) 7rem; will-change: transform, opacity; }
+.apertura__texto { padding: 5.5rem var(--gutter) 6.5rem; will-change: transform, opacity; }
 .apertura__kicker {
   margin: 0 0 var(--sp-3);
   font: 600 clamp(.8rem, 1.2vw, 1rem) var(--f-etiqueta); letter-spacing: .28em; text-transform: uppercase; text-wrap: balance;
@@ -135,7 +135,7 @@ p { margin: 0 0 1em; }
 }
 .apertura__titulo {
   margin: 0;
-  font: 800 clamp(4rem, 15.5vw, 15rem)/.84 var(--f-titulo);
+  font: 800 clamp(3.6rem, min(15.5vw, 23svh), 15rem)/.84 var(--f-titulo);
   text-transform: uppercase; letter-spacing: -.005em;
 }
 .apertura__palabra { display: inline-block; white-space: nowrap; overflow: hidden; padding: .06em .02em .08em; vertical-align: bottom; }
@@ -159,7 +159,7 @@ p { margin: 0 0 1em; }
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
   font: 600 .9rem var(--f-etiqueta); letter-spacing: .2em; text-transform: uppercase;
   color: var(--claro); text-decoration: none; padding: .6rem 1rem;
-  animation: apertura-fundido 900ms ease-out 2400ms both;
+  animation: apertura-fundido 900ms ease-out 2400ms backwards;
 }
 .apertura__bajar::after { content: ""; width: 1px; height: 2.6rem; background: currentColor; transform-origin: top; animation: apertura-gota 2s var(--curva) infinite; }
 .apertura__pausa {
