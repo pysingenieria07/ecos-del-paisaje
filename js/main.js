@@ -44,20 +44,6 @@ const obsMenu = new IntersectionObserver((entradas) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 enlaces.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) obsMenu.observe(s); });
 
-/* ---------- carpetas: se abren antes de bajar al capítulo ---------- */
-document.querySelectorAll('.gf-front').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    if (calma || e.metaKey || e.ctrlKey) return;
-    e.preventDefault();
-    const carpeta = a.closest('.gf');
-    carpeta.dataset.open = '';
-    setTimeout(() => {
-      location.hash = a.getAttribute('href');
-      setTimeout(() => { delete carpeta.dataset.open; }, 600);
-    }, 520);
-  });
-});
-
 /* ---------- títulos palabra por palabra ---------- */
 function partirEnPalabras(el) {
   let i = 0;
@@ -194,7 +180,7 @@ function alScroll() {
     borde.classList.toggle('activa', y > innerHeight * 0.8);
     const marcas = [...borde.querySelectorAll('a')];
     let actual = -1;
-    marcas.forEach((a, i) => { const sec = document.querySelector(a.getAttribute('href')); if (sec && sec.getBoundingClientRect().top < innerHeight * 0.5) actual = i; });
+    marcas.forEach((a, i) => { const sec = document.querySelector(a.getAttribute('href')); if (sec && sec.offsetParent !== null && sec.getBoundingClientRect().top < innerHeight * 0.5) actual = i; });
     marcas.forEach((a, i) => { if (i === actual) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     bordeNum.textContent = String(actual + 1).padStart(2, '0');
   }
@@ -245,6 +231,70 @@ addEventListener('resize', () => { armarRiel(); alScroll(); });
 addEventListener('load', () => { armarRiel(); alScroll(); });
 armarRiel();
 alScroll();
+
+/* ---------- capítulos dentro de carpetas ----------
+   Solo se ve un capítulo a la vez: el de la carpeta abierta. Sin JavaScript se ven todos, uno tras otro. */
+const capitulos = [...document.querySelectorAll('.capitulo:not(.capitulo--planos)')];
+const carpetas = [...document.querySelectorAll('.gf-front')];
+const mesa = document.getElementById('bitacora');
+raiz.classList.add('js-carpetas');
+
+capitulos.forEach((cap, i) => {
+  const sig = capitulos[i + 1];
+  const pie = document.createElement('nav');
+  pie.className = 'capitulo__pie';
+  pie.setAttribute('aria-label', 'Seguir leyendo');
+  pie.innerHTML = '<a class="capitulo__volver" href="#bitacora">Volver a las carpetas</a>'
+    + (sig ? '<a class="capitulo__sig" href="#' + sig.id + '"><span>Siguiente carpeta</span>' + sig.querySelector('h2').textContent + '</a>'
+      : '<a class="capitulo__sig" href="#planos"><span>Para terminar</span>Planos y láminas</a>');
+  cap.append(pie);
+});
+
+function abrirCapitulo(id) {
+  const cap = capitulos.find((c) => c.id === id);
+  capitulos.forEach((c) => c.classList.toggle('abierto', c === cap));
+  carpetas.forEach((a) => {
+    const mia = a.getAttribute('href') === '#' + id;
+    a.closest('.gf-wrap').classList.toggle('actual', mia);
+    if (mia) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+  });
+  mesa.classList.toggle('con-capitulo', !!cap);
+  armarRiel();
+  return cap;
+}
+function irACapitulo(id) {
+  const cap = abrirCapitulo(id);
+  if (!cap) return;
+  cap.scrollIntoView({ behavior: calma ? 'auto' : 'smooth', block: 'start' });
+  requestAnimationFrame(alScroll);
+}
+// una carpeta: primero se abre, luego muestra su capítulo
+carpetas.forEach((a) => {
+  a.addEventListener('click', (e) => {
+    if (e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const carpeta = a.closest('.gf');
+    carpeta.dataset.open = '';
+    setTimeout(() => {
+      history.pushState(null, '', '#' + id);
+      irACapitulo(id);
+      setTimeout(() => { delete carpeta.dataset.open; }, 700);
+    }, calma ? 0 : 480);
+  });
+});
+// cualquier otro enlace a un capítulo (menú, índice lateral, «siguiente carpeta») también lo abre
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a || a.classList.contains('gf-front')) return;
+  const id = a.getAttribute('href').slice(1);
+  if (!capitulos.some((c) => c.id === id)) return;
+  e.preventDefault();
+  history.pushState(null, '', '#' + id);
+  irACapitulo(id);
+});
+addEventListener('popstate', () => { const id = location.hash.slice(1); if (capitulos.some((c) => c.id === id)) irACapitulo(id); else abrirCapitulo(null); });
+if (capitulos.some((c) => c.id === location.hash.slice(1))) irACapitulo(location.hash.slice(1));
 
 /* ---------- curvas de nivel en la portada ---------- */
 (function topografia() {

@@ -265,6 +265,25 @@ p { margin: 0 0 1em; }
 .carpetas { list-style: none; margin: 0 auto; padding: 0; max-width: var(--ancho); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem 1.5rem; justify-items: center; }
 .gf-wrap { --k: 1; width: calc(340px * var(--k)); height: calc(326px * var(--k)); }
 @media (min-width: 1100px) { .carpetas { grid-template-columns: repeat(4, 1fr); } .gf-wrap { --k: .82; } }
+/* un capítulo a la vez: el de la carpeta abierta */
+.js-carpetas .capitulo:not(.capitulo--planos):not(.abierto) { display: none; }
+.bitacora__ayuda { text-align: center; margin: .6rem auto 0; max-width: 40ch; color: var(--tinta-suave); }
+.gf-wrap.actual .gf-tint { background: linear-gradient(180deg, rgba(107, 30, 43, .25) 0%, rgba(107, 30, 43, .7) 46%, rgba(58, 17, 24, .95) 100%); }
+.gf-wrap.actual .gf-label { color: var(--claro); }
+.gf-wrap.actual .gf-num { color: var(--ocre); }
+.capitulo.abierto { animation: capitulo-entra .6s var(--curva) both; }
+@keyframes capitulo-entra { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.capitulo__pie { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: var(--sp-5); padding-top: var(--sp-3); border-top: 1px solid var(--tinta); }
+.capitulo__pie a { text-decoration: none; font: 700 .95rem var(--f-etiqueta); letter-spacing: .12em; text-transform: uppercase; }
+.capitulo__volver { color: var(--tinta-suave); padding: .8rem 0; }
+.capitulo__volver::before { content: "↑ "; }
+.capitulo__volver:hover { color: var(--vino); }
+.capitulo__sig { display: grid; gap: .1rem; text-align: right; padding: .9rem 1.4rem; border-radius: 14px; background: var(--vino); color: var(--claro); font-size: 1.3rem !important; letter-spacing: .04em !important; }
+.capitulo__sig span { font-size: .72rem; letter-spacing: .2em; color: var(--ocre); }
+.capitulo__sig::after { content: none; }
+.capitulo__sig:hover { background: var(--vino-hondo); }
+@media (prefers-reduced-motion: reduce) { .capitulo.abierto { animation: none; } }
+
 /* celular: dos columnas de carpetas pequeñas, con el texto agrandado para que siga leyéndose */
 @media (max-width: 700px) {
   .carpetas { grid-template-columns: 1fr 1fr; gap: .4rem .6rem; }
