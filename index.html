@@ -50,8 +50,24 @@
 
 <main id="contenido">
 
+<!-- APERTURA: video del recorrido con el nombre del proyecto -->
+<section class="apertura" id="inicio" aria-label="Ecos del Paisaje">
+  <video class="apertura__video" autoplay muted loop playsinline preload="metadata" poster="img/portada-video.jpg" aria-hidden="true" tabindex="-1">
+    <source src="video/portada.mp4" type="video/mp4">
+  </video>
+  <div class="apertura__velo" aria-hidden="true"></div>
+  <div class="apertura__texto">
+    <p class="apertura__kicker">Borde activo · Villatina, Medellín · 2026-2</p>
+    <p class="apertura__titulo" aria-hidden="true"><span class="apertura__palabra"><span style="--i:0">E</span><span style="--i:1">c</span><span style="--i:2">o</span><span style="--i:3">s</span></span> <span class="apertura__palabra"><span style="--i:4">d</span><span style="--i:5">e</span><span style="--i:6">l</span></span> <span class="apertura__palabra"><span style="--i:7">P</span><span style="--i:8">a</span><span style="--i:9">i</span><span style="--i:10">s</span><span style="--i:11">a</span><span style="--i:12">j</span><span style="--i:13">e</span></span></p>
+    <span class="apertura__linea" aria-hidden="true"></span>
+    <p class="apertura__lead">Un equipamiento ambiental e intergeneracional donde el paisaje entra al edificio.</p>
+  </div>
+  <button type="button" class="apertura__pausa" aria-pressed="false">Pausar video</button>
+  <a class="apertura__bajar" href="#portada">Entrar al proyecto</a>
+</section>
+
 <!-- PORTADA -->
-<section class="hero" id="inicio">
+<section class="hero" id="portada">
   <canvas class="topo" aria-hidden="true"></canvas>
   <div class="hero__texto">
     <p class="kicker">Semestre 2026-2 · Universidad Santo Tomás, Medellín</p>
