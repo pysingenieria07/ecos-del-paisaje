@@ -543,6 +543,7 @@ export function WarpCarousel({
   ariaLabel = "Renders del proyecto",
   onSelect,
   onFrontChange,
+  onReady,
   style,
 }) {
   const wrapRef = React.useRef(null);
@@ -559,6 +560,8 @@ export function WarpCarousel({
   const gap = Math.max(0.5, interval);
 
   const [current, setInner] = React.useState(0);
+  // 'gl' usa WebGL2; si el navegador no lo dibuja bien se pasa a '2d' con un lienzo nuevo
+  const [modo, setModo] = React.useState(() => (createGL(document.createElement("canvas")) ? "gl" : "2d"));
 
   const live = React.useRef({
     P: 0, from: 0, to: 0, t0: 0, n: STEP_FRAMES, v: 0, mode: "rest",
@@ -566,7 +569,7 @@ export function WarpCarousel({
     dragX: 0, dragP: 0, downX: 0, moved: false, lastT: 0, visible: true, hiddenAt: 0,
   });
   const props = React.useRef({});
-  props.current = { autoplay, gap, stepN, reduced, realCount, onSelect, onFrontChange };
+  props.current = { autoplay, gap, stepN, reduced, realCount, onSelect, onFrontChange, onReady };
   const handles = React.useRef({ kick: () => {}, draw: () => {} });
 
   const lastIndex = React.useRef(0);
@@ -603,8 +606,9 @@ export function WarpCarousel({
     const wrap = wrapRef.current;
     const canvas = canvasRef.current;
     if (!wrap || !canvas) return;
-    let gls = createGL(canvas);
+    let gls = modo === "gl" ? createGL(canvas) : null;
     let ctx2d = null;
+    let comprobado = false;
     if (!gls) ctx2d = canvas.getContext("2d");
     let cardCanvases = [];
     let texW = 0;
@@ -633,8 +637,8 @@ export function WarpCarousel({
         try {
           uploadCards(gls, cardCanvases);
         } catch (err) {
-          // lienzo no legible (p. ej. abierto como archivo local): seguir con el respaldo 2D
           console.warn(err);
+          setModo("2d");
         }
       }
     };
@@ -732,6 +736,15 @@ export function WarpCarousel({
         gl.uniform1f(loc.uWarp, Math.max(0, Math.min(1, warp)));
         gl.uniform1f(loc.uMix, mix);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
+        // una sola vez, con las imágenes ya cargadas: si el centro sigue del color del fondo, WebGL no pintó la tarjeta
+        if (!comprobado && L.mode === "rest" && imgs.every((im) => im.complete)) {
+          comprobado = true;
+          const px = new Uint8Array(4);
+          gl.readPixels(W >> 1, H >> 1, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+          const igual = Math.abs(px[0] - bg[0]) + Math.abs(px[1] - bg[1]) + Math.abs(px[2] - bg[2]) < 12;
+          if (igual || gl.getError() !== gl.NO_ERROR) setModo("2d");
+          else if (props.current.onReady) props.current.onReady();
+        }
       } else if (ctx2d) {
         const css = `rgb(${bg[0]}, ${bg[1]}, ${bg[2]})`;
         drawFallback(ctx2d, W, H, unit, setA, cardCanvases, css, glowCols);
@@ -739,6 +752,10 @@ export function WarpCarousel({
           ctx2d.globalAlpha = mix;
           drawFallback(ctx2d, W, H, unit, poseSet(Pb), cardCanvases, css, glowCols);
           ctx2d.globalAlpha = 1;
+        }
+        if (!comprobado && imgs.every((im) => im.complete && im.naturalWidth)) {
+          comprobado = true;
+          if (props.current.onReady) props.current.onReady();
         }
       }
     };
@@ -839,7 +856,7 @@ export function WarpCarousel({
         gls.gl.deleteProgram(gls.prog);
       }
     };
-  }, [list, background, warp, N]);
+  }, [list, background, warp, N, modo]);
 
   React.useEffect(() => {
     handles.current.kick();
@@ -931,7 +948,7 @@ export function WarpCarousel({
         touchAction: "pan-y", userSelect: "none", WebkitUserSelect: "none", cursor: "grab", ...style,
       }}
     >
-      <canvas ref={canvasRef} aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }} />
+      <canvas key={modo} ref={canvasRef} aria-hidden="true" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }} />
       <div aria-live="polite" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clipPath: "inset(50%)" }}>
         {front ? front.alt || front.title.replace("\n", " ") : ""}
       </div>
@@ -962,5 +979,6 @@ if (raiz) {
   const alFrente = (i) => {
     if (pie) pie.textContent = RENDERS[i].caption;
   };
-  render(<WarpCarousel cards={RENDERS} onSelect={abrir} onFrontChange={alFrente} />, raiz);
+  const listo = () => raiz.closest(".galeria").classList.add("galeria--viva");
+  render(<WarpCarousel cards={RENDERS} onSelect={abrir} onFrontChange={alFrente} onReady={listo} />, raiz);
 }
