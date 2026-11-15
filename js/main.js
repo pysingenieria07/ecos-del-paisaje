@@ -62,7 +62,7 @@ function partirEnPalabras(el) {
     nodo.replaceWith(frag);
   });
 }
-const titulos = document.querySelectorAll('.hero h1, .capitulo h2');
+const titulos = document.querySelectorAll('.hero h1, .bento h1, .capitulo h2');
 titulos.forEach(partirEnPalabras);
 
 /* ---------- aparición al entrar en pantalla ---------- */
@@ -157,6 +157,24 @@ if (apertura) {
   }, { threshold: 0.05 }).observe(apertura);
 }
 
+/* ---------- video de la portada en mosaico ---------- */
+(function () {
+  const caja = document.querySelector('.bento__video');
+  if (!caja) return;
+  const video = caja.querySelector('video');
+  const boton = caja.querySelector('.bento__pausa');
+  let manual = false;
+  const poner = (pausado) => { boton.setAttribute('aria-pressed', pausado); boton.textContent = pausado ? 'Reproducir video' : 'Pausar video'; };
+  if (calma) { video.removeAttribute('autoplay'); video.pause(); poner(true); }
+  boton.addEventListener('click', () => {
+    if (video.paused) { video.play(); poner(false); manual = false; } else { video.pause(); poner(true); manual = true; }
+  });
+  new IntersectionObserver(([en]) => {
+    if (calma || manual) return;
+    if (en.isIntersecting) video.play().catch(() => {}); else video.pause();
+  }, { threshold: 0.05 }).observe(caja);
+})();
+
 /* ---------- efectos ligados al scroll ---------- */
 const barra = document.querySelector('.progreso');
 const heroImg = document.querySelector('.hero__img img');
@@ -238,6 +256,22 @@ const capitulos = [...document.querySelectorAll('.capitulo:not(.capitulo--planos
 const carpetas = [...document.querySelectorAll('.gf-front')];
 const mesa = document.getElementById('bitacora');
 raiz.classList.add('js-carpetas');
+
+// lo fundamental queda a la vista; el resto de cada capítulo va en «Ver más información»
+capitulos.forEach((cap) => {
+  const n = +cap.dataset.esencial;
+  const resto = [...cap.children].slice(n);
+  if (!n || !resto.length) return;
+  const mas = document.createElement('details');
+  mas.className = 'mas-info';
+  const temas = resto.filter((e) => e.matches('h3.sub')).map((e) => e.textContent.trim());
+  const resumen = document.createElement('summary');
+  resumen.innerHTML = '<span>Ver más información</span>';
+  if (temas.length) { const s = document.createElement('small'); s.textContent = temas.length === 1 ? temas[0] : temas.length + ' temas más'; resumen.append(s); }
+  mas.append(resumen, ...resto);
+  cap.append(mas);
+  mas.addEventListener('toggle', () => { armarRiel(); alScroll(); });
+});
 
 capitulos.forEach((cap, i) => {
   const sig = capitulos[i + 1];
