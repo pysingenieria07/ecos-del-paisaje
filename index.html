@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=20261115g">
+<link rel="stylesheet" href="css/estilos.css?v=20261115h">
 </head>
 <body>
 
@@ -63,7 +63,6 @@
     <p class="apertura__lead">Un equipamiento ambiental e intergeneracional donde el paisaje entra al edificio.</p>
   </div>
   <button type="button" class="apertura__pausa" aria-pressed="false">Pausar video</button>
-  <a class="apertura__guiado" href="recorrido.html">Recorrido guiado: una idea a la vez</a>
   <a class="apertura__bajar" href="#renders">Entrar al proyecto</a>
 </section>
 
@@ -99,18 +98,77 @@
   </dl>
 </section>
 
-<!-- BITÁCORA -->
+<!-- BITÁCORA: una carpeta por capítulo -->
 <section class="bitacora" id="bitacora" aria-labelledby="bitacora-t">
-  <h2 id="bitacora-t" class="visually-hidden">Etapas del semestre</h2>
-  <ol class="etapas">
-    <li><a href="#lugar"><span>01</span>Leer el lugar</a></li>
-    <li><a href="#comunidad"><span>02</span>Conocer a la gente</a></li>
-    <li><a href="#clima"><span>03</span>Entender el clima</a></li>
-    <li><a href="#idea"><span>04</span>Encontrar la idea</a></li>
-    <li><a href="#programa"><span>05</span>Armar el programa</a></li>
-    <li><a href="#recorrido"><span>06</span>Trazar el recorrido</a></li>
-    <li><a href="#proyecto"><span>07</span>Construir el proyecto</a></li>
-    <li><a href="#estructura"><span>08</span>Resolver la estructura</a></li>
+  <header class="bitacora__cab">
+    <p class="kicker">Ocho capítulos</p>
+    <h2 id="bitacora-t">Cómo avanzó el semestre</h2>
+  </header>
+  <ol class="carpetas">
+    <li class="gf-wrap" style="--orden:0">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-lote-manzanas.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-1.4deg"><img src="img/esq-lote-manzanas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El lote</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.0deg"><img src="img/esq-contexto-mapas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El predio</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:1.4deg"><img src="img/norma-vs-borde.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">La norma</span></span></span>
+        <a class="gf-front" href="#lugar" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">01</span><span class="gf-title">Leer el lugar</span><span class="gf-meta">Lote, norma y borde</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:1">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-organigrama.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-0.7deg"><img src="img/render-interior.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">La gente</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.7deg"><img src="img/esq-organigrama.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Organigrama</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:-1.4deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Cuatro ejes</span></span></span>
+        <a class="gf-front" href="#comunidad" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">02</span><span class="gf-title">Conocer a la gente</span><span class="gf-meta">3.351 personas, cuatro ejes</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:2">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-bioclimatico.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.0deg"><img src="img/esq-dia-24h.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Un día</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:1.4deg"><img src="img/esq-agua-ladera.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El agua</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:-0.7deg"><img src="img/esq-bioclimatico.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Bioclimática</span></span></span>
+        <a class="gf-front" href="#clima" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">03</span><span class="gf-title">Entender el clima</span><span class="gf-meta">Sol, viento y agua</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:3">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-ideas.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.7deg"><img src="img/estratos.webp" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Estratos</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:-1.4deg"><img src="img/esq-espacio-publico.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Espacio público</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:0.0deg"><img src="img/esq-ideas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Ideas</span></span></span>
+        <a class="gf-front" href="#idea" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">04</span><span class="gf-title">Encontrar la idea</span><span class="gf-meta">El paisaje como estructura</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:4">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-planta-usos.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:1.4deg"><img src="img/planta-1a.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Plantas</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:-0.7deg"><img src="img/esq-planta-usos.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Usos</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:0.7deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Volumetrías</span></span></span>
+        <a class="gf-front" href="#programa" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">05</span><span class="gf-title">Armar el programa</span><span class="gf-meta">Usos, volúmenes y plantas</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:5">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-circulacion-iso.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-1.4deg"><img src="img/circulacion.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Planta</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.0deg"><img src="img/esq-recorrido-axo.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Accesos</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:1.4deg"><img src="img/esq-circulacion-iso.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Circulación</span></span></span>
+        <a class="gf-front" href="#recorrido" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">06</span><span class="gf-title">Trazar el recorrido</span><span class="gf-meta">Tres accesos, una secuencia</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:6">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/seccion.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-0.7deg"><img src="img/iso-estructural.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Isométrico</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.7deg"><img src="img/esq-detalle.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Detalle</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:-1.4deg"><img src="img/seccion.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Secciones</span></span></span>
+        <a class="gf-front" href="#proyecto" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">07</span><span class="gf-title">Construir el proyecto</span><span class="gf-meta">Secciones y detalle</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:7">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/cubiertas-madera.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.0deg"><img src="img/glulam-malla.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Glulam</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:1.4deg"><img src="img/cubiertas-madera.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Cubiertas</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:-0.7deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Presupuesto</span></span></span>
+        <a class="gf-front" href="#estructura" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">08</span><span class="gf-title">Resolver la estructura</span><span class="gf-meta">Cubiertas y presupuesto</span></span></a>
+      </div>
+    </li>
   </ol>
 </section>
 
@@ -676,7 +734,7 @@
   <img src="" alt="">
 </dialog>
 
-<script src="js/main.js?v=20261115g"></script>
-<script src="js/carrusel.js?v=20261115g" defer></script>
+<script src="js/main.js?v=20261115h"></script>
+<script src="js/carrusel.js?v=20261115h" defer></script>
 </body>
 </html>

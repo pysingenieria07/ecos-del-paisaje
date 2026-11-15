@@ -44,6 +44,20 @@ const obsMenu = new IntersectionObserver((entradas) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 enlaces.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) obsMenu.observe(s); });
 
+/* ---------- carpetas: se abren antes de bajar al capítulo ---------- */
+document.querySelectorAll('.gf-front').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    if (calma || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    const carpeta = a.closest('.gf');
+    carpeta.dataset.open = '';
+    setTimeout(() => {
+      location.hash = a.getAttribute('href');
+      setTimeout(() => { delete carpeta.dataset.open; }, 600);
+    }, 520);
+  });
+});
+
 /* ---------- títulos palabra por palabra ---------- */
 function partirEnPalabras(el) {
   let i = 0;
