@@ -253,82 +253,103 @@ alScroll();
 /* ---------- capítulos dentro de carpetas ----------
    Solo se ve un capítulo a la vez: el de la carpeta abierta. Sin JavaScript se ven todos, uno tras otro. */
 const capitulos = [...document.querySelectorAll('.capitulo:not(.capitulo--planos)')];
-const carpetas = [...document.querySelectorAll('.gf-front')];
-const mesa = document.getElementById('bitacora');
-raiz.classList.add('js-carpetas');
+// ?completo: se llega desde la página de síntesis; sin carpetas, todos los capítulos abiertos y completos
+const completo = new URLSearchParams(location.search).has('completo');
+if (completo) {
+  raiz.classList.add('modo-completo');
+  capitulos.forEach((cap, i) => {
+    const sig = capitulos[i + 1];
+    const pie = document.createElement('nav');
+    pie.className = 'capitulo__pie';
+    pie.setAttribute('aria-label', 'Seguir leyendo');
+    pie.innerHTML = '<a class="capitulo__volver" href="sintesis.html#' + cap.id + '">Volver a la síntesis</a>'
+      + (sig ? '<a class="capitulo__sig" href="#' + sig.id + '"><span>Siguiente capítulo</span>' + sig.querySelector('h2').textContent + '</a>'
+        : '<a class="capitulo__sig" href="#planos"><span>Para terminar</span>Planos y láminas</a>');
+    cap.append(pie);
+  });
+  const aviso = document.createElement('a');
+  aviso.className = 'aviso-completo';
+  aviso.href = 'sintesis.html';
+  aviso.textContent = '← Volver a la síntesis';
+  document.body.append(aviso);
+} else {
+  const carpetas = [...document.querySelectorAll('.gf-front')];
+  const mesa = document.getElementById('bitacora');
+  raiz.classList.add('js-carpetas');
 
-// lo fundamental queda a la vista; el resto de cada capítulo va en «Ver más información»
-capitulos.forEach((cap) => {
-  const n = +cap.dataset.esencial;
-  const resto = [...cap.children].slice(n);
-  if (!n || !resto.length) return;
-  const mas = document.createElement('details');
-  mas.className = 'mas-info';
-  const temas = resto.filter((e) => e.matches('h3.sub')).map((e) => e.textContent.trim());
-  const resumen = document.createElement('summary');
-  resumen.innerHTML = '<span>Ver más información</span>';
-  if (temas.length) { const s = document.createElement('small'); s.textContent = temas.length === 1 ? temas[0] : temas.length + ' temas más'; resumen.append(s); }
-  mas.append(resumen, ...resto);
-  cap.append(mas);
-  mas.addEventListener('toggle', () => { armarRiel(); alScroll(); });
-});
+  // lo fundamental queda a la vista; el resto de cada capítulo va en «Ver más información»
+  capitulos.forEach((cap) => {
+    const n = +cap.dataset.esencial;
+    const resto = [...cap.children].slice(n);
+    if (!n || !resto.length) return;
+    const mas = document.createElement('details');
+    mas.className = 'mas-info';
+    const temas = resto.filter((e) => e.matches('h3.sub')).map((e) => e.textContent.trim());
+    const resumen = document.createElement('summary');
+    resumen.innerHTML = '<span>Ver más información</span>';
+    if (temas.length) { const s = document.createElement('small'); s.textContent = temas.length === 1 ? temas[0] : temas.length + ' temas más'; resumen.append(s); }
+    mas.append(resumen, ...resto);
+    cap.append(mas);
+    mas.addEventListener('toggle', () => { armarRiel(); alScroll(); });
+  });
 
-capitulos.forEach((cap, i) => {
-  const sig = capitulos[i + 1];
-  const pie = document.createElement('nav');
-  pie.className = 'capitulo__pie';
-  pie.setAttribute('aria-label', 'Seguir leyendo');
-  pie.innerHTML = '<a class="capitulo__volver" href="#bitacora">Volver a las carpetas</a>'
-    + (sig ? '<a class="capitulo__sig" href="#' + sig.id + '"><span>Siguiente carpeta</span>' + sig.querySelector('h2').textContent + '</a>'
-      : '<a class="capitulo__sig" href="#planos"><span>Para terminar</span>Planos y láminas</a>');
-  cap.append(pie);
-});
+  capitulos.forEach((cap, i) => {
+    const sig = capitulos[i + 1];
+    const pie = document.createElement('nav');
+    pie.className = 'capitulo__pie';
+    pie.setAttribute('aria-label', 'Seguir leyendo');
+    pie.innerHTML = '<a class="capitulo__volver" href="#bitacora">Volver a las carpetas</a>'
+      + (sig ? '<a class="capitulo__sig" href="#' + sig.id + '"><span>Siguiente carpeta</span>' + sig.querySelector('h2').textContent + '</a>'
+        : '<a class="capitulo__sig" href="#planos"><span>Para terminar</span>Planos y láminas</a>');
+    cap.append(pie);
+  });
 
-function abrirCapitulo(id) {
-  const cap = capitulos.find((c) => c.id === id);
-  capitulos.forEach((c) => c.classList.toggle('abierto', c === cap));
+  function abrirCapitulo(id) {
+    const cap = capitulos.find((c) => c.id === id);
+    capitulos.forEach((c) => c.classList.toggle('abierto', c === cap));
+    carpetas.forEach((a) => {
+      const mia = a.getAttribute('href') === '#' + id;
+      a.closest('.gf-wrap').classList.toggle('actual', mia);
+      if (mia) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    mesa.classList.toggle('con-capitulo', !!cap);
+    armarRiel();
+    return cap;
+  }
+  function irACapitulo(id) {
+    const cap = abrirCapitulo(id);
+    if (!cap) return;
+    cap.scrollIntoView({ behavior: calma ? 'auto' : 'smooth', block: 'start' });
+    requestAnimationFrame(alScroll);
+  }
+  // una carpeta: primero se abre, luego muestra su capítulo
   carpetas.forEach((a) => {
-    const mia = a.getAttribute('href') === '#' + id;
-    a.closest('.gf-wrap').classList.toggle('actual', mia);
-    if (mia) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey) return;
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const carpeta = a.closest('.gf');
+      carpeta.dataset.open = '';
+      setTimeout(() => {
+        history.pushState(null, '', '#' + id);
+        irACapitulo(id);
+        setTimeout(() => { delete carpeta.dataset.open; }, 700);
+      }, calma ? 0 : 480);
+    });
   });
-  mesa.classList.toggle('con-capitulo', !!cap);
-  armarRiel();
-  return cap;
-}
-function irACapitulo(id) {
-  const cap = abrirCapitulo(id);
-  if (!cap) return;
-  cap.scrollIntoView({ behavior: calma ? 'auto' : 'smooth', block: 'start' });
-  requestAnimationFrame(alScroll);
-}
-// una carpeta: primero se abre, luego muestra su capítulo
-carpetas.forEach((a) => {
-  a.addEventListener('click', (e) => {
-    if (e.metaKey || e.ctrlKey) return;
-    e.preventDefault();
+  // cualquier otro enlace a un capítulo (menú, índice lateral, «siguiente carpeta») también lo abre
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.classList.contains('gf-front')) return;
     const id = a.getAttribute('href').slice(1);
-    const carpeta = a.closest('.gf');
-    carpeta.dataset.open = '';
-    setTimeout(() => {
-      history.pushState(null, '', '#' + id);
-      irACapitulo(id);
-      setTimeout(() => { delete carpeta.dataset.open; }, 700);
-    }, calma ? 0 : 480);
+    if (!capitulos.some((c) => c.id === id)) return;
+    e.preventDefault();
+    history.pushState(null, '', '#' + id);
+    irACapitulo(id);
   });
-});
-// cualquier otro enlace a un capítulo (menú, índice lateral, «siguiente carpeta») también lo abre
-document.addEventListener('click', (e) => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a || a.classList.contains('gf-front')) return;
-  const id = a.getAttribute('href').slice(1);
-  if (!capitulos.some((c) => c.id === id)) return;
-  e.preventDefault();
-  history.pushState(null, '', '#' + id);
-  irACapitulo(id);
-});
-addEventListener('popstate', () => { const id = location.hash.slice(1); if (capitulos.some((c) => c.id === id)) irACapitulo(id); else abrirCapitulo(null); });
-if (capitulos.some((c) => c.id === location.hash.slice(1))) irACapitulo(location.hash.slice(1));
+  addEventListener('popstate', () => { const id = location.hash.slice(1); if (capitulos.some((c) => c.id === id)) irACapitulo(id); else abrirCapitulo(null); });
+  if (capitulos.some((c) => c.id === location.hash.slice(1))) irACapitulo(location.hash.slice(1));
+}
 
 /* ---------- curvas de nivel en la portada ---------- */
 (function topografia() {
