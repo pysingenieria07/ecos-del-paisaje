@@ -131,6 +131,32 @@ function armarRiel() {
   tramo.style.height = (riel.offsetHeight + sobra) + 'px';
 }
 
+/* ---------- apertura con video ---------- */
+const apertura = document.querySelector('.apertura');
+const aperturaVideo = apertura && apertura.querySelector('video');
+const aperturaTexto = apertura && apertura.querySelector('.apertura__texto');
+const aperturaBajar = apertura && apertura.querySelector('.apertura__bajar');
+if (apertura) {
+  const medirNav = () => raiz.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  medirNav();
+  addEventListener('resize', medirNav);
+  const pausa = apertura.querySelector('.apertura__pausa');
+  const poner = (pausado) => {
+    pausa.setAttribute('aria-pressed', pausado);
+    pausa.textContent = pausado ? 'Reproducir video' : 'Pausar video';
+  };
+  if (calma) { aperturaVideo.removeAttribute('autoplay'); aperturaVideo.pause(); poner(true); }
+  pausa.addEventListener('click', () => {
+    if (aperturaVideo.paused) { aperturaVideo.play(); poner(false); apertura.dataset.manual = ''; }
+    else { aperturaVideo.pause(); poner(true); apertura.dataset.manual = '1'; }
+  });
+  // el video solo corre mientras se ve
+  new IntersectionObserver(([en]) => {
+    if (calma || apertura.dataset.manual) return;
+    if (en.isIntersecting) aperturaVideo.play().catch(() => {}); else aperturaVideo.pause();
+  }, { threshold: 0.05 }).observe(apertura);
+}
+
 /* ---------- efectos ligados al scroll ---------- */
 const barra = document.querySelector('.progreso');
 const heroImg = document.querySelector('.hero__img img');
@@ -165,7 +191,19 @@ function alScroll() {
     if (r.top < innerHeight * 0.95 && r.bottom > 0 && r.left < innerWidth && r.right > 0) el.classList.add('visto');
   });
 
-  if (!calma && heroImg && y < innerHeight * 1.2) heroImg.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+  if (apertura) {
+    const alto = apertura.offsetHeight;
+    raiz.classList.toggle('sobre-video', y < alto - 70);
+    if (!calma && y < alto) {
+      const k = y / alto;
+      aperturaTexto.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+      aperturaTexto.style.opacity = String(Math.max(0, 1 - k * 2.4));
+      aperturaBajar.style.opacity = String(Math.max(0, 1 - k * 5));
+      aperturaVideo.style.scale = String(1 + k * 0.12);
+    }
+  }
+  const yHero = apertura ? y - apertura.offsetHeight : y;
+  if (!calma && heroImg && yHero > -innerHeight && yHero < innerHeight * 1.2) heroImg.style.transform = 'translateY(' + (Math.max(0, yHero) * 0.18) + 'px)';
 
   if (!calma) numerales.forEach((n) => {
     const r = n.getBoundingClientRect();
