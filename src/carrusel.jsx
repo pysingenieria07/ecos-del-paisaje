@@ -589,7 +589,6 @@ export function WarpCarousel({
     lastIndex.current = current;
     if (props.current.onFrontChange) props.current.onFrontChange(mod(current, props.current.realCount));
     if (prev === current) return;
-    if (props.current.scroll) return;
     const delta = current - prev;
     const now = performance.now() / 1000;
     const fromAuto = L.autoPending;
@@ -886,22 +885,11 @@ export function WarpCarousel({
       raf = 0;
       const p = scrollDrive();
       if (p === null) return;
-      const L = live.current;
-      // posición continua: 0 = primer render al centro, realCount - 1 = último
-      // cada render se queda al centro la primera y la última cuarta parte de su tramo y gira en el medio
-      const bruto = p * (realCount - 1);
-      const base = Math.floor(bruto);
-      const f = Math.min(1, Math.max(0, (bruto - base - 0.25) / 0.5));
-      const T = Math.min(realCount - 1, base + f * f * (3 - 2 * f));
-      L.nextAuto = Infinity;
-      if (L.mode !== "drag") {
-        if (props.current.reduced) { L.P = T; }
-        else { if (L.mode !== "follow") L.lastT = performance.now() / 1000; L.to = T; L.mode = "follow"; }
-        handles.current.kick();
-        if (props.current.reduced) handles.current.draw();
-      }
-      const objetivo = Math.round(T);
-      if (objetivo !== lastIndex.current) { lastIndex.current = objetivo; setInner(objetivo); }
+      // cada tramo de scroll es un render: al cruzar al siguiente tramo, la rueda gira sola hasta él
+      live.current.nextAuto = Infinity;
+      const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(p * realCount)));
+      const actual = mod(lastIndex.current, realCount);
+      if (objetivo !== actual) setInner(lastIndex.current + (objetivo - actual));
     };
     const alMover = () => { if (!raf) raf = requestAnimationFrame(leer); };
     addEventListener("scroll", alMover, { passive: true });
@@ -1088,7 +1076,7 @@ if (raiz) {
   if (d.fondo) opc.background = d.fondo;
   const seccion = raiz.closest(".galeria");
   const calma = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (d.scroll !== undefined && seccion && !calma) {
+  if (d.scroll !== undefined && seccion) {
     seccion.classList.add("galeria--scroll");
     seccion.style.setProperty("--pasos", RENDERS.length);
     const avance = seccion.querySelector(".galeria__avance");
@@ -1096,7 +1084,7 @@ if (raiz) {
       const r = seccion.getBoundingClientRect();
       const recorrido = seccion.offsetHeight - innerHeight;
       if (recorrido <= 0) return null;
-      const p = Math.min(1, Math.max(0, -r.top / recorrido));
+      const p = Math.min(0.9999, Math.max(0, -r.top / recorrido));
       if (avance) avance.style.transform = "scaleX(" + p.toFixed(4) + ")";
       return p;
     };
