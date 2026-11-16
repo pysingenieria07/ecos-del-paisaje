@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ecos del Paisaje · Borde activo Villatina · 2026-2</title>
+<meta name="description" content="Bitácora del semestre 2026-2: equipamiento ambiental e intergeneracional en el borde de Villatina, Medellín. Sebastián Díaz Aguilera y Ana Sofía Sanmartín Betancur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="progreso" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="nav__marca" href="#inicio">Ecos del Paisaje</a>
+  <button class="nav__toggle" aria-expanded="false" aria-controls="menu">Menú</button>
+  <nav id="menu" aria-label="Secciones">
+    <ol>
+      <li><a href="#lugar">Lugar</a></li>
+      <li><a href="#comunidad">Comunidad</a></li>
+      <li><a href="#clima">Clima</a></li>
+      <li><a href="#idea">Idea</a></li>
+      <li><a href="#programa">Programa</a></li>
+      <li><a href="#recorrido">Recorrido</a></li>
+      <li><a href="#proyecto">Proyecto</a></li>
+      <li><a href="#estructura">Estructura</a></li>
+      <li><a href="#planos">Planos</a></li>
+    </ol>
+  </nav>
+</header>
+
+<nav class="borde" aria-label="Avance por capítulos">
+  <p class="borde__n"><span id="borde-actual">00</span>/09</p>
+  <ol>
+    <li><a href="#lugar" style="--c:var(--arcilla)"><span class="visually-hidden">01 Lugar</span></a></li>
+    <li><a href="#comunidad" style="--c:var(--cafe)"><span class="visually-hidden">02 Comunidad</span></a></li>
+    <li><a href="#clima" style="--c:var(--ocre)"><span class="visually-hidden">03 Clima</span></a></li>
+    <li><a href="#idea" style="--c:var(--vino)"><span class="visually-hidden">04 Idea</span></a></li>
+    <li><a href="#programa" style="--c:var(--verde-claro)"><span class="visually-hidden">05 Programa</span></a></li>
+    <li><a href="#recorrido" style="--c:var(--terracota)"><span class="visually-hidden">06 Recorrido</span></a></li>
+    <li><a href="#proyecto" style="--c:var(--oliva)"><span class="visually-hidden">07 Proyecto</span></a></li>
+    <li><a href="#estructura" style="--c:var(--cafe)"><span class="visually-hidden">08 Estructura</span></a></li>
+    <li><a href="#planos" style="--c:var(--vino-hondo)"><span class="visually-hidden">09 Planos</span></a></li>
+  </ol>
+</nav>
+
+<main id="contenido">
+
+<!-- PORTADA -->
+<section class="hero" id="inicio">
+  <canvas class="topo" aria-hidden="true"></canvas>
+  <div class="hero__texto">
+    <p class="kicker">Semestre 2026-2 · Universidad Santo Tomás, Medellín</p>
+    <h1>Ecos del<br>Paisaje</h1>
+    <p class="hero__lead">Un borde activo para Villatina: un equipamiento ambiental e intergeneracional donde las huertas, los patios y los senderos entran al edificio y lo vuelven parte de la ladera.</p>
+    <dl class="hero__datos">
+      <div><dt>Estudiantes</dt><dd>Sebastián Díaz Aguilera<br>Ana Sofía Sanmartín Betancur</dd></div>
+      <div><dt>Cursos</dt><dd>Proyecto VII · Urbanismo V · Estructuras IV</dd></div>
+      <div><dt>Lote</dt><dd>12.889 m² · Villatina – Campo Santo</dd></div>
+    </dl>
+  </div>
+  <figure class="hero__img">
+    <img src="img/portada.webp" width="1685" height="721" alt="Render del proyecto: personas en un patio con huertas y gradas bajo una cubierta curva de listones de madera" data-falta="portada.webp">
+  </figure>
+  <a class="hero__bajar" href="#bitacora">Ver cómo avanzó el semestre</a>
+</section>
+
+<!-- BITÁCORA -->
+<section class="bitacora" id="bitacora" aria-labelledby="bitacora-t">
+  <h2 id="bitacora-t" class="visually-hidden">Etapas del semestre</h2>
+  <ol class="etapas">
+    <li><a href="#lugar"><span>01</span>Leer el lugar</a></li>
+    <li><a href="#comunidad"><span>02</span>Conocer a la gente</a></li>
+    <li><a href="#clima"><span>03</span>Entender el clima</a></li>
+    <li><a href="#idea"><span>04</span>Encontrar la idea</a></li>
+    <li><a href="#programa"><span>05</span>Armar el programa</a></li>
+    <li><a href="#recorrido"><span>06</span>Trazar el recorrido</a></li>
+    <li><a href="#proyecto"><span>07</span>Construir el proyecto</a></li>
+    <li><a href="#estructura"><span>08</span>Resolver la estructura</a></li>
+  </ol>
+</section>
+
+<!-- 01 LUGAR -->
+<section class="capitulo" id="lugar" aria-labelledby="lugar-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">01</span>
+    <div>
+      <p class="kicker">Análisis del lote · Urbanismo V</p>
+      <h2 id="lugar-t">Leer el lugar</h2>
+    </div>
+  </header>
+
+  <div class="prosa prosa--ancha">
+    <p class="entrada">Empezamos el semestre caminando el borde urbano-rural de Villatina, en la Comuna 8, entre Campo Santo, el Ecoparque Las Tinajas y el Cinturón Verde.</p>
+    <p>Es un borde bajo presión. Los asentamientos informales suben por la ladera sobre zonas con amenaza de movimiento en masa y de avenidas torrenciales de las quebradas La Castro, San Antonio y La Gallinaza. Campo Santo recuerda la tragedia de 1987.</p>
+  </div>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: El lote y las 17 manzanas vecinas que analizamos, entre Campo Santo y el Ecoparque Las Tinajas."><img src="img/esq-lote-manzanas.jpg" width="2592" height="1264" loading="lazy" alt="Mapa del lote entre Campo Santo y el Ecoparque Las Tinajas con las 17 manzanas analizadas numeradas" data-falta="esq-lote-manzanas.jpg"></button>
+    <figcaption>El lote y las 17 manzanas vecinas que analizamos, entre Campo Santo y el Ecoparque Las Tinajas.</figcaption>
+  </figure>
+
+  <div class="dos-col dos-col--margen">
+    <div class="prosa">
+      <h3 class="sub sub--pegado">El predio</h3>
+      <p>El lote tiene 12.889 m² y está en el polígono <strong>SE-API-05</strong>, un Área para la Preservación de Infraestructuras y del Sistema Público y Colectivo del corregimiento de Santa Elena. La norma lo reserva para equipamientos, espacio público, áreas ambientales e infraestructura de escala metropolitana.</p>
+      <p>Por eso no lo vimos como un terreno vacío, sino como una pieza que podía coser esos sistemas y, a la vez, frenar la expansión informal hacia las zonas de protección.</p>
+      <ul class="lista-marcas">
+        <li>Protege el paisaje y el sistema ambiental.</li>
+        <li>Evita la expansión de asentamientos informales.</li>
+        <li>Genera espacio público de calidad.</li>
+        <li>Fortalece la conectividad ecológica.</li>
+        <li>Promueve la educación ambiental y la apropiación social.</li>
+      </ul>
+    </div>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Contexto y predio."><img src="img/esq-contexto-mapas.jpg" width="928" height="1513" loading="lazy" alt="Mapas del contexto y del predio con Campo Santo, el ecoparque y la estación del metro" data-falta="esq-contexto-mapas.jpg"></button>
+    <figcaption>Contexto y predio.</figcaption>
+  </figure>
+  </div>
+  <figure class="figura figura--ancha">
+    <button type="button" class="ampliar" aria-label="Ampliar: Corte del borde urbano-ambiental: borde verde, senderos y vía."><img src="img/esq-borde-corte.jpg" width="960" height="249" loading="lazy" alt="Corte del borde: borde verde, senderos y vía" data-falta="esq-borde-corte.jpg"></button>
+    <figcaption>Corte del borde urbano-ambiental: borde verde, senderos y vía.</figcaption>
+  </figure>
+  <figure class="figura figura--ancha figura--recorte">
+    <img src="img/lote-seccion.webp" width="2000" height="489" loading="lazy" alt="Corte de la ladera: la vía, el equipamiento en la franja estable y la vegetación ladera arriba" data-falta="lote-seccion.webp">
+    <figcaption>El borde con peso: el equipamiento ocupa la franja estable y la ladera queda verde.</figcaption>
+  </figure>
+
+  <h3 class="sub">Postura: replantear la norma</h3>
+  <ul class="tarjetas">
+    <li><h4>Norma</h4><p>Ocupación máxima del 3 % en suelo de protección y del 5 % en suelo rural. En suelo con amenaza solo se permiten ecoparques y recreación pasiva.</p></li>
+    <li><h4>Condición real</h4><p>La ocupación informal sube por la ladera. Hay amenaza por movimiento en masa y avenidas torrenciales, y el borde no tiene uso ni vigilancia.</p></li>
+    <li><h4>Redimensionamiento</h4><p>Concentrar la ocupación en la franja estable y congelar el resto como zona verde, con un límite físico continuo.</p></li>
+  </ul>
+  <div class="dos-col dos-col--margen">
+    <blockquote class="cita cita--chica"><p>Un borde protegido solo en el papel queda sin dueño y se invade.</p></blockquote>
+    <div class="prosa">
+      <p>La norma supone que construir poco es proteger más. Pero cumplir el índice al pie de la letra produce justo lo que quería evitar. Por eso propusimos un parágrafo para el Art. 126 del Decreto 409: en bordes con presión de ocupación, el índice puede superar el máximo rural si la ocupación se concentra en terreno estable, hay un límite continuo y construido, y ladera arriba solo quedan espacio público, huertas, senderos, miradores y obras de mitigación.</p>
+    </div>
+  </div>
+  <figure class="figura figura--ancha">
+    <button type="button" class="ampliar" aria-label="Ampliar: Norma literal (borde vacío) frente a la hipótesis del borde con peso."><img src="img/norma-vs-borde.jpg" width="1400" height="500" loading="lazy" alt="Esquema comparativo: con la norma literal el borde queda vacío; con el borde con peso, el equipamiento marca el límite" data-falta="norma-vs-borde.jpg"></button>
+    <figcaption>Norma literal (borde vacío) frente a la hipótesis del borde con peso.</figcaption>
+  </figure>
+
+  <h3 class="sub">Problemáticas, estrategias y potencialidades</h3>
+  <ol class="matriz">
+    <li>
+      <div><span>Problemática</span>Expansión de asentamientos hacia las áreas ambientales y pérdida del límite entre lo urbano y lo natural.</div>
+      <div><span>Estrategia · delimitar</span>Consolidar un borde urbano-ambiental que limite la expansión hacia las áreas ambientales.</div>
+      <div><span>Potencialidad</span>Equilibrar los equipamientos con un nuevo nodo que articule los usos existentes del sector.</div>
+    </li>
+    <li>
+      <div><span>Problemática</span>Degradación de la cobertura vegetal, erosión y vulnerabilidad del terreno ante la escorrentía.</div>
+      <div><span>Estrategia · renaturalizar</span>Recuperar cobertura vegetal, aumentar superficies permeables y manejar la escorrentía.</div>
+      <div><span>Potencialidad</span>Convertir el área ambiental en un sistema activo de protección que reduzca la erosión.</div>
+    </li>
+    <li>
+      <div><span>Problemática</span>Desequilibrio en la distribución de equipamientos: concentración en unos sectores y poca cobertura en este.</div>
+      <div><span>Estrategia · DOT</span>Integrar el recorrido de la Línea H al proyecto, aprovechando la cercanía de la estación Las Torres.</div>
+      <div><span>Potencialidad</span>Espacios que respondan al envejecimiento progresivo de la población y evolucionen con sus usuarios.</div>
+    </li>
+  </ol>
+  <div class="dos-col dos-col--margen">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Conexión del predio con su entorno."><img src="img/esq-conexiones.jpg" width="1792" height="933" loading="lazy" alt="Plano de conexiones del predio con la estación de metro, el ecoparque y Campo Santo" data-falta="esq-conexiones.jpg"></button>
+    <figcaption>Conexión del predio con su entorno.</figcaption>
+  </figure>
+    <dl class="tiempos">
+      <div><dt>8–10 min</dt><dd>caminando a la estación Las Torres de la Línea H</dd></div>
+      <div><dt>5–7 min</dt><dd>al Ecoparque Las Tinajas y el Cinturón Verde</dd></div>
+      <div><dt>7–9 min</dt><dd>a Campo Santo, equipamiento educativo y comunitario</dd></div>
+    </dl>
+  </div>
+  <figure class="figura figura--ancha">
+    <button type="button" class="ampliar" aria-label="Ampliar: El Cinturón Verde y el Jardín Circunvalar, el sistema al que se cose el proyecto."><img src="img/esq-aereo.jpg" width="992" height="394" loading="lazy" alt="Vista aérea del borde con el Cinturón Verde y el Jardín Circunvalar" data-falta="esq-aereo.jpg"></button>
+    <figcaption>El Cinturón Verde y el Jardín Circunvalar, el sistema al que se cose el proyecto.</figcaption>
+  </figure>
+</section>
+
+<!-- 02 COMUNIDAD -->
+<section class="capitulo capitulo--tono" id="comunidad" aria-labelledby="comunidad-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">02</span>
+    <div>
+      <p class="kicker">Análisis demográfico</p>
+      <h2 id="comunidad-t">Conocer a la gente</h2>
+    </div>
+  </header>
+
+  <div class="dos-col">
+    <div class="prosa">
+      <p class="entrada">Contamos manzana por manzana. Lo que encontramos fue una comunidad joven: muchos niños, jóvenes y adultos jóvenes.</p>
+      <p>Esa misma lectura deja ver hacia dónde va el barrio: dentro de unas décadas esa población va a envejecer en el mismo lugar. Así que el proyecto no podía pensarse solo para hoy. Propusimos un equipamiento ambiental e intergeneracional, con espacios de encuentro, aprendizaje, bienestar y cuidado.</p>
+    </div>
+    <div class="cifras">
+      <p class="cifra-grande"><span>3.351</span> personas usarían el equipamiento</p>
+      <div class="barras" role="img" aria-label="Distribución por edades: 1.230 infantes de 0 a 19 años, 1.276 adultos jóvenes de 20 a 39 años y 845 adultos de 40 a 69 años">
+        <div class="barra"><span class="barra__et">Infantes · 0–19</span><span class="barra__v" style="--v:1230">1.230</span></div>
+        <div class="barra"><span class="barra__et">Adultos jóvenes · 20–39</span><span class="barra__v" style="--v:1276">1.276</span></div>
+        <div class="barra"><span class="barra__et">Adultos · 40–69</span><span class="barra__v" style="--v:845">845</span></div>
+      </div>
+      <p class="nota">Proporción por sexo en las manzanas analizadas: 48 % mujeres, 51 % hombres.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">De los datos salieron cuatro ejes</h3>
+  <ol class="ejes-detalle">
+    <li>
+      <p class="ejes-detalle__n">01</p><h4>Memoria</h4>
+      <p>Conservar y transmitir la historia de Villatina.</p>
+      <ul><li>Sala de memoria</li><li>Archivo comunitario</li><li>Exposiciones</li><li>Recorrido memorial</li><li>Jardines de contemplación</li></ul>
+      <p class="ejes-detalle__u">Adultos, jóvenes y comunidad</p>
+    </li>
+    <li>
+      <p class="ejes-detalle__n">02</p><h4>Ambiental · envejecimiento activo</h4>
+      <p>Conectar con el entorno y promover el cuidado y el envejecimiento saludable.</p>
+      <ul><li>Aula ambiental</li><li>Vivero y huerta comunitaria</li><li>Senderos interpretativos</li><li>Espacios de descanso</li><li>Bienestar al aire libre</li></ul>
+      <p class="ejes-detalle__u">Todas las edades</p>
+    </li>
+    <li>
+      <p class="ejes-detalle__n">03</p><h4>Creación</h4>
+      <p>Fomentar la expresión, la innovación y la producción colectiva.</p>
+      <ul><li>Talleres de arte y música</li><li>Laboratorio audiovisual</li><li>Podcast y sonido</li><li>Maker space</li><li>Producción colectiva</li></ul>
+      <p class="ejes-detalle__u">Jóvenes, niños y comunidad</p>
+    </li>
+    <li>
+      <p class="ejes-detalle__n">04</p><h4>Formación</h4>
+      <p>Potenciar el aprendizaje, la capacitación y el desarrollo de habilidades.</p>
+      <ul><li>Aulas flexibles</li><li>Sala de estudio</li><li>Aula digital</li><li>Talleres y capacitación</li><li>Programas intergeneracionales</li></ul>
+      <p class="ejes-detalle__u">Niños, jóvenes y adultos</p>
+    </li>
+  </ol>
+
+  <h3 class="sub">Organigrama y jerarquía del programa</h3>
+  <div class="mosaico">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: De la memoria del territorio a la construcción del futuro: la memoria al centro y los usos alrededor."><img src="img/esq-organigrama.jpg" width="1744" height="1730" loading="lazy" alt="Organigrama de burbujas con la memoria al centro y los espacios del programa alrededor" data-falta="esq-organigrama.jpg"></button>
+    <figcaption>De la memoria del territorio a la construcción del futuro: la memoria al centro y los usos alrededor.</figcaption>
+  </figure>
+    <div class="jerarquia">
+      <div class="dona" role="img" aria-label="Jerarquía del programa: memoria y territorio 30 %, creación 30 %, ambiental y envejecimiento 25 %, formación 15 %"></div>
+      <ul class="dona__leyenda">
+        <li style="--c:var(--vino)"><b>30 %</b> Memoria y territorio</li>
+        <li style="--c:var(--arcilla)"><b>30 %</b> Creación</li>
+        <li style="--c:var(--oliva)"><b>25 %</b> Ambiental · envejecimiento</li>
+        <li style="--c:var(--barro)"><b>15 %</b> Formación</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CLIMA -->
+<section class="capitulo" id="clima" aria-labelledby="clima-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">03</span>
+    <div>
+      <p class="kicker">Análisis climático</p>
+      <h2 id="clima-t">Entender el clima</h2>
+    </div>
+  </header>
+  <div class="dos-col">
+    <div class="prosa">
+      <p class="entrada">En Villatina el año es plano, pero el día no. Entre un mes y otro la temperatura media cambia apenas 1,3 °C; en un mismo día cambia unos 11 °C.</p>
+      <p>Corregimos los datos de la estación Olaya Herrera a la altura del lote, a unos 1.850 msnm: allí la temperatura media baja a 19,4 °C y el 43 % de las horas está por debajo de 18 °C, casi todas de noche. En el horario de uso, de 8 a 18 h, dos de cada tres horas ya están en confort.</p>
+      <p>Esa lectura cambió el proyecto: <strong>el edificio tiene que guardar calor más que expulsarlo</strong>.</p>
+    </div>
+    <dl class="datos">
+      <div><dt>19,4 °C</dt><dd>temperatura media en el lote</dd></div>
+      <div><dt>11 °C</dt><dd>de diferencia entre la madrugada y el mediodía</dd></div>
+      <div><dt>2.240 mm</dt><dd>de lluvia al año, en 173 días</dd></div>
+      <div><dt>67 %</dt><dd>de las horas de uso ya en confort, sin máquinas</dd></div>
+    </dl>
+  </div>
+
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: Esquema bioclimático del proyecto."><img src="img/esq-bioclimatico.jpg" width="1920" height="788" loading="lazy" alt="Esquema bioclimático: sol de junio y diciembre, brisa de tarde, aire frío nocturno, muro de contención como masa térmica y pilotes" data-falta="esq-bioclimatico.jpg"></button>
+    <figcaption>Esquema bioclimático del proyecto.</figcaption>
+  </figure>
+  <ul class="estrategias">
+    <li><b>Ventilación</b>Cruzada y por chimenea: aberturas bajas al occidente y salidas altas en la cumbrera.</li>
+    <li><b>Protección solar</b>Cubierta inclinada de madera con aleros de 1,4 m al sur y 0,8 m al norte; lamas al oriente y occidente.</li>
+    <li><b>Inercia térmica</b>El muro de contención y la losa guardan el calor del día y lo devuelven en la noche.</li>
+    <li><b>Luz cenital difusa</b>Con cielo nublado la mitad del tiempo, lucernarios con difusor en biblioteca y salas.</li>
+    <li><b>Humedad</b>Pilotes y piso elevado ventilado; nada de muros enterrados sin drenaje.</li>
+    <li><b>Energía y agua</b>5,3 kWh/m² al día de sol para colectores; el agua de las cubiertas va al espejo y a las huertas.</li>
+  </ul>
+
+  <h3 class="sub">El valle respira y el sol pasa por encima</h3>
+  <div class="mosaico mosaico--igual">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: De día el aire caliente sube por las laderas; de noche baja el aire frío desde Santa Elena."><img src="img/esq-brisas.jpg" width="1440" height="622" loading="lazy" alt="Brisas de valle de día y aire frío de montaña de noche" data-falta="esq-brisas.jpg"></button>
+    <figcaption>De día el aire caliente sube por las laderas; de noche baja el aire frío desde Santa Elena.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Sol casi cenital: la cubierta recibe más radiación que cualquier fachada."><img src="img/esq-sol-cenital.jpg" width="1504" height="622" loading="lazy" alt="Recorrido del sol a 6,25 grados norte: 60 grados en diciembre, 83 en equinoccios y 73 en junio" data-falta="esq-sol-cenital.jpg"></button>
+    <figcaption>Sol casi cenital: la cubierta recibe más radiación que cualquier fachada.</figcaption>
+  </figure>
+  </div>
+  <div class="trio">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Un día típico: 42 % frío, 40 % confort, 18 % calor."><img src="img/esq-dia-24h.jpg" width="1504" height="788" loading="lazy" alt="Gráfico circular de un día típico: 42 % de las horas frías, 40 % en confort y 18 % cálidas" data-falta="esq-dia-24h.jpg"></button>
+    <figcaption>Un día típico: 42 % frío, 40 % confort, 18 % calor.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Carta solar a 6,22° N."><img src="img/esq-carta-solar.jpg" width="928" height="1306" loading="lazy" alt="Carta solar a 6,22 grados norte" data-falta="esq-carta-solar.jpg"></button>
+    <figcaption>Carta solar a 6,22° N.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Viento de día desde el norte (28 %); de noche desde el oriente (42 %)."><img src="img/esq-rosas-viento.jpg" width="1184" height="1554" loading="lazy" alt="Rosas de viento de día y de noche" data-falta="esq-rosas-viento.jpg"></button>
+    <figcaption>Viento de día desde el norte (28 %); de noche desde el oriente (42 %).</figcaption>
+  </figure>
+  </div>
+
+  <h3 class="sub">El agua baja por la ladera: diseñar para recibirla</h3>
+  <div class="mosaico mosaico--igual">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Dos temporadas de lluvia: marzo a mayo y octubre a noviembre."><img src="img/esq-lluvia.jpg" width="1504" height="788" loading="lazy" alt="Precipitación media mensual con dos temporadas húmedas en marzo-mayo y octubre-noviembre" data-falta="esq-lluvia.jpg"></button>
+    <figcaption>Dos temporadas de lluvia: marzo a mayo y octubre a noviembre.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: El recorrido del agua: la cubierta recoge, el tanque guarda y las zanjas infiltran antes de la quebrada."><img src="img/esq-agua-ladera.jpg" width="1536" height="891" loading="lazy" alt="Recorrido del agua en el lote: escorrentía, cubierta que recoge, tanque de reúso y zanjas de infiltración" data-falta="esq-agua-ladera.jpg"></button>
+    <figcaption>El recorrido del agua: la cubierta recoge, el tanque guarda y las zanjas infiltran antes de la quebrada.</figcaption>
+  </figure>
+  </div>
+  <p class="memoria"><b>1987</b>El 27 de septiembre de 1987, un deslizamiento en el cerro Pan de Azúcar sepultó parte de Villatina. Por eso aquí el agua no es solo un dato climático: es la condición que define cómo se toca la ladera.</p>
+
+  <h3 class="sub">Lineamientos de diseño climático</h3>
+  <div class="mosaico">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Cómo pasa el viento entre los volúmenes: calma el 60 % del tiempo, brisa útil de 13:00 a 20:00 h."><img src="img/esq-viento-volumenes.jpg" width="1824" height="1802" loading="lazy" alt="Cinco esquemas de cómo pasa el viento entre los volúmenes según la hora" data-falta="esq-viento-volumenes.jpg"></button>
+    <figcaption>Cómo pasa el viento entre los volúmenes: calma el 60 % del tiempo, brisa útil de 13:00 a 20:00 h.</figcaption>
+  </figure>
+    <ol class="lineamientos">
+      <li>Priorizar la protección de la cubierta.</li>
+      <li>Proteger las fachadas norte y sur con aleros o parasoles.</li>
+      <li>Orientar los volúmenes en sentido oriente-occidente.</li>
+      <li>Filtrar la radiación sin perder iluminación natural.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 04 IDEA -->
+<section class="capitulo capitulo--tono" id="idea" aria-labelledby="idea-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">04</span>
+    <div>
+      <p class="kicker">Ideas proyectuales</p>
+      <h2 id="idea-t">Encontrar la idea</h2>
+    </div>
+  </header>
+  <blockquote class="cita">
+    <p>El paisaje como infraestructura social y espacial del proyecto.</p>
+  </blockquote>
+  <div class="dos-col">
+    <div class="prosa">
+      <p>Las huertas y las áreas verdes no quedan aisladas: se meten poco a poco en el equipamiento y generan patios, espacios de transición y lugares de permanencia donde arquitectura y paisaje se mezclan.</p>
+      <p>Queríamos un entorno donde envejecer estuviera acompañado por la naturaleza. La arquitectura se organiza alrededor de patios, jardines, huertas y recorridos contemplativos para que la gente pueda caminar, descansar, observar, cultivar y encontrarse en un mismo sistema.</p>
+    </div>
+    <p class="lema">Transmitir memoria<br>+ enseñar<br>+ disfrutar<br>+ envejecer activamente</p>
+  </div>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria."><img src="img/esq-ideas.jpg" width="2816" height="1719" loading="lazy" alt="Axonometría de ideas proyectuales: volúmenes coloreados por uso alrededor del espejo de agua" data-falta="esq-ideas.jpg"></button>
+    <figcaption>Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria.</figcaption>
+  </figure>
+
+  <h3 class="sub">El equipamiento como extensión del espacio público</h3>
+  <div class="mosaico mosaico--invertido">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Las huertas entran al edificio."><img src="img/render-interior.jpg" width="912" height="809" loading="lazy" alt="Render interior: personas entre huertas bajo una estructura de madera" data-falta="render-interior.jpg"></button>
+    <figcaption>Las huertas entran al edificio.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Una red de patios, terrazas y circulaciones deja que el espacio público atraviese el proyecto."><img src="img/esq-espacio-publico.jpg" width="1888" height="994" loading="lazy" alt="Tipos de espacio público: parque recreativo, zonas recreativas, huertas urbanas y jardín japonés" data-falta="esq-espacio-publico.jpg"></button>
+    <figcaption>Una red de patios, terrazas y circulaciones deja que el espacio público atraviese el proyecto.</figcaption>
+  </figure>
+  </div>
+  <figure class="figura figura--ancha figura--recorte">
+    <img src="img/imaginario.webp" width="1506" height="506" loading="lazy" alt="Imaginario: personas suben por escalones entre vegetación densa hacia el equipamiento" data-falta="imaginario.webp">
+    <figcaption>Imaginario: el sendero-límite entre la vegetación.</figcaption>
+  </figure>
+  <figure class="figura figura--ancha figura--recorte">
+    <img src="img/estratos.webp" width="1584" height="734" loading="lazy" alt="Diagrama de estratos vegetales: arbóreo, arbustivo, tapizante y biorretención" data-falta="estratos.webp">
+    <figcaption>Estratos vegetales para proteger la ladera: arbóreo, arbustivo, tapizante y biorretención.</figcaption>
+  </figure>
+</section>
+
+<!-- 05 PROGRAMA -->
+<section class="capitulo" id="programa" aria-labelledby="programa-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">05</span>
+    <div>
+      <p class="kicker">Forma y programa</p>
+      <h2 id="programa-t">Armar el programa</h2>
+    </div>
+  </header>
+  <div class="prosa prosa--ancha">
+    <p class="entrada">Con la idea definida, repartimos los usos en volúmenes que siguen la topografía. Cada color de la convención gráfica corresponde a un tipo de actividad, y así se lee en todas las plantas y secciones.</p>
+  </div>
+  <ul class="leyenda">
+    <li style="--c:var(--verde-claro)"><b>Naturaleza</b>Vivero · Jardín sensorial</li>
+    <li style="--c:var(--oliva)"><b>Recreación</b>Zona deportiva</li>
+    <li style="--c:var(--azul-claro)"><b>Cultura y contemplación</b>Mirador · Auditorio</li>
+    <li style="--c:var(--ocre)"><b>Producción y creación</b>Talleres</li>
+    <li style="--c:var(--terracota)"><b>Comercio</b>Mirador y comercio · Módulos</li>
+    <li style="--c:var(--violeta)"><b>Transición</b>Espacios de transición</li>
+    <li style="--c:var(--vino)"><b>Exposición</b>Sala expo · Teatrino</li>
+    <li style="--c:var(--agua)"><b>Memoria</b>Espejo de agua</li>
+  </ul>
+  <figure class="figura figura--sangre">
+    <button type="button" class="ampliar" aria-label="Ampliar: Planta de usos: cada color de la convención sobre el conjunto."><img src="img/esq-planta-usos.jpg" width="2880" height="1554" loading="lazy" alt="Planta de usos del conjunto con el recorrido principal y los usos coloreados" data-falta="esq-planta-usos.jpg"></button>
+    <figcaption>Planta de usos: cada color de la convención sobre el conjunto.</figcaption>
+  </figure>
+
+  <h3 class="sub">Volumetrías</h3>
+  <div class="volumenes">
+    <article><p class="volumenes__n">Volumetría 1</p><h4>Biblioteca y sala de exposiciones</h4><p>Módulo de consulta, sala de archivos, sala digital, administración, circulación y sala de exposiciones.</p></article>
+    <article><p class="volumenes__n">Volumetría 2</p><h4>Jardín Buen Crecer y talleres</h4><p>Jardín, zona de descanso, talleres de agricultura, carpintería y artes, conectados directamente con las huertas públicas.</p></article>
+    <article><p class="volumenes__n">Volumetrías 3 y 4</p><h4>Comercio, vivero-termas y mirador</h4><p>Módulos de comercio, restaurante, gradas hacia la cancha, termas, vivero y mirador.</p></article>
+  </div>
+
+  <h3 class="sub">Plantas arquitectónicas · escala 1:200</h3>
+  <div class="plantas">
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A1: Biblioteca y Jardín Buen Crecer"><img src="img/planta-1a.jpg" width="2121" height="1535" loading="lazy" alt="Lámina A1, planta arquitectónica: Biblioteca y Jardín Buen Crecer" data-falta="planta-1a.jpg"></button>
+      <figcaption><b>A1</b> Biblioteca y Jardín Buen Crecer<span>Módulo de consulta, salas de archivos y digital, ocio, administración y baños.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A2: Biblioteca · cuadro de áreas"><img src="img/planta-1b.jpg" width="2121" height="1465" loading="lazy" alt="Lámina A2, planta arquitectónica: Biblioteca · cuadro de áreas" data-falta="planta-1b.jpg"></button>
+      <figcaption><b>A2</b> Biblioteca · cuadro de áreas<span>Las mismas áreas con su dimensionamiento: de 20 a 72 m² por espacio.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A3: Talleres y sala de exposiciones"><img src="img/planta-3b.jpg" width="2121" height="1382" loading="lazy" alt="Lámina A3, planta arquitectónica: Talleres y sala de exposiciones" data-falta="planta-3b.jpg"></button>
+      <figcaption><b>A3</b> Talleres y sala de exposiciones<span>Talleres de arte, carpintería y agricultura junto a la sala de exposición.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A4: Cocina y módulos de comercio"><img src="img/planta-3a.jpg" width="2121" height="1618" loading="lazy" alt="Lámina A4, planta arquitectónica: Cocina y módulos de comercio" data-falta="planta-3a.jpg"></button>
+      <figcaption><b>A4</b> Cocina y módulos de comercio<span>Taller de cocina, baños, buitrones y módulos de comercio.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A5: Gradas, mirador, termas y vivero"><img src="img/planta-2a.jpg" width="2121" height="1602" loading="lazy" alt="Lámina A5, planta arquitectónica: Gradas, mirador, termas y vivero" data-falta="planta-2a.jpg"></button>
+      <figcaption><b>A5</b> Gradas, mirador, termas y vivero<span>Gradas con vista a la cancha, puente-mirador, termas y vivero.</span></figcaption>
+    </figure>
+    <figure class="figura lamina">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina A6: Cubiertas"><img src="img/planta-2b.jpg" width="2121" height="1398" loading="lazy" alt="Lámina A6, planta arquitectónica: Cubiertas" data-falta="planta-2b.jpg"></button>
+      <figcaption><b>A6</b> Cubiertas<span>Planta de cubiertas sobre la topografía.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 06 RECORRIDO -->
+<section class="capitulo capitulo--tono" id="recorrido" aria-labelledby="recorrido-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">06</span>
+    <div>
+      <p class="kicker">Circulación y conexión</p>
+      <h2 id="recorrido-t">Trazar el recorrido</h2>
+    </div>
+  </header>
+  <div class="dos-col">
+    <div class="prosa">
+      <p class="entrada">El edificio se piensa como una extensión del espacio público. La circulación abraza el conjunto y guía al usuario hacia los espacios públicos.</p>
+      <ul class="lista-marcas">
+        <li><b>Adaptación a la topografía:</b> terrazas escalonadas que recorren el proyecto sin grandes desplazamientos verticales.</li>
+        <li><b>Recorridos dinámicos:</b> secuencias espaciales que cambian de ritmo, visuales y experiencias.</li>
+        <li><b>Transiciones graduales:</b> umbrales entre interior y exterior, actividad y descanso, cultura y paisaje.</li>
+        <li><b>Relación con el paisaje:</b> la circulación siempre se acompaña de visuales, patios y espacios verdes.</li>
+      </ul>
+    </div>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: La circulación abraza el proyecto."><img src="img/esq-circulacion-iso.jpg" width="832" height="767" loading="lazy" alt="Axonometría del conjunto con la circulación marcada en rojo" data-falta="esq-circulacion-iso.jpg"></button>
+    <figcaption>La circulación abraza el proyecto.</figcaption>
+  </figure>
+  </div>
+  <div class="mosaico">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Esquema de circulación y relación de usos."><img src="img/esq-recorrido-axo.jpg" width="1280" height="1243" loading="lazy" alt="Axonometría con el recorrido punteado desde los tres accesos hasta el vivero" data-falta="esq-recorrido-axo.jpg"></button>
+    <figcaption>Esquema de circulación y relación de usos.</figcaption>
+  </figure>
+    <ol class="accesos">
+      <li><b>Acceso 1</b>Principal y peatonal, desde el barrio y la vía principal.</li>
+      <li><b>Acceso 2</b>Peatonal y ciclista, desde la parte alta del terreno.</li>
+      <li><b>Acceso 3</b>Desde la zona deportiva y los espacios comunales existentes.</li>
+    </ol>
+  </div>
+
+  <h3 class="sub">Secuencia del recorrido</h3>
+  <ol class="secuencia">
+    <li>Accesos</li>
+    <li>Comercio</li>
+    <li>Zona deportiva</li>
+    <li>Aprendizaje y talleres</li>
+    <li>Transición</li>
+    <li>Cultura y memoria</li>
+    <li>Espejo de agua</li>
+    <li>Huertas y jardines</li>
+    <li>Vivero y mirador</li>
+  </ol>
+  <p class="secuencia__pie"><span>Accesibilidad y actividad</span><span>Encuentro, aprendizaje y cultura</span><span>Paisaje y contemplación</span></p>
+  <figure class="figura figura--ancha">
+    <button type="button" class="ampliar" aria-label="Ampliar: Planta del conjunto y su recorrido."><img src="img/circulacion.jpg" width="2200" height="1556" loading="lazy" alt="Planta del proyecto con el recorrido curvo que conecta los volúmenes" data-falta="circulacion.jpg"></button>
+    <figcaption>Planta del conjunto y su recorrido.</figcaption>
+  </figure>
+</section>
+
+<!-- 07 PROYECTO -->
+<section class="capitulo" id="proyecto" aria-labelledby="proyecto-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">07</span>
+    <div>
+      <p class="kicker">Secciones, detalle y volumen</p>
+      <h2 id="proyecto-t">Construir el proyecto</h2>
+    </div>
+  </header>
+  <div class="prosa prosa--ancha">
+    <p class="entrada">En la etapa final llevamos todo a secciones e isométricos. Las secciones muestran cómo los niveles siguen la topografía: espacio público abajo, huertas en la mitad, talleres más arriba y el mirador con comercio en la parte alta.</p>
+  </div>
+  <div class="mosaico">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Secciones longitudinal y transversal."><img src="img/seccion.jpg" width="2200" height="1556" loading="lazy" alt="Sección longitudinal y sección transversal del proyecto sobre la ladera" data-falta="seccion.jpg"></button>
+    <figcaption>Secciones longitudinal y transversal.</figcaption>
+  </figure>
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Isométrico estructural del conjunto."><img src="img/iso-estructural.jpg" width="2200" height="1572" loading="lazy" alt="Isométrico estructural del conjunto con pasarelas, cubiertas y columnas" data-falta="iso-estructural.jpg"></button>
+    <figcaption>Isométrico estructural del conjunto.</figcaption>
+  </figure>
+  </div>
+  <div class="mosaico mosaico--detalle">
+    <figure class="figura">
+    <button type="button" class="ampliar" aria-label="Ampliar: Detalle en corte fugado de la biblioteca."><img src="img/esq-detalle.jpg" width="2176" height="1864" loading="lazy" alt="Corte fugado de detalle: cubierta en madera, vigas metálicas, muro de contención y pilotes" data-falta="esq-detalle.jpg"></button>
+    <figcaption>Detalle en corte fugado de la biblioteca.</figcaption>
+  </figure>
+    <ol class="capas">
+      <li><b>Viguetas de cubierta en madera</b>La cubierta inclinada da sombra al sol casi vertical.</li>
+      <li><b>Vigas de amarre metálicas chapilladas</b>Amarran la estructura y reciben las estanterías.</li>
+      <li><b>Muro de contención</b>Sostiene la ladera y funciona como masa térmica.</li>
+      <li><b>Losa de cimentación</b>Reparte las cargas y guarda el calor del día.</li>
+      <li><b>Pilotes de 7 m</b>Llevan el edificio hasta suelo firme y dejan el piso ventilado.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 08 ESTRUCTURA -->
+<section class="capitulo capitulo--tono" id="estructura" aria-labelledby="estructura-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">08</span>
+    <div>
+      <p class="kicker">Estructuras IV · Cubiertas y cuantificación</p>
+      <h2 id="estructura-t">Resolver la estructura</h2>
+    </div>
+  </header>
+  <div class="dos-col">
+    <div class="prosa">
+      <p class="entrada">La cubierta curva en madera se volvió la imagen del proyecto, y en Estructuras IV tuvimos que demostrar cómo se sostiene y cómo maneja el agua.</p>
+      <p>Las cubiertas de madera se arman con casetones de 0,50 × 1,20 m sobre viguetas de glulam, apoyadas en vigas y columnas metálicas. Una franja de glulam con claraboyas se apoya sobre el muro de contención existente, y un domo seccionado en madera lleva malla de sombra.</p>
+      <p>Todas las cubiertas drenan con pendiente hacia canales y bajantes que llevan el agua lluvia a la huerta.</p>
+    </div>
+    <dl class="datos">
+      <div><dt>1.399 m²</dt><dd>de cubierta en madera, en cuatro paños</dd></div>
+      <div><dt>1.399 L</dt><dd>de agua recogida por cada milímetro de lluvia, para las huertas</dd></div>
+      <div><dt>140,7 t</dt><dd>de estructura metálica</dd></div>
+      <div><dt>2.114 m³</dt><dd>de concreto en cimentación y contención</dd></div>
+    </dl>
+  </div>
+
+  <div class="mosaico mosaico--igual">
+    <figure class="figura">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina de cubiertas de madera">
+        <img src="img/cubiertas-madera.jpg" width="2400" height="1698" loading="lazy" alt="Lámina Cubiertas de madera: plantas de los cuatro paños, sección radial, isométricos y detalles de casetón" data-falta="cubiertas-madera.jpg">
+      </button>
+      <figcaption>Cubiertas de madera: casetones, drenaje y aprovechamiento del agua lluvia.</figcaption>
+    </figure>
+    <figure class="figura">
+      <button type="button" class="ampliar" aria-label="Ampliar lámina glulam y malla">
+        <img src="img/glulam-malla.jpg" width="2400" height="1698" loading="lazy" alt="Lámina Glulam y malla: franja de glulam con claraboyas y domo en malla, con detalles de apoyo" data-falta="glulam-malla.jpg">
+      </button>
+      <figcaption>Glulam y malla: franja con claraboyas y domo de sombra.</figcaption>
+    </figure>
+  </div>
+
+  <div class="presupuesto">
+    <p class="kicker">Cuantificación y presupuesto</p>
+    <p class="presupuesto__cifra">$9.516 millones</p>
+    <p class="presupuesto__nota">Valor total estimado del predimensionamiento académico, con precios de octubre de 2026. Incluye cimentación, estructura metálica, tensoestructuras, muros, fachada, cubierta, cielos y módulos de madera. No incluye pisos, escaleras, instalaciones, carpintería, paisajismo ni diseños.</p>
+    <ul class="presupuesto__lista">
+      <li style="--p:36.5"><span>Cimentación y contención</span><b>36,5 %</b></li>
+      <li style="--p:24.6"><span>Estructura metálica</span><b>24,6 %</b></li>
+      <li style="--p:9.1"><span>Muro cortina y doble fachada</span><b>9,1 %</b></li>
+      <li style="--p:9.0"><span>Equipo mayor y preliminares</span><b>9,0 %</b></li>
+      <li style="--p:8.5"><span>Tensoestructuras</span><b>8,5 %</b></li>
+      <li style="--p:4.6"><span>Cubierta con casetones de madera</span><b>4,6 %</b></li>
+      <li style="--p:3.5"><span>Módulos de estantería en madera</span><b>3,5 %</b></li>
+      <li style="--p:3.1"><span>Muros livianos</span><b>3,1 %</b></li>
+      <li style="--p:1.0"><span>Cielos rasos</span><b>1,0 %</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section class="capitulo capitulo--planos" id="planos" aria-labelledby="planos-t">
+  <header class="capitulo__cab">
+    <span class="capitulo__num">09</span>
+    <div>
+      <p class="kicker">Entregas del semestre</p>
+      <h2 id="planos-t">Planos y láminas</h2>
+    </div>
+  </header>
+  <div class="riel">
+    <ul class="planchas">
+      <li><button type="button" class="ampliar" aria-label="Ampliar: plancha 1"><img src="img/plancha-1.jpg" width="1800" height="2572" loading="lazy" alt="Plancha final 1 de Ecos del Paisaje, 70 por 100 cm: Lugar, programa y secciones" data-falta="plancha-1.jpg"></button><p><span>Plancha 1 · 70 × 100</span>Lugar, programa y secciones</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: plancha 2"><img src="img/plancha-2.jpg" width="1800" height="2572" loading="lazy" alt="Plancha final 2 de Ecos del Paisaje, 70 por 100 cm: Espacio público e imaginario" data-falta="plancha-2.jpg"></button><p><span>Plancha 2 · 70 × 100</span>Espacio público e imaginario</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: plancha 3"><img src="img/plancha-3.jpg" width="1800" height="2572" loading="lazy" alt="Plancha final 3 de Ecos del Paisaje, 70 por 100 cm: Detalle e isométrico" data-falta="plancha-3.jpg"></button><p><span>Plancha 3 · 70 × 100</span>Detalle e isométrico</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: plancha 4"><img src="img/plancha-4.jpg" width="1800" height="2572" loading="lazy" alt="Plancha final 4 de Ecos del Paisaje, 70 por 100 cm: Detalle, versión final" data-falta="plancha-4.jpg"></button><p><span>Plancha 4 · 70 × 100</span>Detalle, versión final</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: El lugar"><img src="img/lamina-urbanismo-1.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: el lugar, un borde bajo presión" data-falta="lamina-urbanismo-1.jpg"></button><p><span>Urbanismo V</span>El lugar</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Postura"><img src="img/lamina-urbanismo-2.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo V: postura, replantear la norma" data-falta="lamina-urbanismo-2.jpg"></button><p><span>Urbanismo V</span>Postura</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Estrategias"><img src="img/lamina-urbanismo-3.jpg" width="1554" height="2200" loading="lazy" alt="Lámina de Urbanismo: problemáticas, estrategias y potencialidades" data-falta="lamina-urbanismo-3.jpg"></button><p><span>Urbanismo</span>Estrategias</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A1"><img src="img/planta-1a.jpg" width="2121" height="1535" loading="lazy" alt="Lámina A1: Biblioteca y Jardín Buen Crecer" data-falta="planta-1a.jpg"></button><p><span>Proyecto · A1</span>Biblioteca y Jardín Buen Crecer</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A2"><img src="img/planta-1b.jpg" width="2121" height="1465" loading="lazy" alt="Lámina A2: Biblioteca · cuadro de áreas" data-falta="planta-1b.jpg"></button><p><span>Proyecto · A2</span>Biblioteca · cuadro de áreas</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A3"><img src="img/planta-3b.jpg" width="2121" height="1382" loading="lazy" alt="Lámina A3: Talleres y sala de exposiciones" data-falta="planta-3b.jpg"></button><p><span>Proyecto · A3</span>Talleres y sala de exposiciones</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A4"><img src="img/planta-3a.jpg" width="2121" height="1618" loading="lazy" alt="Lámina A4: Cocina y módulos de comercio" data-falta="planta-3a.jpg"></button><p><span>Proyecto · A4</span>Cocina y módulos de comercio</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A5"><img src="img/planta-2a.jpg" width="2121" height="1602" loading="lazy" alt="Lámina A5: Gradas, mirador, termas y vivero" data-falta="planta-2a.jpg"></button><p><span>Proyecto · A5</span>Gradas, mirador, termas y vivero</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: lámina A6"><img src="img/planta-2b.jpg" width="2121" height="1398" loading="lazy" alt="Lámina A6: Cubiertas" data-falta="planta-2b.jpg"></button><p><span>Proyecto · A6</span>Cubiertas</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Secciones estructurales"><img src="img/seccion-estructural.jpg" width="2200" height="1572" loading="lazy" alt="Secciones estructurales del proyecto" data-falta="seccion-estructural.jpg"></button><p><span>Estructuras IV</span>Secciones estructurales</p></li>
+      <li class="ancha"><button type="button" class="ampliar" aria-label="Ampliar: Planta estructural"><img src="img/estructura-1.jpg" width="2200" height="1572" loading="lazy" alt="Plano estructural con planta de cubierta y detalles de pilotes y vigas" data-falta="estructura-1.jpg"></button><p><span>Estructuras IV</span>Planta estructural</p></li>
+    </ul>
+  </div>
+  <p class="planos__pie">Toca cualquier lámina para verla completa.</p>
+</section>
+
+</main>
+
+<footer class="pie">
+  <p class="pie__titulo">Ecos del Paisaje</p>
+  <p>Sebastián Díaz Aguilera · Ana Sofía Sanmartín Betancur</p>
+  <p>Proyecto: Arq. Manuela Marín Echeverri · Urbanismo: Arq. Mag. José Fernando Jaramillo Giraldo</p>
+  <p>Semestre 2026-2 · Facultad de Arquitectura, Universidad Santo Tomás, Medellín</p>
+</footer>
+
+<dialog class="visor" id="visor" aria-label="Imagen ampliada">
+  <button type="button" class="visor__cerrar">Cerrar</button>
+  <img src="" alt="">
+</dialog>
+
+<script src="js/main.js"></script>
+</body>
+</html>
