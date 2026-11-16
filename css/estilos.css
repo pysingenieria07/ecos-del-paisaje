@@ -747,3 +747,11 @@ img[src*="render-"], img[src*="portada"], .gf img, .bento img { mix-blend-mode: 
   font: 700 .85rem var(--f-etiqueta); letter-spacing: .14em; text-transform: uppercase; box-shadow: 0 10px 24px -8px rgba(58, 17, 24, .6);
 }
 .aviso-completo:hover { background: var(--vino-hondo); }
+
+/* ---------- carrusel que avanza con el scroll ---------- */
+.galeria--scroll { height: calc(100svh + var(--pasos, 7) * 55svh); overflow: visible; padding-top: 0; padding-bottom: 0; }
+.galeria--scroll .galeria__marco { position: sticky; top: 0; height: 100svh; margin-top: 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.galeria--scroll .galeria__cab { position: relative; z-index: 2; }
+.galeria--scroll .galeria__escena { height: min(64svh, 600px); }
+.galeria__avance { display: none; }
+.galeria--scroll .galeria__avance { display: block; width: min(320px, 60vw); height: 2px; margin: .6rem auto 1.2rem; background: var(--vino); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 0 1px rgba(107, 30, 43, .12); }

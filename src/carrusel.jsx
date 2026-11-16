@@ -551,6 +551,7 @@ export function WarpCarousel({
   onSelect,
   onFrontChange,
   onReady,
+  scrollDrive = null,
   style,
 }) {
   const wrapRef = React.useRef(null);
@@ -576,7 +577,7 @@ export function WarpCarousel({
     dragX: 0, dragP: 0, downX: 0, moved: false, lastT: 0, visible: true, hiddenAt: 0,
   });
   const props = React.useRef({});
-  props.current = { autoplay, gap, stepN, reduced, realCount, onSelect, onFrontChange, onReady };
+  props.current = { autoplay, gap, stepN, reduced, realCount, onSelect, onFrontChange, onReady, scroll: !!scrollDrive };
   const handles = React.useRef({ kick: () => {}, draw: () => {} });
 
   const lastIndex = React.useRef(0);
@@ -772,7 +773,7 @@ export function WarpCarousel({
       if (disposed || !L.visible) return;
       const now = performance.now() / 1000;
       const p = props.current;
-      if (p.autoplay && !p.reduced && L.mode !== "drag" && L.mode !== "spring" && now >= L.nextAuto) {
+      if (p.autoplay && !p.scroll && !p.reduced && L.mode !== "drag" && L.mode !== "spring" && now >= L.nextAuto) {
         L.nextAuto = Math.max(L.nextAuto + p.gap, now + p.gap * 0.5);
         L.autoPending = true;
         request(lastIndex.current + p.stepN);
@@ -868,6 +869,29 @@ export function WarpCarousel({
   React.useEffect(() => {
     handles.current.kick();
   }, [autoplay, reduced]);
+
+  // con scrollDrive, girar la rueda es bajar por la página: cada tramo de scroll muestra un render
+  React.useEffect(() => {
+    if (!scrollDrive) return;
+    let raf = 0;
+    const leer = () => {
+      raf = 0;
+      const p = scrollDrive();
+      if (p === null) return;
+      const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(p * realCount)));
+      const actual = mod(lastIndex.current, realCount);
+      if (objetivo !== actual) {
+        let d = objetivo - actual;
+        live.current.nextAuto = Infinity;
+        setInner(lastIndex.current + d);
+      }
+    };
+    const alMover = () => { if (!raf) raf = requestAnimationFrame(leer); };
+    addEventListener("scroll", alMover, { passive: true });
+    addEventListener("resize", alMover);
+    leer();
+    return () => { removeEventListener("scroll", alMover); removeEventListener("resize", alMover); if (raf) cancelAnimationFrame(raf); };
+  }, [scrollDrive, realCount]);
 
   /* ---------- interacción ---------- */
   const unitCss = () => {
@@ -968,6 +992,8 @@ const RENDERS = [
   { image: "img/render-plaza.jpg", title: "Plaza\nde acceso", footer: "Bajo la pérgola curva", caption: "La llegada: la plaza de acceso bajo la pérgola curva de madera.", alt: "Render exterior: plaza escalonada con jardineras de ladrillo y una pérgola curva de madera", focus: 0.42, glow: "#A4583B" },
   { image: "img/render-espejo.jpg", title: "Espejo\nde agua", footer: "Memoria al centro", caption: "El espejo de agua-memoria, centro del proyecto, frente a la biblioteca y las gradas.", alt: "Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera", focus: 0.5, glow: "#6F9C9F" },
   { image: "img/render-aereo.jpg", title: "El conjunto\ndesde arriba", footer: "La ladera queda verde", caption: "El conjunto construido: los volúmenes abrazan la plaza y la ladera queda verde.", alt: "Render aéreo del conjunto: volúmenes de madera alrededor de la plaza y el espejo de agua", focus: 0.5, glow: "#6E6A3A" },
+  { image: "img/render-biblioteca-gradas.jpg", title: "Biblioteca", footer: "Gradas para leer", caption: "La biblioteca: estanterías de madera, gradas de lectura y la cubierta de casetones con lucernarios.", alt: "Render interior de la biblioteca con estanterías de madera, gradas y personas leyendo bajo la cubierta de casetones", focus: 0.45, glow: "#CDB99D" },
+  { image: "img/render-biblioteca-mirador.jpg", title: "Biblioteca\nmirador", footer: "Leer frente al paisaje", caption: "El mirador de la biblioteca: un corredor de vidrio con jardineras y vista al conjunto.", alt: "Render del corredor vidriado de la biblioteca con jardineras, bancas de madera y vista al conjunto", focus: 0.55, glow: "#CDB99D" },
   { image: "img/render-aulas-habitadas.jpg", title: "Aulas\nhabitadas", footer: "Aprender en terrazas", caption: "Las aulas habitadas: terrazas de madera bajo la cubierta de casetones.", alt: "Render interior de las aulas con personas entre las estanterías", focus: 0.62, glow: "#C98A3E" },
   { image: "img/render-aulas.jpg", title: "Aulas", footer: "Cubierta de casetones", caption: "Las aulas: piso y estanterías de madera, celosías inclinadas y lucernarios.", alt: "Render interior de las aulas: estanterías de madera en terrazas y cubierta de casetones", focus: 0.45, glow: "#6B1E2B" },
 ];
@@ -993,5 +1019,20 @@ if (raiz) {
   if (d.warp) opc.warp = parseFloat(d.warp);
   if (d.glow) opc.glow = d.glow;
   if (d.fondo) opc.background = d.fondo;
+  const seccion = raiz.closest(".galeria");
+  const calma = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (d.scroll !== undefined && seccion && !calma) {
+    seccion.classList.add("galeria--scroll");
+    seccion.style.setProperty("--pasos", RENDERS.length);
+    const avance = seccion.querySelector(".galeria__avance");
+    opc.scrollDrive = () => {
+      const r = seccion.getBoundingClientRect();
+      const recorrido = seccion.offsetHeight - innerHeight;
+      if (recorrido <= 0) return null;
+      const p = Math.min(0.9999, Math.max(0, -r.top / recorrido));
+      if (avance) avance.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      return p;
+    };
+  }
   render(<WarpCarousel cards={RENDERS} onSelect={abrir} onFrontChange={alFrente} onReady={listo} {...opc} />, raiz);
 }
