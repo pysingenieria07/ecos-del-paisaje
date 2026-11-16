@@ -185,6 +185,15 @@ p { margin: 0 0 1em; }
 @media (min-width: 961px) { .sobre-video .nav ol a, .sobre-video .nav ol a:hover { color: var(--claro); } }
 @media (max-width: 760px) { .apertura__kicker { letter-spacing: .18em; } .apertura__pausa { right: auto; left: var(--gutter); bottom: auto; top: calc(var(--nav-h, 3.4rem) + .8rem); } }
 
+/* ---------- FICHA bajo el video ---------- */
+.ficha { padding: var(--sp-4) var(--gutter); border-bottom: 1px solid var(--linea); }
+.ficha__datos { max-width: var(--ancho); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-3) var(--sp-4); }
+.ficha__datos div { border-top: 2px solid var(--vino); padding-top: .8rem; }
+.ficha__datos dt { font: 600 .8rem var(--f-etiqueta); letter-spacing: .16em; text-transform: uppercase; color: var(--arcilla); margin-bottom: .3rem; }
+.ficha__datos dd { margin: 0; font-size: .98rem; line-height: 1.45; }
+@media (max-width: 960px) { .ficha__datos { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .ficha__datos { grid-template-columns: 1fr; } }
+
 /* ---------- PORTADA ---------- */
 .hero {
   position: relative;
