@@ -689,9 +689,9 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
 .galeria__marcas li.actual + li { margin-left: 13px; }
 
 /* pie de foto: sale hacia arriba desenfocándose, entra desde abajo */
-.galeria__pie { transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out), filter 220ms var(--ease-out); }
-.galeria__pie.sale { opacity: 0; transform: translateY(-8px); filter: blur(2px); transition-duration: 140ms; }
-.galeria__pie.entra { opacity: 0; transform: translateY(8px); filter: blur(2px); transition: none; }
+.galeria__pie { transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), filter 180ms var(--ease-out); }
+.galeria__pie.sale { opacity: 0; transform: translateY(-4px); filter: blur(1.5px); transition-duration: 110ms; }
+.galeria__pie.entra { opacity: 0; transform: translateY(4px); filter: blur(1.5px); transition: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .galeria--viva:not(.galeria--en) .galeria__cab > *, .galeria--viva:not(.galeria--en) .galeria__escena { transform: none; }

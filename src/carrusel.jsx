@@ -679,7 +679,7 @@ export function WarpCarousel({
       if (L.mode === "follow") {
         const dt = Math.min(0.05, Math.max(0, now - L.lastT));
         L.lastT = now;
-        L.P += (L.to - L.P) * (1 - Math.exp(-dt * 4.2));
+        L.P += (L.to - L.P) * (1 - Math.exp(-dt * 7));
         if (Math.abs(L.to - L.P) < 5e-4) { L.P = L.to; L.mode = "rest"; }
         return { P: L.P, Pb: 0, mix: 0 };
       }
@@ -888,20 +888,22 @@ export function WarpCarousel({
       if (p === null) return;
       // cada tramo de scroll es un render: al cruzar al siguiente tramo, la rueda gira sola hasta él
       live.current.nextAuto = Infinity;
-      const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(p * realCount)));
+      const bruto = p * realCount;
+      const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(bruto)));
       const actual = mod(lastIndex.current, realCount);
-      if (objetivo !== actual) {
-        const nuevo = lastIndex.current + (objetivo - actual);
-        const L = live.current;
-        if (!props.current.reduced && L.mode !== "drag") {
-          // la rueda se desliza hacia el render nuevo y frena sola (sin latigazo); si sigues bajando, cambia de rumbo sin cortes
-          if (L.mode !== "follow") L.lastT = performance.now() / 1000;
-          L.to = nuevo + DRIFT;
-          L.mode = "follow";
-          handles.current.kick();
-        }
-        setInner(nuevo);
+      const nuevo = lastIndex.current + (objetivo - actual);
+      // dentro de cada tramo la rueda se inclina apenas hacia el siguiente render (±0,1 de tarjeta): responde al scroll sin moverse de más
+      const frac = Math.min(1, Math.max(0, bruto - objetivo));
+      const extremo = (objetivo === 0 && frac < 0.5) || (objetivo === realCount - 1 && frac > 0.5);
+      const inclina = extremo ? 0 : (frac - 0.5) * 0.2;
+      const L = live.current;
+      if (!props.current.reduced && L.mode !== "drag") {
+        if (L.mode !== "follow") L.lastT = performance.now() / 1000;
+        L.to = nuevo + DRIFT + inclina;
+        L.mode = "follow";
+        handles.current.kick();
       }
+      if (objetivo !== actual) setInner(nuevo);
     };
     const alMover = () => { if (!raf) raf = requestAnimationFrame(leer); };
     addEventListener("scroll", alMover, { passive: true });
@@ -1073,7 +1075,7 @@ if (raiz) {
       pie.classList.add("entra");
       pie.getBoundingClientRect();
       pie.classList.remove("entra");
-    }, 140);
+    }, 110);
   };
   const listo = () => {
     const g = raiz.closest(".galeria");
