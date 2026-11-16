@@ -116,8 +116,8 @@
 
     const rv = marco.getBoundingClientRect();
     const kv = Math.min(1, Math.max(0, (vh - rv.top) / (vh * 0.75)));
-    marco.style.setProperty('--v-in', ((1 - kv) * 12).toFixed(2) + '%');
-    marco.style.setProperty('--v-lado', ((1 - kv) * 8).toFixed(2) + '%');
+    marco.style.setProperty('--v-in', ((1 - kv) * 10).toFixed(2) + '%');
+    marco.style.setProperty('--v-lado', ((1 - kv) * 10).toFixed(2) + '%');
 
     pausas.forEach((p2) => {
       const rp = p2.getBoundingClientRect();
