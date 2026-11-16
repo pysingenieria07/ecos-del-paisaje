@@ -589,6 +589,7 @@ export function WarpCarousel({
     lastIndex.current = current;
     if (props.current.onFrontChange) props.current.onFrontChange(mod(current, props.current.realCount));
     if (prev === current) return;
+    if (props.current.scroll) return;
     const delta = current - prev;
     const now = performance.now() / 1000;
     const fromAuto = L.autoPending;
@@ -675,6 +676,13 @@ export function WarpCarousel({
 
     const L = live.current;
     const progressAt = (now) => {
+      if (L.mode === "follow") {
+        const dt = Math.min(0.05, Math.max(0, now - L.lastT));
+        L.lastT = now;
+        L.P += (L.to - L.P) * (1 - Math.exp(-dt * 14));
+        if (Math.abs(L.to - L.P) < 5e-4) { L.P = L.to; L.mode = "rest"; }
+        return { P: L.P, Pb: 0, mix: 0 };
+      }
       if (L.mode === "spin") {
         const f = (now - L.t0) * 30;
         L.P = L.from + (L.to - L.from) * spinN(f, L.n);
@@ -878,13 +886,22 @@ export function WarpCarousel({
       raf = 0;
       const p = scrollDrive();
       if (p === null) return;
-      const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(p * realCount)));
-      const actual = mod(lastIndex.current, realCount);
-      if (objetivo !== actual) {
-        let d = objetivo - actual;
-        live.current.nextAuto = Infinity;
-        setInner(lastIndex.current + d);
+      const L = live.current;
+      // posición continua: 0 = primer render al centro, realCount - 1 = último
+      // cada render se queda al centro la primera y la última cuarta parte de su tramo y gira en el medio
+      const bruto = p * (realCount - 1);
+      const base = Math.floor(bruto);
+      const f = Math.min(1, Math.max(0, (bruto - base - 0.25) / 0.5));
+      const T = Math.min(realCount - 1, base + f * f * (3 - 2 * f));
+      L.nextAuto = Infinity;
+      if (L.mode !== "drag") {
+        if (props.current.reduced) { L.P = T; }
+        else { if (L.mode !== "follow") L.lastT = performance.now() / 1000; L.to = T; L.mode = "follow"; }
+        handles.current.kick();
+        if (props.current.reduced) handles.current.draw();
       }
+      const objetivo = Math.round(T);
+      if (objetivo !== lastIndex.current) { lastIndex.current = objetivo; setInner(objetivo); }
     };
     const alMover = () => { if (!raf) raf = requestAnimationFrame(leer); };
     addEventListener("scroll", alMover, { passive: true });
@@ -1079,7 +1096,7 @@ if (raiz) {
       const r = seccion.getBoundingClientRect();
       const recorrido = seccion.offsetHeight - innerHeight;
       if (recorrido <= 0) return null;
-      const p = Math.min(0.9999, Math.max(0, -r.top / recorrido));
+      const p = Math.min(1, Math.max(0, -r.top / recorrido));
       if (avance) avance.style.transform = "scaleX(" + p.toFixed(4) + ")";
       return p;
     };
