@@ -14,11 +14,11 @@
   medir(); addEventListener('resize', medir);
 
   /* ---------- aparición al entrar en pantalla ---------- */
-  const aparecen = $$('.mg-manifiesto .mg-etq, .mg-video, .mg-indice__cab, .mg-ind li, .mg-cap__lado > *, .mg-cap__body, .mg-mas, .mg-gal__cab, .mg-planos__cab, .mg-planchas li, .mg-pie > *');
+  const aparecen = $$('.mg-manifiesto .mg-etq, .mg-video, .mg-indice__cab, .mg-ind li, .mg-cap__tit > *, .mg-cap__lead, .mg-cap__body, .mg-mas, .mg-gal__cab, .mg-planos__cab, .mg-planchas li, .mg-pie > *');
   aparecen.forEach((el) => el.classList.add('mg-aparece'));
   // dentro de un mismo grupo, retraso escalonado no uniforme
   const pasos = [0, 60, 110, 150, 185, 215, 240, 260];
-  [$$('.mg-ind li'), ...$$('.mg-cap__lado').map((l) => [...l.children]), $$('.mg-planchas li')]
+  [$$('.mg-ind li'), ...$$('.mg-cap__tit').map((l) => [...l.children]), ...$$('.mg-cap__txt').map((l) => [...l.children]), $$('.mg-planchas li')]
     .forEach((grupo) => grupo.forEach((el, i) => el.style.setProperty('--d', pasos[Math.min(i, pasos.length - 1)])));
   const io = new IntersectionObserver((ents) => ents.forEach((en) => {
     if (!en.isIntersecting) return;
@@ -27,6 +27,9 @@
     en.target.querySelectorAll && en.target.querySelectorAll('.mg-num').forEach(contar);
   }), { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
   [...aparecen, ...$$('.mg-fig, .mg-datos, .mg-cap')].forEach((el) => io.observe(el));
+  // las palabras de acento se entintan cuando llegan a la parte media de la pantalla
+  const ioAcento = new IntersectionObserver((ents) => ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('en'); ioAcento.unobserve(en.target); } }), { rootMargin: '0px 0px -35% 0px' });
+  $$('.mg-acento').forEach((el) => ioAcento.observe(el));
 
   /* ---------- cifras que cuentan ---------- */
   function contar(el) {
@@ -49,7 +52,20 @@
   /* ---------- manifiesto: cada palabra se enciende a medida que se lee ---------- */
   const frase = $('#frase');
   const palabras = [];
-  frase.innerHTML = frase.textContent.split(/(\s+)/).map((t) => (/^\s+$/.test(t) ? t : '<span class="w">' + t + '</span>')).join('');
+  // parte el texto en palabras sin perder las cursivas de acento
+  (function partir(nodo) {
+    [...nodo.childNodes].forEach((h) => {
+      if (h.nodeType === 1) { partir(h); return; }
+      if (h.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      h.textContent.split(/(\s+)/).forEach((t) => {
+        if (!t) return;
+        if (/^\s+$/.test(t)) { frag.append(t); return; }
+        const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.append(s);
+      });
+      h.replaceWith(frag);
+    });
+  })(frase);
   palabras.push(...$$('.w', frase));
 
   /* ---------- video: se abre su marco al acercarse y solo corre si se ve ---------- */
