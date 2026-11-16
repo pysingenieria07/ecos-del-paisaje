@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EDE3D3">
 <title>Síntesis · Ecos del Paisaje · Villatina 2026-2</title>
 <meta name="description" content="Bitácora del semestre 2026-2: equipamiento ambiental e intergeneracional en el borde de Villatina, Medellín. Sebastián Díaz Aguilera y Ana Sofía Sanmartín Betancur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css?v=20261115j">
-<link rel="stylesheet" href="css/sintesis.css?v=2">
+<link rel="stylesheet" href="css/sintesis.css?v=3">
 </head>
 <body>
 
@@ -63,9 +64,10 @@
 
 <!-- RENDERS -->
 <section class="galeria" id="renders" aria-labelledby="renders-t">
-  <header class="galeria__cab">
+  <header class="sec-cab">
     <p class="kicker">Renders</p>
     <h2 id="renders-t">El proyecto en imágenes</h2>
+    <p>Seis vistas del conjunto, la biblioteca y las aulas. Arrastra para girar y toca la del centro para verla completa.</p>
   </header>
   <div class="galeria__marco">
     <!-- tira simple: se ve siempre; el carrusel 3D la reemplaza cuando logra dibujarse -->
@@ -77,98 +79,114 @@
       <li><button type="button" class="ampliar" aria-label="Ampliar: Aulas habitadas"><img src="img/render-aulas-habitadas.jpg" width="2400" height="1350" alt="Render interior de las aulas con personas entre las estanterías" data-falta="render-aulas-habitadas.jpg"></button><p>Aulas habitadas</p></li>
       <li><button type="button" class="ampliar" aria-label="Ampliar: Aulas"><img src="img/render-aulas.jpg" width="2400" height="1350" alt="Render interior de las aulas: estanterías de madera en terrazas y cubierta de casetones" data-falta="render-aulas.jpg"></button><p>Aulas</p></li>
     </ul>
-    <div class="galeria__escena" id="carrusel-renders"></div>
+    <div class="galeria__escena" id="carrusel-renders" data-warp="0" data-glow="#CDB99D"></div>
   </div>
   <p class="galeria__pie" id="carrusel-pie">La llegada: la plaza de acceso bajo la pérgola curva de madera.</p>
-  <p class="galeria__ayuda">Arrastra para girar · toca el render del centro para verlo completo</p>
+  
 </section>
 
 <!-- SÍNTESIS: un bloque por capítulo -->
 <section class="sintesis" id="sintesis" aria-labelledby="sintesis-t">
-  <header class="sintesis__cab">
+  <header class="sec-cab">
     <p class="kicker">El proyecto en ocho puntos</p>
     <h2 id="sintesis-t">Síntesis</h2>
     <p>Lo esencial de cada capítulo. Si quieres el análisis completo, entra a «Ver más información».</p>
   </header>
   <div class="sintesis__grilla">
-    <article class="sx sx--ancha" id="s-lugar" aria-labelledby="s-lugar-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Análisis del lugar"><img src="img/norma-vs-borde.jpg" alt="Esquema: con la norma literal el borde queda vacío; con el borde con peso, el equipamiento marca el límite" loading="lazy"></button></figure>
+    <article class="sx" id="s-lugar" style="--i:0" aria-labelledby="s-lugar-t">
+      <figure class="sx__img sx__img--cubre"><button type="button" class="ampliar" aria-label="Ampliar imagen: Análisis del lugar"><img src="img/esq-lote-manzanas.jpg" alt="Mapa del lote entre Campo Santo y el Ecoparque Las Tinajas con las 17 manzanas analizadas" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>01</span>Urbanismo V · Lote y norma</p>
+        <p class="sx__k"><span class="sx__n">01</span>Urbanismo V · Lote y norma</p>
         <h3 id="s-lugar-t">Análisis del lugar</h3>
-        <p class="sx__txt">Un borde urbano-rural bajo presión. Proponemos concentrar lo construido en la franja estable y dejar la ladera verde: un límite físico que la protege mejor que un borde vacío.</p>
-        <p class="sx__dato"><b>12.889 m²</b>de lote en el polígono SE-API-05</p>
-        <a class="sx__mas" href="index.html?completo#lugar">Ver más información <span aria-hidden="true">→</span></a>
+        <p class="sx__txt">Un borde urbano-rural bajo presión. Concentramos lo construido en la franja estable y dejamos la ladera verde: un límite físico que la protege mejor que un borde vacío.</p>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>12.889 m²</b><span>de lote en el polígono SE-API-05</span></p>
+          <a class="sx__mas" href="index.html?completo#lugar">Ver más<span class="visually-hidden"> sobre Análisis del lugar</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--media" id="s-comunidad" aria-labelledby="s-comunidad-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Análisis demográfico"><img src="img/esq-organigrama.jpg" alt="Organigrama con la memoria al centro y los espacios del programa alrededor" loading="lazy"></button></figure>
+    <article class="sx" id="s-comunidad" style="--i:1" aria-labelledby="s-comunidad-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Análisis demográfico"><img src="img/esq-organigrama.jpg" alt="Organigrama con la memoria al centro y los espacios del programa alrededor" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>02</span>Usuarios y ejes del programa</p>
+        <p class="sx__k"><span class="sx__n">02</span>Usuarios y ejes</p>
         <h3 id="s-comunidad-t">Análisis demográfico</h3>
-        <p class="sx__txt">Una comunidad joven que envejecerá en el mismo barrio. Por eso el equipamiento es intergeneracional y se organiza en cuatro ejes: memoria, creación, ambiente y formación.</p>
-        <p class="sx__dato"><b>3.351</b>personas usarían el equipamiento</p>
-        <a class="sx__mas" href="index.html?completo#comunidad">Ver más información <span aria-hidden="true">→</span></a>
+        <p class="sx__txt">Una comunidad joven que envejecerá en el mismo barrio. El equipamiento es intergeneracional y se ordena en cuatro ejes: memoria, creación, ambiente y formación.</p>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>3.351</b><span>personas usarían el equipamiento</span></p>
+          <a class="sx__mas" href="index.html?completo#comunidad">Ver más<span class="visually-hidden"> sobre Análisis demográfico</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--media" id="s-clima" aria-labelledby="s-clima-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Bioclimática"><img src="img/esq-bioclimatico.jpg" alt="Esquema bioclimático: sol, brisa de tarde, aire frío nocturno, masa térmica y pilotes" loading="lazy"></button></figure>
+    <article class="sx" id="s-clima" style="--i:2" aria-labelledby="s-clima-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Bioclimática"><img src="img/esq-bioclimatico.jpg" alt="Esquema bioclimático: sol, brisa de tarde, aire frío nocturno, masa térmica y pilotes" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>03</span>Clima y estrategias pasivas</p>
+        <p class="sx__k"><span class="sx__n">03</span>Estrategias pasivas</p>
         <h3 id="s-clima-t">Bioclimática</h3>
         <p class="sx__txt">El año es estable, pero el día oscila mucho. El edificio guarda el calor del día en su masa, filtra el sol con la cubierta y recoge la lluvia para las huertas.</p>
-        <p class="sx__dato"><b>11 °C</b>de oscilación entre madrugada y mediodía</p>
-        <a class="sx__mas" href="index.html?completo#clima">Ver más información <span aria-hidden="true">→</span></a>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>11 °C</b><span>de oscilación entre madrugada y mediodía</span></p>
+          <a class="sx__mas" href="index.html?completo#clima">Ver más<span class="visually-hidden"> sobre Bioclimática</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--ancha" id="s-idea" aria-labelledby="s-idea-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Concepto arquitectónico"><img src="img/esq-ideas.jpg" alt="Axonometría de ideas: volúmenes coloreados por uso alrededor del espejo de agua" loading="lazy"></button></figure>
+    <article class="sx" id="s-idea" style="--i:3" aria-labelledby="s-idea-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Concepto arquitectónico"><img src="img/esq-ideas.jpg" alt="Axonometría de ideas: volúmenes coloreados por uso alrededor del espejo de agua" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>04</span>Idea proyectual</p>
+        <p class="sx__k"><span class="sx__n">04</span>Idea proyectual</p>
         <h3 id="s-idea-t">Concepto arquitectónico</h3>
         <p class="sx__txt">El paisaje como infraestructura social y espacial: huertas, patios y jardines entran al edificio, y los volúmenes se curvan alrededor del espejo de agua-memoria.</p>
-        <p class="sx__dato"><b>4</b>ejes: memoria, creación, ambiente y formación</p>
-        <a class="sx__mas" href="index.html?completo#idea">Ver más información <span aria-hidden="true">→</span></a>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>4 ejes</b><span>memoria · creación · ambiente · formación</span></p>
+          <a class="sx__mas" href="index.html?completo#idea">Ver más<span class="visually-hidden"> sobre Concepto arquitectónico</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--tercio" id="s-programa" aria-labelledby="s-programa-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Programa arquitectónico"><img src="img/esq-planta-usos.jpg" alt="Planta de usos del conjunto con los usos coloreados" loading="lazy"></button></figure>
+    <article class="sx" id="s-programa" style="--i:4" aria-labelledby="s-programa-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Programa arquitectónico"><img src="img/esq-planta-usos.jpg" alt="Planta de usos del conjunto con los usos coloreados" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>05</span>Usos, volumetrías y plantas</p>
+        <p class="sx__k"><span class="sx__n">05</span>Usos y volumetrías</p>
         <h3 id="s-programa-t">Programa arquitectónico</h3>
-        <p class="sx__txt">Cuatro volumetrías siguen la topografía: biblioteca y exposiciones; Jardín Buen Crecer y talleres; comercio; vivero-termas y mirador.</p>
-        <p class="sx__dato"><b>6</b>láminas de plantas a escala 1:200</p>
-        <a class="sx__mas" href="index.html?completo#programa">Ver más información <span aria-hidden="true">→</span></a>
+        <p class="sx__txt">Cuatro volumetrías siguen la topografía: biblioteca y exposiciones, Jardín Buen Crecer y talleres, comercio, y vivero-termas con mirador.</p>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>6</b><span>láminas de plantas a escala 1:200</span></p>
+          <a class="sx__mas" href="index.html?completo#programa">Ver más<span class="visually-hidden"> sobre Programa arquitectónico</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--tercio" id="s-recorrido" aria-labelledby="s-recorrido-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Circulación y accesos"><img src="img/esq-circulacion-iso.jpg" alt="Axonometría del conjunto con la circulación marcada en rojo" loading="lazy"></button></figure>
+    <article class="sx" id="s-recorrido" style="--i:5" aria-labelledby="s-recorrido-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Circulación y accesos"><img src="img/esq-circulacion-iso.jpg" alt="Axonometría del conjunto con la circulación marcada en rojo" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>06</span>Recorrido y secuencia espacial</p>
+        <p class="sx__k"><span class="sx__n">06</span>Secuencia espacial</p>
         <h3 id="s-recorrido-t">Circulación y accesos</h3>
         <p class="sx__txt">Un recorrido continuo en terrazas abraza el conjunto y va de lo más activo a lo más tranquilo: de los accesos y el comercio al vivero y el mirador.</p>
-        <p class="sx__dato"><b>3</b>accesos: barrio, parte alta y zona deportiva</p>
-        <a class="sx__mas" href="index.html?completo#recorrido">Ver más información <span aria-hidden="true">→</span></a>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>3</b><span>accesos: barrio, parte alta y zona deportiva</span></p>
+          <a class="sx__mas" href="index.html?completo#recorrido">Ver más<span class="visually-hidden"> sobre Circulación y accesos</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--tercio" id="s-proyecto" aria-labelledby="s-proyecto-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Desarrollo técnico"><img src="img/esq-detalle.jpg" alt="Corte fugado de detalle: cubierta en madera, vigas metálicas, muro de contención y pilotes" loading="lazy"></button></figure>
+    <article class="sx" id="s-proyecto" style="--i:6" aria-labelledby="s-proyecto-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Desarrollo técnico"><img src="img/esq-detalle.jpg" alt="Corte fugado de detalle: cubierta en madera, vigas metálicas, muro de contención y pilotes" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>07</span>Secciones y detalle constructivo</p>
+        <p class="sx__k"><span class="sx__n">07</span>Secciones y detalle</p>
         <h3 id="s-proyecto-t">Desarrollo técnico</h3>
-        <p class="sx__txt">Los niveles siguen la ladera. Cubierta de madera, vigas metálicas, muro de contención como masa térmica y pilotes que llevan el edificio a suelo firme.</p>
-        <p class="sx__dato"><b>7 m</b>de profundidad de los pilotes</p>
-        <a class="sx__mas" href="index.html?completo#proyecto">Ver más información <span aria-hidden="true">→</span></a>
+        <p class="sx__txt">Los niveles siguen la ladera. Cubierta de madera, vigas metálicas, muro de contención como masa térmica y pilotes hasta suelo firme.</p>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>7 m</b><span>de profundidad de los pilotes</span></p>
+          <a class="sx__mas" href="index.html?completo#proyecto">Ver más<span class="visually-hidden"> sobre Desarrollo técnico</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
-    <article class="sx sx--ancha" id="s-estructura" aria-labelledby="s-estructura-t">
-      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar: Sistema estructural"><img src="img/cubiertas-madera.jpg" alt="Lámina de cubiertas de madera: plantas, sección radial e isométricos" loading="lazy"></button></figure>
+    <article class="sx" id="s-estructura" style="--i:7" aria-labelledby="s-estructura-t">
+      <figure class="sx__img"><button type="button" class="ampliar" aria-label="Ampliar imagen: Sistema estructural"><img src="img/cubiertas-madera.jpg" alt="Lámina de cubiertas de madera: plantas de los cuatro paños, sección radial e isométricos" loading="lazy"></button></figure>
       <div class="sx__cuerpo">
-        <p class="sx__k"><span>08</span>Estructuras IV · Cubiertas y cuantificación</p>
+        <p class="sx__k"><span class="sx__n">08</span>Estructuras IV · Cubiertas y cuantificación</p>
         <h3 id="s-estructura-t">Sistema estructural</h3>
         <p class="sx__txt">Cubierta curva de casetones de madera sobre viguetas de glulam y estructura metálica. Toda el agua lluvia drena hacia las huertas.</p>
-        <p class="sx__dato"><b>$9.516 M</b>presupuesto estimado · 1.399 m² de cubierta</p>
-        <a class="sx__mas" href="index.html?completo#estructura">Ver más información <span aria-hidden="true">→</span></a>
+        <div class="sx__pie">
+          <p class="sx__dato"><b>$9.516 M</b><span>presupuesto estimado · 1.399 m² de cubierta</span></p>
+          <a class="sx__mas" href="index.html?completo#estructura">Ver más<span class="visually-hidden"> sobre Sistema estructural</span><span class="sx__flecha" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </article>
   </div>
@@ -201,7 +219,7 @@
   <img src="" alt="">
 </dialog>
 
-<script src="js/sintesis.js?v=1"></script>
-<script src="js/carrusel.js?v=20261115j" defer></script>
+<script src="js/sintesis.js?v=2"></script>
+<script src="js/carrusel.js?v=20261116a" defer></script>
 </body>
 </html>

@@ -546,6 +546,7 @@ export function WarpCarousel({
   step = 1,
   background = "#EDE3D3",
   warp = 0.45,
+  glow,
   ariaLabel = "Renders del proyecto",
   onSelect,
   onFrontChange,
@@ -621,7 +622,7 @@ export function WarpCarousel({
     let raf = 0;
     let disposed = false;
     const bg = parseColor(background, [237, 227, 211]);
-    const glowCols = list.map((c) => parseColor(c.glow || "#A4583B"));
+    const glowCols = list.map((c) => parseColor(glow || c.glow || "#A4583B"));
 
     const imgs = list.map((card) => {
       const im = new Image();
@@ -862,7 +863,7 @@ export function WarpCarousel({
         gls.gl.deleteProgram(gls.prog);
       }
     };
-  }, [list, background, warp, N, modo]);
+  }, [list, background, warp, glow, N, modo]);
 
   React.useEffect(() => {
     handles.current.kick();
@@ -987,5 +988,11 @@ if (raiz) {
     if (pie) pie.textContent = RENDERS[i].caption;
   };
   const listo = () => raiz.closest(".galeria").classList.add("galeria--viva");
-  render(<WarpCarousel cards={RENDERS} onSelect={abrir} onFrontChange={alFrente} onReady={listo} />, raiz);
+  // cada página puede ajustar la lente y el color del halo: data-warp, data-glow, data-fondo
+  const d = raiz.dataset;
+  const opc = {};
+  if (d.warp) opc.warp = parseFloat(d.warp);
+  if (d.glow) opc.glow = d.glow;
+  if (d.fondo) opc.background = d.fondo;
+  render(<WarpCarousel cards={RENDERS} onSelect={abrir} onFrontChange={alFrente} onReady={listo} {...opc} />, raiz);
 }
