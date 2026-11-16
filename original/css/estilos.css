@@ -699,3 +699,8 @@ img[src$=".jpg"] { mix-blend-mode: multiply; }
   .galeria__marcas li.actual { transform: none; }
   .galeria__marcas li.actual + li { margin-left: 0; }
 }
+
+/* Lenis: scroll con inercia */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

@@ -319,7 +319,7 @@ if (completo) {
   function irACapitulo(id) {
     const cap = abrirCapitulo(id);
     if (!cap) return;
-    cap.scrollIntoView({ behavior: calma ? 'auto' : 'smooth', block: 'start' });
+    if (window.lenis) window.lenis.scrollTo(cap, { offset: -nav.offsetHeight, duration: 1.2 }); else cap.scrollIntoView({ behavior: calma ? 'auto' : 'smooth', block: 'start' });
     requestAnimationFrame(alScroll);
   }
   // una carpeta: primero se abre, luego muestra su capítulo

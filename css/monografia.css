@@ -397,3 +397,8 @@ main, .mg-pie, .mg-barra { position: relative; z-index: 1; }
   .mg-anim .mg-cap__n span { transform: none; }
   .mg-video__marco { clip-path: none; }
 }
+
+/* Lenis: scroll con inercia */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

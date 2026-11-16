@@ -52,7 +52,9 @@ document.querySelectorAll('.gf-front').forEach((a) => {
     const carpeta = a.closest('.gf');
     carpeta.dataset.open = '';
     setTimeout(() => {
-      location.hash = a.getAttribute('href');
+      const destino = document.querySelector(a.getAttribute('href'));
+      if (window.lenis && destino) { history.pushState(null, '', a.getAttribute('href')); window.lenis.scrollTo(destino, { offset: -nav.offsetHeight, duration: 1.4 }); }
+      else location.hash = a.getAttribute('href');
       setTimeout(() => { delete carpeta.dataset.open; }, 600);
     }, 480);
   });

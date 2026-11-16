@@ -589,6 +589,7 @@ export function WarpCarousel({
     lastIndex.current = current;
     if (props.current.onFrontChange) props.current.onFrontChange(mod(current, props.current.realCount));
     if (prev === current) return;
+    if (props.current.scroll && !props.current.reduced) return;
     const delta = current - prev;
     const now = performance.now() / 1000;
     const fromAuto = L.autoPending;
@@ -678,7 +679,7 @@ export function WarpCarousel({
       if (L.mode === "follow") {
         const dt = Math.min(0.05, Math.max(0, now - L.lastT));
         L.lastT = now;
-        L.P += (L.to - L.P) * (1 - Math.exp(-dt * 14));
+        L.P += (L.to - L.P) * (1 - Math.exp(-dt * 4.2));
         if (Math.abs(L.to - L.P) < 5e-4) { L.P = L.to; L.mode = "rest"; }
         return { P: L.P, Pb: 0, mix: 0 };
       }
@@ -889,7 +890,18 @@ export function WarpCarousel({
       live.current.nextAuto = Infinity;
       const objetivo = Math.min(realCount - 1, Math.max(0, Math.floor(p * realCount)));
       const actual = mod(lastIndex.current, realCount);
-      if (objetivo !== actual) setInner(lastIndex.current + (objetivo - actual));
+      if (objetivo !== actual) {
+        const nuevo = lastIndex.current + (objetivo - actual);
+        const L = live.current;
+        if (!props.current.reduced && L.mode !== "drag") {
+          // la rueda se desliza hacia el render nuevo y frena sola (sin latigazo); si sigues bajando, cambia de rumbo sin cortes
+          if (L.mode !== "follow") L.lastT = performance.now() / 1000;
+          L.to = nuevo + DRIFT;
+          L.mode = "follow";
+          handles.current.kick();
+        }
+        setInner(nuevo);
+      }
     };
     const alMover = () => { if (!raf) raf = requestAnimationFrame(leer); };
     addEventListener("scroll", alMover, { passive: true });
