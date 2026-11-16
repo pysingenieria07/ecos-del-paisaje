@@ -8,6 +8,10 @@
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
   raiz.classList.add('mg-anim');
+  // la portada sube por detrás de la barra
+  const barra = $('.mg-barra'); const portada = $('#inicio');
+  const medir = () => raiz.style.setProperty('--barra-h', barra.offsetHeight + 'px');
+  medir(); addEventListener('resize', medir);
 
   /* ---------- aparición al entrar en pantalla ---------- */
   const aparecen = $$('.mg-manifiesto .mg-etq, .mg-video, .mg-indice__cab, .mg-ind li, .mg-cap__lado > *, .mg-cap__body, .mg-mas, .mg-gal__cab, .mg-planos__cab, .mg-planchas li, .mg-pie > *');
@@ -66,7 +70,7 @@
   /* ---------- barra: sección actual y avance ---------- */
   const secN = $('#sec-n'); const secT = $('#sec-t'); const sec = $('.mg-barra__sec'); const avance = $('#avance');
   const marcas = [{ el: $('#inicio'), n: '00', t: 'Portada' }, { el: $('#manifiesto'), n: '00', t: 'La idea' },
-    { el: $('.mg-indice'), n: '00', t: 'Contenido' },
+    { el: $('.mg-indice'), n: '00', t: 'Índice' },
     ...$$('.mg-cap').map((c) => ({ el: c, n: c.dataset.n, t: c.dataset.titulo })),
     { el: $('#renders'), n: 'R', t: 'Renders' }, { el: $('#planos'), n: 'P', t: 'Planchas' }];
   let actual = -1;
@@ -84,6 +88,7 @@
     const vh = innerHeight; const y = scrollY;
     const alto = document.documentElement.scrollHeight - vh;
     avance.style.transform = 'scaleX(' + (alto > 0 ? y / alto : 0) + ')';
+    raiz.classList.toggle('sobre-portada', y < portada.offsetHeight - barra.offsetHeight - 10);
 
     let i = 0; marcas.forEach((m, k) => { if (m.el.getBoundingClientRect().top < vh * 0.4) i = k; }); ponerSeccion(i);
     if (calma) return;
@@ -133,6 +138,7 @@
   /* ---------- galería: desplazamiento nativo, contador y botones ---------- */
   const pista = $('#gal');
   const items = $$('.mg-gal__item', pista);
+  $('#gal-total').textContent = String(items.length).padStart(2, '0');
   const galN = $('#gal-n'); const ant = $('#gal-ant'); const sig = $('#gal-sig');
   const enFoco = () => {
     const r0 = pista.getBoundingClientRect().left;
