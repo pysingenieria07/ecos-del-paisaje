@@ -184,7 +184,7 @@ main, .mg-pie, .mg-barra { position: relative; z-index: 1; }
 .mg-ind__k { font: 600 .7rem var(--etq); letter-spacing: .2em; text-transform: uppercase; color: var(--tinta-3); text-align: right; }
 .mg-ind a:active { color: var(--vino); }
 .mg-ind__vista { position: fixed; left: 0; top: 0; z-index: 30; width: 260px; aspect-ratio: 4 / 3; margin: 0; pointer-events: none; overflow: hidden; background: var(--papel); box-shadow: 0 30px 50px -30px rgba(31, 23, 20, .55); opacity: 0; transform: translate(-50%, -50%) scale(.9); transition: opacity 200ms ease, scale 300ms var(--ease-out); }
-.mg-ind__vista img { width: 100%; height: 100%; object-fit: contain; padding: 10px; mix-blend-mode: multiply; }
+.mg-ind__vista img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
 .mg-ind__vista.ver { opacity: 1; }
 @media (hover: hover) and (pointer: fine) { .mg-ind a:hover { padding-left: 1rem; color: var(--vino); } }
 @media (max-width: 900px) {
@@ -268,7 +268,7 @@ main, .mg-pie, .mg-barra { position: relative; z-index: 1; }
 /* figura con marcas de corte, como una lámina impresa */
 .mg-fig { margin: 0 0 2.6rem; }
 .mg-fig__marco { position: relative; display: block; width: 100%; padding: clamp(1rem, 2.4vw, 2rem); border: 0; background: var(--papel); cursor: zoom-in; overflow: hidden; }
-.mg-fig__marco img { width: 100%; max-height: 62vh; object-fit: contain; mix-blend-mode: multiply; filter: brightness(1.06) contrast(1.08) saturate(.95); transition: transform 900ms var(--ease-out); }
+.mg-fig__marco img { width: 100%; max-height: 62vh; object-fit: contain; transition: transform 900ms var(--ease-out); }
 .mg-cortes i { position: absolute; width: 14px; height: 14px; border-color: var(--tinta-3); border-style: solid; border-width: 0; }
 .mg-cortes i:nth-child(1) { left: 8px; top: 8px; border-left-width: 1px; border-top-width: 1px; }
 .mg-cortes i:nth-child(2) { right: 8px; top: 8px; border-right-width: 1px; border-top-width: 1px; }
