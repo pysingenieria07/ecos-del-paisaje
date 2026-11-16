@@ -753,5 +753,38 @@ img[src*="render-"], img[src*="portada"], .gf img, .bento img { mix-blend-mode: 
 .galeria--scroll .galeria__marco { position: sticky; top: 0; height: 100svh; margin-top: 0; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
 .galeria--scroll .galeria__cab { position: relative; z-index: 2; }
 .galeria--scroll .galeria__escena { height: min(64svh, 600px); }
-.galeria__avance { display: none; }
-.galeria--scroll .galeria__avance { display: block; width: min(320px, 60vw); height: 2px; margin: .6rem auto 1.2rem; background: var(--vino); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 0 1px rgba(107, 30, 43, .12); }
+
+
+/* ---------- animación de «El proyecto en imágenes» ---------- */
+/* entrada única: el título sube y el escenario se asienta desde 0.94 (nunca desde 0) */
+.galeria .galeria__cab > * { transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+.galeria .galeria__escena { transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out); }
+.galeria--viva:not(.galeria--en) .galeria__cab > * { opacity: 0; transform: translateY(18px); }
+.galeria--viva:not(.galeria--en) .galeria__escena { opacity: 0; transform: scale(.94); }
+.galeria--en .galeria__cab > :nth-child(2) { transition-delay: 70ms; }
+.galeria--en .galeria__escena { transition-delay: 150ms; }
+
+/* contador que rueda y marcas de avance */
+.galeria__nav { display: none; }
+.galeria--viva .galeria__nav { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin: .4rem auto .8rem; }
+.galeria__cuenta { margin: 0; display: flex; align-items: baseline; gap: .35rem; font: 800 1.5rem/1 var(--f-titulo); color: var(--vino); }
+.galeria__num { position: relative; display: inline-block; width: 2ch; height: 1em; overflow: hidden; }
+.galeria__num > span { position: absolute; left: 0; top: 0; transition: transform 300ms var(--ease-out); }
+.galeria__total { font: 600 .8rem var(--f-etiqueta); letter-spacing: .14em; color: var(--tinta-suave); }
+.galeria__marcas { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; }
+.galeria__marcas li { width: 22px; height: 3px; border-radius: 2px; background: rgba(107, 30, 43, .16); transform-origin: left; transition: background-color 300ms ease, transform 300ms var(--ease-out); }
+.galeria__marcas li.vista { background: var(--vino); }
+.galeria__marcas li.actual { transform: scaleX(1.6); }
+.galeria__marcas li.actual + li { margin-left: 13px; }
+
+/* pie de foto: sale hacia arriba desenfocándose, entra desde abajo */
+.galeria__pie { transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out), filter 220ms var(--ease-out); }
+.galeria__pie.sale { opacity: 0; transform: translateY(-8px); filter: blur(2px); transition-duration: 140ms; }
+.galeria__pie.entra { opacity: 0; transform: translateY(8px); filter: blur(2px); transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .galeria--viva:not(.galeria--en) .galeria__cab > *, .galeria--viva:not(.galeria--en) .galeria__escena { transform: none; }
+  .galeria__pie, .galeria__pie.sale, .galeria__pie.entra { transform: none; filter: none; }
+  .galeria__marcas li.actual { transform: none; }
+  .galeria__marcas li.actual + li { margin-left: 0; }
+}

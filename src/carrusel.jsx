@@ -993,7 +993,7 @@ const RENDERS = [
   { image: "img/render-espejo.jpg", title: "Espejo\nde agua", footer: "Memoria al centro", caption: "El espejo de agua-memoria, centro del proyecto, frente a la biblioteca y las gradas.", alt: "Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera", focus: 0.5, glow: "#6F9C9F" },
   { image: "img/render-aereo.jpg", title: "El conjunto\ndesde arriba", footer: "La ladera queda verde", caption: "El conjunto construido: los volúmenes abrazan la plaza y la ladera queda verde.", alt: "Render aéreo del conjunto: volúmenes de madera alrededor de la plaza y el espejo de agua", focus: 0.5, glow: "#6E6A3A" },
   { image: "img/render-biblioteca-gradas.jpg", title: "Biblioteca", footer: "Gradas para leer", caption: "La biblioteca: estanterías de madera, gradas de lectura y la cubierta de casetones con lucernarios.", alt: "Render interior de la biblioteca con estanterías de madera, gradas y personas leyendo bajo la cubierta de casetones", focus: 0.45, glow: "#CDB99D" },
-  { image: "img/render-biblioteca-mirador.jpg", title: "Biblioteca\nmirador", footer: "Leer frente al paisaje", caption: "El mirador de la biblioteca: un corredor de vidrio con jardineras y vista al conjunto.", alt: "Render del corredor vidriado de la biblioteca con jardineras, bancas de madera y vista al conjunto", focus: 0.55, glow: "#CDB99D" },
+  { image: "img/render-biblioteca-mirador.jpg", title: "Mirador", footer: "Frente al paisaje", caption: "El mirador: un corredor de vidrio con jardineras, bancas de madera y vista al conjunto.", alt: "Render del mirador: corredor vidriado con jardineras, bancas de madera y vista al conjunto", focus: 0.55, glow: "#CDB99D" },
   { image: "img/render-aulas-habitadas.jpg", title: "Aulas\nhabitadas", footer: "Aprender en terrazas", caption: "Las aulas habitadas: terrazas de madera bajo la cubierta de casetones.", alt: "Render interior de las aulas con personas entre las estanterías", focus: 0.62, glow: "#C98A3E" },
   { image: "img/render-aulas.jpg", title: "Aulas", footer: "Cubierta de casetones", caption: "Las aulas: piso y estanterías de madera, celosías inclinadas y lucernarios.", alt: "Render interior de las aulas: estanterías de madera en terrazas y cubierta de casetones", focus: 0.45, glow: "#6B1E2B" },
 ];
@@ -1009,10 +1009,60 @@ if (raiz) {
     img.alt = RENDERS[i].alt;
     visor.showModal();
   };
+  const seccionG = raiz.closest(".galeria");
+  const calmaG = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // contador «04 / 07» y una marca por render, debajo del carrusel
+  let cuenta = null;
+  let marcas = [];
+  if (seccionG) {
+    const nav = document.createElement("div");
+    nav.className = "galeria__nav";
+    nav.setAttribute("aria-hidden", "true");
+    nav.innerHTML = '<p class="galeria__cuenta"><span class="galeria__num"><span>01</span></span><span class="galeria__total">/ ' + String(RENDERS.length).padStart(2, "0") + "</span></p>"
+      + '<ol class="galeria__marcas">' + RENDERS.map(() => "<li></li>").join("") + "</ol>";
+    const ancla = seccionG.querySelector(".galeria__pie");
+    if (ancla) ancla.before(nav);
+    cuenta = nav.querySelector(".galeria__num");
+    marcas = [...nav.querySelectorAll("li")];
+  }
+  let previo = 0;
+  let tPie = 0;
   const alFrente = (i) => {
-    if (pie) pie.textContent = RENDERS[i].caption;
+    marcas.forEach((m, k) => { m.classList.toggle("vista", k <= i); m.classList.toggle("actual", k === i); });
+    if (cuenta) {
+      const nuevo = document.createElement("span");
+      nuevo.textContent = String(i + 1).padStart(2, "0");
+      const viejo = cuenta.lastElementChild;
+      if (calmaG || !viejo || viejo.textContent === nuevo.textContent) { cuenta.replaceChildren(nuevo); }
+      else {
+        // el número nuevo entra en la dirección del recorrido: desde abajo al avanzar, desde arriba al volver
+        const dir = i > previo ? 1 : -1;
+        nuevo.style.transform = "translateY(" + (dir * 100) + "%)";
+        cuenta.append(nuevo);
+        nuevo.getBoundingClientRect();
+        nuevo.style.transform = "";
+        viejo.style.transform = "translateY(" + (-dir * 100) + "%)";
+        setTimeout(() => viejo.remove(), 320);
+      }
+    }
+    previo = i;
+    if (!pie) return;
+    if (calmaG) { pie.textContent = RENDERS[i].caption; return; }
+    clearTimeout(tPie);
+    pie.classList.add("sale");
+    tPie = setTimeout(() => {
+      pie.textContent = RENDERS[i].caption;
+      pie.classList.remove("sale");
+      pie.classList.add("entra");
+      pie.getBoundingClientRect();
+      pie.classList.remove("entra");
+    }, 140);
   };
-  const listo = () => raiz.closest(".galeria").classList.add("galeria--viva");
+  const listo = () => {
+    const g = raiz.closest(".galeria");
+    g.classList.add("galeria--viva");
+    new IntersectionObserver((ents, o) => { if (ents[0].isIntersecting) { g.classList.add("galeria--en"); o.disconnect(); } }, { threshold: 0.25 }).observe(g.querySelector(".galeria__marco"));
+  };
   // cada página puede ajustar la lente y el color del halo: data-warp, data-glow, data-fondo
   const d = raiz.dataset;
   const opc = {};
