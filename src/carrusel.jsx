@@ -545,7 +545,7 @@ export function WarpCarousel({
   interval = 4.5,
   step = 1,
   background = "#EDE3D3",
-  warp = 0.45,
+  warp = 0,
   glow,
   ariaLabel = "Renders del proyecto",
   onSelect,
@@ -655,13 +655,13 @@ export function WarpCarousel({
     let unit = 1;
     const resize = () => {
       const r = wrap.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
       W = Math.max(2, Math.round(r.width * dpr));
       H = Math.max(2, Math.round(r.height * dpr));
       if (canvas.width !== W) canvas.width = W;
       if (canvas.height !== H) canvas.height = H;
       unit = Math.min(W / stageW(r.width), H / 400);
-      const want = Math.min(1024, Math.max(256, Math.round(CW * unit * 1.25)));
+      const want = Math.min(2048, Math.max(512, Math.round(CW * unit * 1.6)));
       if (want !== texW) paintAll(want);
     };
 

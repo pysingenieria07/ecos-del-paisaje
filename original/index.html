@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=video2">
+<link rel="stylesheet" href="css/estilos.css?v=video3">
 </head>
 <body>
 
@@ -63,7 +63,7 @@
     <p class="apertura__lead">Un equipamiento ambiental e intergeneracional donde el paisaje entra al edificio.</p>
   </div>
   <button type="button" class="apertura__pausa" aria-pressed="false">Pausar video</button>
-  <a class="apertura__bajar" href="#bitacora">Entrar al proyecto</a>
+  <a class="apertura__bajar" href="#renders">Entrar al proyecto</a>
 </section>
 
 <!-- FICHA -->
@@ -76,18 +76,99 @@
   </dl>
 </section>
 
-<!-- BITÁCORA -->
+<!-- RENDERS -->
+<section class="galeria" id="renders" aria-labelledby="renders-t">
+  <header class="galeria__cab">
+    <p class="kicker">Renders</p>
+    <h2 id="renders-t">El proyecto en imágenes</h2>
+  </header>
+  <div class="galeria__marco">
+    <!-- tira simple: se ve siempre; el carrusel 3D la reemplaza cuando logra dibujarse -->
+    <ul class="galeria__tira">
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Plaza de acceso"><img src="img/render-plaza.jpg" width="2400" height="1350" alt="Render exterior: plaza escalonada con jardineras de ladrillo y una pérgola curva de madera" data-falta="render-plaza.jpg"></button><p>Plaza de acceso</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Espejo de agua"><img src="img/render-espejo.jpg" width="2400" height="1350" alt="Render exterior: espejo de agua circular con lotos, gradas y la fachada curva de vidrio y madera" data-falta="render-espejo.jpg"></button><p>Espejo de agua</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: El conjunto desde arriba"><img src="img/render-aereo.jpg" width="2400" height="1350" alt="Render aéreo del conjunto: volúmenes de madera alrededor de la plaza y el espejo de agua" data-falta="render-aereo.jpg"></button><p>El conjunto desde arriba</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Aulas habitadas"><img src="img/render-aulas-habitadas.jpg" width="2400" height="1350" alt="Render interior de las aulas con personas entre las estanterías" data-falta="render-aulas-habitadas.jpg"></button><p>Aulas habitadas</p></li>
+      <li><button type="button" class="ampliar" aria-label="Ampliar: Aulas"><img src="img/render-aulas.jpg" width="2400" height="1350" alt="Render interior de las aulas: estanterías de madera en terrazas y cubierta de casetones" data-falta="render-aulas.jpg"></button><p>Aulas</p></li>
+    </ul>
+    <div class="galeria__escena" id="carrusel-renders" data-warp="0" data-glow="#CDB99D"></div>
+  </div>
+  <p class="galeria__pie" id="carrusel-pie">La llegada: la plaza de acceso bajo la pérgola curva de madera.</p>
+  <p class="galeria__ayuda">Arrastra para girar · toca el render del centro para verlo completo</p>
+</section>
+
+<!-- BITÁCORA: una carpeta por capítulo -->
 <section class="bitacora" id="bitacora" aria-labelledby="bitacora-t">
-  <h2 id="bitacora-t" class="visually-hidden">Etapas del semestre</h2>
-  <ol class="etapas">
-    <li><a href="#lugar"><span>01</span>Leer el lugar</a></li>
-    <li><a href="#comunidad"><span>02</span>Conocer a la gente</a></li>
-    <li><a href="#clima"><span>03</span>Entender el clima</a></li>
-    <li><a href="#idea"><span>04</span>Encontrar la idea</a></li>
-    <li><a href="#programa"><span>05</span>Armar el programa</a></li>
-    <li><a href="#recorrido"><span>06</span>Trazar el recorrido</a></li>
-    <li><a href="#proyecto"><span>07</span>Construir el proyecto</a></li>
-    <li><a href="#estructura"><span>08</span>Resolver la estructura</a></li>
+  <header class="bitacora__cab">
+    <p class="kicker">Ocho capítulos</p>
+    <h2 id="bitacora-t">Cómo avanzó el semestre</h2>
+    
+  </header>
+  <ol class="carpetas">
+    <li class="gf-wrap" style="--orden:0">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-lote-manzanas.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-1.4deg"><img src="img/esq-lote-manzanas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El lote</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.0deg"><img src="img/esq-contexto-mapas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El predio</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:1.4deg"><img src="img/norma-vs-borde.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">La norma</span></span></span>
+        <a class="gf-front" href="#lugar" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">01</span><span class="gf-title">Leer el lugar</span><span class="gf-meta">Lote, norma y borde</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:1">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-organigrama.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-0.7deg"><img src="img/render-interior.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">La gente</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.7deg"><img src="img/esq-organigrama.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Organigrama</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:-1.4deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Cuatro ejes</span></span></span>
+        <a class="gf-front" href="#comunidad" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">02</span><span class="gf-title">Conocer a la gente</span><span class="gf-meta">3.351 personas, cuatro ejes</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:2">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-bioclimatico.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.0deg"><img src="img/esq-dia-24h.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Un día</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:1.4deg"><img src="img/esq-agua-ladera.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">El agua</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:-0.7deg"><img src="img/esq-bioclimatico.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Bioclimática</span></span></span>
+        <a class="gf-front" href="#clima" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">03</span><span class="gf-title">Entender el clima</span><span class="gf-meta">Sol, viento y agua</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:3">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-ideas.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.7deg"><img src="img/estratos.webp" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Estratos</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:-1.4deg"><img src="img/esq-espacio-publico.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Espacio público</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:0.0deg"><img src="img/esq-ideas.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Ideas</span></span></span>
+        <a class="gf-front" href="#idea" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">04</span><span class="gf-title">Encontrar la idea</span><span class="gf-meta">El paisaje como estructura</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:4">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-planta-usos.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:1.4deg"><img src="img/planta-1a.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Plantas</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:-0.7deg"><img src="img/esq-planta-usos.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Usos</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:0.7deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Volumetrías</span></span></span>
+        <a class="gf-front" href="#programa" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">05</span><span class="gf-title">Armar el programa</span><span class="gf-meta">Usos, volúmenes y plantas</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:5">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/esq-circulacion-iso.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-1.4deg"><img src="img/circulacion.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Planta</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.0deg"><img src="img/esq-recorrido-axo.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Accesos</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:1.4deg"><img src="img/esq-circulacion-iso.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Circulación</span></span></span>
+        <a class="gf-front" href="#recorrido" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">06</span><span class="gf-title">Trazar el recorrido</span><span class="gf-meta">Tres accesos, una secuencia</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:6">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/seccion.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:-0.7deg"><img src="img/iso-estructural.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Isométrico</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:0.7deg"><img src="img/esq-detalle.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Detalle</span></span><span class="gf-sheet gf-sheet--art" style="--slot:1;--depth:0;--jr:-1.4deg"><img src="img/seccion.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Secciones</span></span></span>
+        <a class="gf-front" href="#proyecto" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">07</span><span class="gf-title">Construir el proyecto</span><span class="gf-meta">Secciones y detalle</span></span></a>
+      </div>
+    </li>
+    <li class="gf-wrap" style="--orden:7">
+      <div class="gf">
+        <span class="gf-shadow"></span>
+        <span class="gf-back" style="clip-path:path('M0 56A22 22 0 0 1 22 34L146 34C170 34 172 0 198 0L318 0A22 22 0 0 1 340 22L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z')"><img class="gf-art" src="img/cubiertas-madera.jpg" alt="" loading="lazy" draggable="false"></span>
+        <span class="gf-files" aria-hidden="true"><span class="gf-sheet gf-sheet--art" style="--slot:-1;--depth:2;--jr:0.0deg"><img src="img/glulam-malla.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Glulam</span></span><span class="gf-sheet gf-sheet--art" style="--slot:0;--depth:1;--jr:1.4deg"><img src="img/cubiertas-madera.jpg" alt="" loading="lazy" draggable="false"><span class="gf-sheet-head">Cubiertas</span></span><span class="gf-sheet" style="--slot:1;--depth:0;--jr:-0.7deg"><span class="gf-lines"><i></i><i></i><i></i><i></i></span><span class="gf-sheet-head">Presupuesto</span></span></span>
+        <a class="gf-front" href="#estructura" style="clip-path:path('M0 22A22 22 0 0 1 22 0L118 0C144 0 146 32 172 32L318 32A22 22 0 0 1 340 54L340 176A22 22 0 0 1 318 198L22 198A22 22 0 0 1 0 176Z')"><span class="gf-tint"></span><span class="gf-label"><span class="gf-num">08</span><span class="gf-title">Resolver la estructura</span><span class="gf-meta">Cubiertas y presupuesto</span></span></a>
+      </div>
+    </li>
   </ol>
 </section>
 
@@ -106,7 +187,7 @@
     <p>Es un borde bajo presión. Los asentamientos informales suben por la ladera sobre zonas con amenaza de movimiento en masa y de avenidas torrenciales de las quebradas La Castro, San Antonio y La Gallinaza. Campo Santo recuerda la tragedia de 1987.</p>
   </div>
   <figure class="figura figura--sangre">
-    <button type="button" class="ampliar" aria-label="Ampliar: El lote y las 17 manzanas vecinas que analizamos, entre Campo Santo y el Ecoparque Las Tinajas."><img src="img/esq-lote-manzanas.jpg" width="2592" height="1264" loading="lazy" alt="Mapa del lote entre Campo Santo y el Ecoparque Las Tinajas con las 17 manzanas analizadas numeradas" data-falta="esq-lote-manzanas.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: El lote y las 17 manzanas vecinas que analizamos, entre Campo Santo y el Ecoparque Las Tinajas."><img src="img/esq-lote-manzanas.jpg" width="3200" height="1529" loading="lazy" alt="Mapa del lote entre Campo Santo y el Ecoparque Las Tinajas con las 17 manzanas analizadas numeradas" data-falta="esq-lote-manzanas.jpg"></button>
     <figcaption>El lote y las 17 manzanas vecinas que analizamos, entre Campo Santo y el Ecoparque Las Tinajas.</figcaption>
   </figure>
 
@@ -124,12 +205,12 @@
       </ul>
     </div>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Contexto y predio."><img src="img/esq-contexto-mapas.jpg" width="928" height="1513" loading="lazy" alt="Mapas del contexto y del predio con Campo Santo, el ecoparque y la estación del metro" data-falta="esq-contexto-mapas.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Contexto y predio."><img src="img/esq-contexto-mapas.jpg" width="1800" height="2937" loading="lazy" alt="Mapas del contexto y del predio con Campo Santo, el ecoparque y la estación del metro" data-falta="esq-contexto-mapas.jpg"></button>
     <figcaption>Contexto y predio.</figcaption>
   </figure>
   </div>
   <figure class="figura figura--ancha">
-    <button type="button" class="ampliar" aria-label="Ampliar: Corte del borde urbano-ambiental: borde verde, senderos y vía."><img src="img/esq-borde-corte.jpg" width="960" height="249" loading="lazy" alt="Corte del borde: borde verde, senderos y vía" data-falta="esq-borde-corte.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Corte del borde urbano-ambiental: borde verde, senderos y vía."><img src="img/esq-borde-corte.jpg" width="2644" height="682" loading="lazy" alt="Corte del borde: borde verde, senderos y vía" data-falta="esq-borde-corte.jpg"></button>
     <figcaption>Corte del borde urbano-ambiental: borde verde, senderos y vía.</figcaption>
   </figure>
   <figure class="figura figura--ancha figura--recorte">
@@ -174,7 +255,7 @@
   </ol>
   <div class="dos-col dos-col--margen">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Conexión del predio con su entorno."><img src="img/esq-conexiones.jpg" width="1792" height="933" loading="lazy" alt="Plano de conexiones del predio con la estación de metro, el ecoparque y Campo Santo" data-falta="esq-conexiones.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Conexión del predio con su entorno."><img src="img/esq-conexiones.jpg" width="3200" height="1664" loading="lazy" alt="Plano de conexiones del predio con la estación de metro, el ecoparque y Campo Santo" data-falta="esq-conexiones.jpg"></button>
     <figcaption>Conexión del predio con su entorno.</figcaption>
   </figure>
     <dl class="tiempos">
@@ -246,7 +327,7 @@
   <h3 class="sub">Organigrama y jerarquía del programa</h3>
   <div class="mosaico">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: De la memoria del territorio a la construcción del futuro: la memoria al centro y los usos alrededor."><img src="img/esq-organigrama.jpg" width="1744" height="1730" loading="lazy" alt="Organigrama de burbujas con la memoria al centro y los espacios del programa alrededor" data-falta="esq-organigrama.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: De la memoria del territorio a la construcción del futuro: la memoria al centro y los usos alrededor."><img src="img/esq-organigrama.jpg" width="3200" height="3175" loading="lazy" alt="Organigrama de burbujas con la memoria al centro y los espacios del programa alrededor" data-falta="esq-organigrama.jpg"></button>
     <figcaption>De la memoria del territorio a la construcción del futuro: la memoria al centro y los usos alrededor.</figcaption>
   </figure>
     <div class="jerarquia">
@@ -285,7 +366,7 @@
   </div>
 
   <figure class="figura figura--sangre">
-    <button type="button" class="ampliar" aria-label="Ampliar: Esquema bioclimático del proyecto."><img src="img/esq-bioclimatico.jpg" width="1920" height="788" loading="lazy" alt="Esquema bioclimático: sol de junio y diciembre, brisa de tarde, aire frío nocturno, muro de contención como masa térmica y pilotes" data-falta="esq-bioclimatico.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Esquema bioclimático del proyecto."><img src="img/esq-bioclimatico.jpg" width="3200" height="1313" loading="lazy" alt="Esquema bioclimático: sol de junio y diciembre, brisa de tarde, aire frío nocturno, muro de contención como masa térmica y pilotes" data-falta="esq-bioclimatico.jpg"></button>
     <figcaption>Esquema bioclimático del proyecto.</figcaption>
   </figure>
   <ul class="estrategias">
@@ -300,25 +381,25 @@
   <h3 class="sub">El valle respira y el sol pasa por encima</h3>
   <div class="mosaico mosaico--igual">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: De día el aire caliente sube por las laderas; de noche baja el aire frío desde Santa Elena."><img src="img/esq-brisas.jpg" width="1440" height="622" loading="lazy" alt="Brisas de valle de día y aire frío de montaña de noche" data-falta="esq-brisas.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: De día el aire caliente sube por las laderas; de noche baja el aire frío desde Santa Elena."><img src="img/esq-brisas.jpg" width="3200" height="1383" loading="lazy" alt="Brisas de valle de día y aire frío de montaña de noche" data-falta="esq-brisas.jpg"></button>
     <figcaption>De día el aire caliente sube por las laderas; de noche baja el aire frío desde Santa Elena.</figcaption>
   </figure>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Sol casi cenital: la cubierta recibe más radiación que cualquier fachada."><img src="img/esq-sol-cenital.jpg" width="1504" height="622" loading="lazy" alt="Recorrido del sol a 6,25 grados norte: 60 grados en diciembre, 83 en equinoccios y 73 en junio" data-falta="esq-sol-cenital.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Sol casi cenital: la cubierta recibe más radiación que cualquier fachada."><img src="img/esq-sol-cenital.jpg" width="3200" height="1323" loading="lazy" alt="Recorrido del sol a 6,25 grados norte: 60 grados en diciembre, 83 en equinoccios y 73 en junio" data-falta="esq-sol-cenital.jpg"></button>
     <figcaption>Sol casi cenital: la cubierta recibe más radiación que cualquier fachada.</figcaption>
   </figure>
   </div>
   <div class="trio">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Un día típico: 42 % frío, 40 % confort, 18 % calor."><img src="img/esq-dia-24h.jpg" width="1504" height="788" loading="lazy" alt="Gráfico circular de un día típico: 42 % de las horas frías, 40 % en confort y 18 % cálidas" data-falta="esq-dia-24h.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Un día típico: 42 % frío, 40 % confort, 18 % calor."><img src="img/esq-dia-24h.jpg" width="3200" height="1678" loading="lazy" alt="Gráfico circular de un día típico: 42 % de las horas frías, 40 % en confort y 18 % cálidas" data-falta="esq-dia-24h.jpg"></button>
     <figcaption>Un día típico: 42 % frío, 40 % confort, 18 % calor.</figcaption>
   </figure>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Carta solar a 6,22° N."><img src="img/esq-carta-solar.jpg" width="928" height="1306" loading="lazy" alt="Carta solar a 6,22 grados norte" data-falta="esq-carta-solar.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Carta solar a 6,22° N."><img src="img/esq-carta-solar.jpg" width="2552" height="3592" loading="lazy" alt="Carta solar a 6,22 grados norte" data-falta="esq-carta-solar.jpg"></button>
     <figcaption>Carta solar a 6,22° N.</figcaption>
   </figure>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Viento de día desde el norte (28 %); de noche desde el oriente (42 %)."><img src="img/esq-rosas-viento.jpg" width="1184" height="1554" loading="lazy" alt="Rosas de viento de día y de noche" data-falta="esq-rosas-viento.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Viento de día desde el norte (28 %); de noche desde el oriente (42 %)."><img src="img/esq-rosas-viento.jpg" width="3200" height="4199" loading="lazy" alt="Rosas de viento de día y de noche" data-falta="esq-rosas-viento.jpg"></button>
     <figcaption>Viento de día desde el norte (28 %); de noche desde el oriente (42 %).</figcaption>
   </figure>
   </div>
@@ -326,11 +407,11 @@
   <h3 class="sub">El agua baja por la ladera: diseñar para recibirla</h3>
   <div class="mosaico mosaico--igual">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Dos temporadas de lluvia: marzo a mayo y octubre a noviembre."><img src="img/esq-lluvia.jpg" width="1504" height="788" loading="lazy" alt="Precipitación media mensual con dos temporadas húmedas en marzo-mayo y octubre-noviembre" data-falta="esq-lluvia.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Dos temporadas de lluvia: marzo a mayo y octubre a noviembre."><img src="img/esq-lluvia.jpg" width="3200" height="1676" loading="lazy" alt="Precipitación media mensual con dos temporadas húmedas en marzo-mayo y octubre-noviembre" data-falta="esq-lluvia.jpg"></button>
     <figcaption>Dos temporadas de lluvia: marzo a mayo y octubre a noviembre.</figcaption>
   </figure>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: El recorrido del agua: la cubierta recoge, el tanque guarda y las zanjas infiltran antes de la quebrada."><img src="img/esq-agua-ladera.jpg" width="1536" height="891" loading="lazy" alt="Recorrido del agua en el lote: escorrentía, cubierta que recoge, tanque de reúso y zanjas de infiltración" data-falta="esq-agua-ladera.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: El recorrido del agua: la cubierta recoge, el tanque guarda y las zanjas infiltran antes de la quebrada."><img src="img/esq-agua-ladera.jpg" width="3200" height="1855" loading="lazy" alt="Recorrido del agua en el lote: escorrentía, cubierta que recoge, tanque de reúso y zanjas de infiltración" data-falta="esq-agua-ladera.jpg"></button>
     <figcaption>El recorrido del agua: la cubierta recoge, el tanque guarda y las zanjas infiltran antes de la quebrada.</figcaption>
   </figure>
   </div>
@@ -339,7 +420,7 @@
   <h3 class="sub">Lineamientos de diseño climático</h3>
   <div class="mosaico">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Cómo pasa el viento entre los volúmenes: calma el 60 % del tiempo, brisa útil de 13:00 a 20:00 h."><img src="img/esq-viento-volumenes.jpg" width="1824" height="1802" loading="lazy" alt="Cinco esquemas de cómo pasa el viento entre los volúmenes según la hora" data-falta="esq-viento-volumenes.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Cómo pasa el viento entre los volúmenes: calma el 60 % del tiempo, brisa útil de 13:00 a 20:00 h."><img src="img/esq-viento-volumenes.jpg" width="3200" height="3162" loading="lazy" alt="Cinco esquemas de cómo pasa el viento entre los volúmenes según la hora" data-falta="esq-viento-volumenes.jpg"></button>
     <figcaption>Cómo pasa el viento entre los volúmenes: calma el 60 % del tiempo, brisa útil de 13:00 a 20:00 h.</figcaption>
   </figure>
     <ol class="lineamientos">
@@ -371,7 +452,7 @@
     <p class="lema">Transmitir memoria<br>+ enseñar<br>+ disfrutar<br>+ envejecer activamente</p>
   </div>
   <figure class="figura figura--sangre">
-    <button type="button" class="ampliar" aria-label="Ampliar: Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria."><img src="img/esq-ideas.jpg" width="2816" height="1719" loading="lazy" alt="Axonometría de ideas proyectuales: volúmenes coloreados por uso alrededor del espejo de agua" data-falta="esq-ideas.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria."><img src="img/esq-ideas.jpg" width="3200" height="1877" loading="lazy" alt="Axonometría de ideas proyectuales: volúmenes coloreados por uso alrededor del espejo de agua" data-falta="esq-ideas.jpg"></button>
     <figcaption>Forma y programa: los volúmenes se curvan alrededor del espejo de agua-memoria.</figcaption>
   </figure>
 
@@ -382,7 +463,7 @@
     <figcaption>Las huertas entran al edificio.</figcaption>
   </figure>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Una red de patios, terrazas y circulaciones deja que el espacio público atraviese el proyecto."><img src="img/esq-espacio-publico.jpg" width="1888" height="994" loading="lazy" alt="Tipos de espacio público: parque recreativo, zonas recreativas, huertas urbanas y jardín japonés" data-falta="esq-espacio-publico.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Una red de patios, terrazas y circulaciones deja que el espacio público atraviese el proyecto."><img src="img/esq-espacio-publico.jpg" width="3200" height="1683" loading="lazy" alt="Tipos de espacio público: parque recreativo, zonas recreativas, huertas urbanas y jardín japonés" data-falta="esq-espacio-publico.jpg"></button>
     <figcaption>Una red de patios, terrazas y circulaciones deja que el espacio público atraviese el proyecto.</figcaption>
   </figure>
   </div>
@@ -419,7 +500,7 @@
     <li style="--c:var(--agua)"><b>Memoria</b>Espejo de agua</li>
   </ul>
   <figure class="figura figura--sangre">
-    <button type="button" class="ampliar" aria-label="Ampliar: Planta de usos: cada color de la convención sobre el conjunto."><img src="img/esq-planta-usos.jpg" width="2880" height="1554" loading="lazy" alt="Planta de usos del conjunto con el recorrido principal y los usos coloreados" data-falta="esq-planta-usos.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Planta de usos: cada color de la convención sobre el conjunto."><img src="img/esq-planta-usos.jpg" width="3200" height="1726" loading="lazy" alt="Planta de usos del conjunto con el recorrido principal y los usos coloreados" data-falta="esq-planta-usos.jpg"></button>
     <figcaption>Planta de usos: cada color de la convención sobre el conjunto.</figcaption>
   </figure>
 
@@ -479,13 +560,13 @@
       </ul>
     </div>
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: La circulación abraza el proyecto."><img src="img/esq-circulacion-iso.jpg" width="832" height="767" loading="lazy" alt="Axonometría del conjunto con la circulación marcada en rojo" data-falta="esq-circulacion-iso.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: La circulación abraza el proyecto."><img src="img/esq-circulacion-iso.jpg" width="2284" height="2106" loading="lazy" alt="Axonometría del conjunto con la circulación marcada en rojo" data-falta="esq-circulacion-iso.jpg"></button>
     <figcaption>La circulación abraza el proyecto.</figcaption>
   </figure>
   </div>
   <div class="mosaico">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Esquema de circulación y relación de usos."><img src="img/esq-recorrido-axo.jpg" width="1280" height="1243" loading="lazy" alt="Axonometría con el recorrido punteado desde los tres accesos hasta el vivero" data-falta="esq-recorrido-axo.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Esquema de circulación y relación de usos."><img src="img/esq-recorrido-axo.jpg" width="3200" height="3047" loading="lazy" alt="Axonometría con el recorrido punteado desde los tres accesos hasta el vivero" data-falta="esq-recorrido-axo.jpg"></button>
     <figcaption>Esquema de circulación y relación de usos.</figcaption>
   </figure>
     <ol class="accesos">
@@ -538,7 +619,7 @@
   </div>
   <div class="mosaico mosaico--detalle">
     <figure class="figura">
-    <button type="button" class="ampliar" aria-label="Ampliar: Detalle en corte fugado de la biblioteca."><img src="img/esq-detalle.jpg" width="2176" height="1864" loading="lazy" alt="Corte fugado de detalle: cubierta en madera, vigas metálicas, muro de contención y pilotes" data-falta="esq-detalle.jpg"></button>
+    <button type="button" class="ampliar" aria-label="Ampliar: Detalle en corte fugado de la biblioteca."><img src="img/esq-detalle.jpg" width="3200" height="2640" loading="lazy" alt="Corte fugado de detalle: cubierta en madera, vigas metálicas, muro de contención y pilotes" data-falta="esq-detalle.jpg"></button>
     <figcaption>Detalle en corte fugado de la biblioteca.</figcaption>
   </figure>
     <ol class="capas">
@@ -652,6 +733,7 @@
   <img src="" alt="">
 </dialog>
 
-<script src="js/main.js?v=video2"></script>
+<script src="js/main.js?v=video3"></script>
+<script src="js/carrusel.js?v=1" defer></script>
 </body>
 </html>
